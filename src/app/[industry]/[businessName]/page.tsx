@@ -7,6 +7,9 @@ type PageProps = {
     industry: string;
     businessName: string;
   }>;
+  searchParams: Promise<{
+    v?: string;
+  }>;
 };
 
 function formatBusinessName(rawName: string) {
@@ -37,11 +40,14 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 import DemoSwitcher from '@/components/DemoSwitcher';
+import { getIndustryVariants } from '@/templates/registry';
 
-export default async function DynamicDemoPage({ params }: PageProps) {
+export default async function DynamicDemoPage({ params, searchParams }: PageProps) {
   const { industry, businessName } = await params;
+  const { v: variantId } = await searchParams;
   
-  const TemplateComponent = getTemplateForIndustry(industry);
+  const TemplateComponent = getTemplateForIndustry(industry, variantId);
+  const variants = getIndustryVariants(industry).map(v => ({ id: v.id, name: v.name }));
   
   if (!TemplateComponent) {
     notFound();
@@ -52,7 +58,12 @@ export default async function DynamicDemoPage({ params }: PageProps) {
   return (
     <>
       <TemplateComponent businessName={formattedName} />
-      <DemoSwitcher currentIndustry={industry.toLowerCase()} businessName={businessName} />
+      <DemoSwitcher 
+        currentIndustry={industry.toLowerCase()} 
+        businessName={businessName} 
+        currentVariant={variantId || '1'} 
+        variants={variants}
+      />
     </>
   );
 }

@@ -1,0 +1,238 @@
+.container {
+  /* Salon Variant 2 Theme Override */
+  --primary-color: #171717; /* Dark elegant */
+  --secondary-color: #404040;
+  --accent-color: #d4af37; /* Gold accent */
+  --background-color: #ffffff;
+  --text-primary: #171717;
+  
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  font-family: 'Times New Roman', Times, serif; /* Classic elegant serif */
+}
+
+.topBar {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.nav {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  font-family: var(--font-inter), sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+
+.nav a:not(:last-child) {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.nav a:hover:not(:last-child) {
+  color: var(--accent-color);
+}
+
+.outlineBtn {
+  border: 1px solid var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.outlineBtn:hover {
+  background: var(--text-primary);
+  color: white;
+}
+
+.hero {
+  height: 85vh;
+  background-image: url('https://images.unsplash.com/photo-1521590832167-7bfcfaa637f1?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.heroContent {
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.subtitle {
+  font-family: var(--font-inter), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.heroContent h1 {
+  font-size: 4.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.heroContent p {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.section {
+  padding: 6rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.divider {
+  width: 50px;
+  height: 2px;
+  background: var(--accent-color);
+  margin: 1.5rem auto 0;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.serviceItem {
+  text-align: center;
+}
+
+.serviceImg {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  transition: transform 0.5s ease;
+}
+
+.serviceItem:hover .serviceImg {
+  transform: scale(1.03);
+}
+
+.serviceText h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.serviceText p {
+  font-family: var(--font-inter), sans-serif;
+  color: #525252;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.quoteBanner {
+  background: #fafafa;
+  padding: 6rem 5%;
+  text-align: center;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.quoteBanner h3 {
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.quoteBanner p {
+  font-family: var(--font-inter), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
+.footer {
+  background: var(--primary-color);
+  color: white;
+  padding: 5rem 5%;
+  text-align: center;
+}
+
+.footerContent h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.footerContent p {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  color: #a3a3a3;
+}
+
+.credit {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+}
+
+.credit a {
+  color: var(--accent-color);
+  text-decoration: none;
+}

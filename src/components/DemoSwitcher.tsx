@@ -7,15 +7,11 @@ import styles from './DemoSwitcher.module.css';
 interface DemoSwitcherProps {
   currentIndustry: string;
   businessName: string;
+  currentVariant: string;
+  variants: { id: string; name: string }[];
 }
 
-const industries = [
-  { id: 'clinic', name: 'Clinic Theme', icon: '🩺' },
-  { id: 'salon', name: 'Salon Theme', icon: '✨' },
-  { id: 'construction', name: 'Construction Theme', icon: '🏗️' },
-];
-
-export default function DemoSwitcher({ currentIndustry, businessName }: DemoSwitcherProps) {
+export default function DemoSwitcher({ currentIndustry, businessName, currentVariant, variants }: DemoSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -24,6 +20,9 @@ export default function DemoSwitcher({ currentIndustry, businessName }: DemoSwit
   }, []);
 
   if (!mounted) return null;
+
+  // If there's only 1 variant, we don't need a switcher
+  if (variants.length <= 1) return null;
 
   return (
     <div className={styles.switcherContainer}>
@@ -34,15 +33,15 @@ export default function DemoSwitcher({ currentIndustry, businessName }: DemoSwit
             <button onClick={() => setIsOpen(false)} className={styles.closeBtn}>×</button>
           </div>
           <div className={styles.options}>
-            {industries.map((ind) => (
+            {variants.map((v) => (
               <Link
-                key={ind.id}
-                href={`/${ind.id}/${businessName}`}
-                className={`${styles.option} ${currentIndustry === ind.id ? styles.active : ''}`}
+                key={v.id}
+                href={`/${currentIndustry}/${businessName}?v=${v.id}`}
+                className={`${styles.option} ${currentVariant === v.id ? styles.active : ''}`}
                 onClick={() => setIsOpen(false)}
               >
-                <span className={styles.icon}>{ind.icon}</span>
-                {ind.name}
+                <span className={styles.icon}>🎨</span>
+                {v.name}
               </Link>
             ))}
           </div>
@@ -54,7 +53,7 @@ export default function DemoSwitcher({ currentIndustry, businessName }: DemoSwit
         aria-label="Switch Demo Layout"
       >
         <span className={styles.toggleIcon}>⚙️</span>
-        <span className={styles.toggleText}>Change Template</span>
+        <span className={styles.toggleText}>Change Layout</span>
       </button>
     </div>
   );
