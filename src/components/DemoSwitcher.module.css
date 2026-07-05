@@ -10,6 +10,16 @@
   font-family: var(--font-inter), sans-serif;
 }
 
+/* Mobile Responsiveness for Switcher */
+@media (max-width: 768px) {
+  .switcherContainer {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem; /* Allow it to span width if needed */
+    align-items: center; /* Center on mobile */
+  }
+}
+
 .toggleBtn {
   background: #0f172a;
   color: white;
@@ -45,6 +55,14 @@
   border: 1px solid #e2e8f0;
   animation: slideUp 0.3s ease forwards;
   transform-origin: bottom right;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    width: 100%;
+    max-width: 320px;
+    transform-origin: bottom center;
+  }
 }
 
 @keyframes slideUp {
