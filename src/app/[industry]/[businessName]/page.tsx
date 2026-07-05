@@ -36,6 +36,8 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
+import DemoSwitcher from '@/components/DemoSwitcher';
+
 export default async function DynamicDemoPage({ params }: PageProps) {
   const { industry, businessName } = await params;
   
@@ -48,6 +50,9 @@ export default async function DynamicDemoPage({ params }: PageProps) {
   const formattedName = formatBusinessName(businessName);
   
   return (
-    <TemplateComponent businessName={formattedName} />
+    <>
+      <TemplateComponent businessName={formattedName} />
+      <DemoSwitcher currentIndustry={industry.toLowerCase()} businessName={businessName} />
+    </>
   );
 }
