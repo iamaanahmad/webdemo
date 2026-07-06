@@ -74,6 +74,30 @@ export default function Home() {
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>Bold, sturdy amber and dark gray theme tailored for contractors and builders.</p>
             <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--primary-color)' }}>View ApexBuilders →</span>
           </Link>
+
+          <Link href="/education/GlobalInstitute" style={{ padding: '1.5rem', background: 'white', border: '1px solid #e2e8f0', borderRadius: 'var(--radius-md)', transition: 'all 0.3s ease', textDecoration: 'none', display: 'block', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🎓</span> Education Demo
+            </h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>Prestigious, academic templates designed for schools, institutes, and universities.</p>
+            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--primary-color)' }}>View GlobalInstitute →</span>
+          </Link>
+
+          <Link href="/restaurant/BistroCentral" style={{ padding: '1.5rem', background: 'white', border: '1px solid #e2e8f0', borderRadius: 'var(--radius-md)', transition: 'all 0.3s ease', textDecoration: 'none', display: 'block', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🍽️</span> Restaurant Demo
+            </h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>Elegant fine dining and warm cafe templates for culinary establishments.</p>
+            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--primary-color)' }}>View BistroCentral →</span>
+          </Link>
+
+          <Link href="/hotel/GrandResort" style={{ padding: '1.5rem', background: 'white', border: '1px solid #e2e8f0', borderRadius: 'var(--radius-md)', transition: 'all 0.3s ease', textDecoration: 'none', display: 'block', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>🏨</span> Hotel Demo
+            </h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>Luxurious resort and intimate boutique layouts for hospitality businesses.</p>
+            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--primary-color)' }}>View GrandResort →</span>
+          </Link>
         </div>
       </section>
 

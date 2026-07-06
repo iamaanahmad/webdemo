@@ -8,6 +8,12 @@ import SalonTemplate from './salon/SalonTemplate';
 import SalonTemplate2 from './salon/SalonTemplate2';
 import ConstructionTemplate from './construction/ConstructionTemplate';
 import ConstructionTemplate2 from './construction/ConstructionTemplate2';
+import EducationTemplate from './education/EducationTemplate';
+import EducationTemplate2 from './education/EducationTemplate2';
+import RestaurantTemplate from './restaurant/RestaurantTemplate';
+import RestaurantTemplate2 from './restaurant/RestaurantTemplate2';
+import HotelTemplate from './hotel/HotelTemplate';
+import HotelTemplate2 from './hotel/HotelTemplate2';
 
 export type TemplateProps = {
   businessName: string;
@@ -35,6 +41,18 @@ export const TemplateRegistry: TemplateRegistryType = {
   construction: [
     { id: '1', name: 'Amber Industrial', component: ConstructionTemplate },
     { id: '2', name: 'Red Heavy Civil', component: ConstructionTemplate2 }
+  ],
+  education: [
+    { id: '1', name: 'School/Coaching', component: EducationTemplate },
+    { id: '2', name: 'University/Institute', component: EducationTemplate2 }
+  ],
+  restaurant: [
+    { id: '1', name: 'Fine Dining', component: RestaurantTemplate },
+    { id: '2', name: 'Cafe & Casual', component: RestaurantTemplate2 }
+  ],
+  hotel: [
+    { id: '1', name: 'Luxury Resort', component: HotelTemplate },
+    { id: '2', name: 'Boutique Hotel', component: HotelTemplate2 }
   ],
 };
 
