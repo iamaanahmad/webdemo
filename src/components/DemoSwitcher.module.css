@@ -1,74 +1,72 @@
-.switcherContainer {
+.floatingBar {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-inter), sans-serif;
 }
 
-/* Mobile Responsiveness for Switcher */
-@media (max-width: 768px) {
-  .switcherContainer {
-    bottom: 1rem;
-    right: 1rem;
-    left: 1rem; /* Allow it to span width if needed */
-    align-items: center; /* Center on mobile */
-  }
-}
-
-.toggleBtn {
-  background: #0f172a;
+/* WhatsApp Button */
+.whatsappBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #25D366;
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9999px;
-  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.whatsappBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+/* Switch Button */
+.switchBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  font-weight: 600;
-  font-size: 0.95rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.toggleBtn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
-  background: #1e293b;
+.switchBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-.toggleIcon {
-  font-size: 1.1rem;
-}
-
+/* Menu */
 .menu {
   background: white;
   border-radius: 12px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  width: 250px;
+  width: 230px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  animation: slideUp 0.3s ease forwards;
+  animation: slideUp 0.25s ease forwards;
   transform-origin: bottom right;
-}
-
-@media (max-width: 768px) {
-  .menu {
-    width: 100%;
-    max-width: 320px;
-    transform-origin: bottom center;
-  }
 }
 
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(10px);
+    transform: scale(0.95) translateY(8px);
   }
   to {
     opacity: 1;
@@ -80,14 +78,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.85rem 1rem;
   border-bottom: 1px solid #f1f5f9;
   background: #f8fafc;
 }
 
 .menuHeader h4 {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #475569;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -97,20 +95,15 @@
 .closeBtn {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #94a3b8;
   cursor: pointer;
   line-height: 1;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: color 0.2s;
 }
 
-.closeBtn:hover {
-  color: #0f172a;
-}
+.closeBtn:hover { color: #0f172a; }
 
 .options {
   display: flex;
@@ -118,13 +111,14 @@
 }
 
 .option {
-  padding: 1rem;
+  padding: 0.85rem 1rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   text-decoration: none;
   color: #334155;
   font-weight: 500;
+  font-size: 0.9rem;
   transition: all 0.2s ease;
   border-left: 3px solid transparent;
 }
@@ -142,6 +136,22 @@
   font-weight: 600;
 }
 
-.icon {
-  font-size: 1.25rem;
+.icon { font-size: 1.1rem; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .floatingBar {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .whatsappBtn,
+  .switchBtn {
+    width: 46px;
+    height: 46px;
+  }
+
+  .menu {
+    width: 200px;
+  }
 }
