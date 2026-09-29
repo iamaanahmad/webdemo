@@ -1,4 +1,5 @@
 import React from 'react';
+import type { BusinessDemoData } from './demo-data';
 
 // We will import templates dynamically or statically here
 // For now, let's use static imports.
@@ -17,6 +18,8 @@ import HotelTemplate2 from './hotel/HotelTemplate2';
 
 export type TemplateProps = {
   businessName: string;
+  /** Personalization data for this business; null/undefined when no data file exists. */
+  demo?: BusinessDemoData | null;
 };
 
 type TemplateVariant = {

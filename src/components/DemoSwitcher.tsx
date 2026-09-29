@@ -7,14 +7,14 @@ import styles from './DemoSwitcher.module.css';
 interface DemoSwitcherProps {
   currentIndustry: string;
   businessName: string;
+  displayName: string;
   currentVariant: string;
   variants: { id: string; name: string }[];
 }
 
 const WHATSAPP_NUMBER = '917645969281';
-const WHATSAPP_MESSAGE = 'Hi, I want to know more about your Web Development services.';
 
-export default function DemoSwitcher({ currentIndustry, businessName, currentVariant, variants }: DemoSwitcherProps) {
+export default function DemoSwitcher({ currentIndustry, businessName, displayName, currentVariant, variants }: DemoSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -22,7 +22,8 @@ export default function DemoSwitcher({ currentIndustry, businessName, currentVar
 
   if (!mounted) return null;
 
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const whatsappMessage = `Hi, I saw the demo website you made for ${displayName}. I want one for my business!`;
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
   const showSwitcher = variants.length > 1;
 
   return (
