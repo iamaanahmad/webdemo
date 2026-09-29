@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Clinic2.module.css';
 
-const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
+const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -25,7 +26,8 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
           <div className={styles.heroContent}>
             <span className={styles.heroTag}>Trusted by 10,000+ Patients</span>
             <h1>Modern Healthcare, Delivered With Compassion.</h1>
-            <p>Welcome to {businessName}. We blend advanced medical technology with a personalized approach to ensure you receive the best care possible.</p>
+            <p>{pick(demo?.about, `Welcome to ${businessName}. We blend advanced medical technology with a personalized approach to ensure you receive the best care possible.`)}</p>
+            <RatingBadge demo={demo} />
             <div className={styles.heroButtons}>
               <button className={styles.btnPrimary}>Schedule Visit</button>
               <button className={styles.btnSecondary}>Our Specialists</button>
@@ -87,6 +89,16 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
             <p>Specialized care tailored to your specific needs.</p>
           </div>
           <div className={styles.servicesGrid}>
+            {demo?.services && demo.services.length > 0 ? (
+              demo.services.map((service, i) => (
+                <div key={i} className={styles.serviceCard}>
+                  <div className={styles.serviceIcon}>{service.icon || '✨'}</div>
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                </div>
+              ))
+            ) : (
+              <>
             <div className={styles.serviceCard}>
               <div className={styles.serviceIcon}>⚕️</div>
               <h3>Internal Medicine</h3>
@@ -117,6 +129,8 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
               <h3>Diagnostics & Lab</h3>
               <p>In-house pathology, radiology, and advanced imaging for accurate and fast results.</p>
             </div>
+              </>
+            )}
           </div>
         </section>
 
@@ -196,19 +210,19 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
               <div className={styles.contactDetails}>
                 <div className={styles.contactItem}>
                   <span>📍</span>
-                  <p>123 Health Avenue, Medical District</p>
+                  <p>{pick(demo?.address, '123 Health Avenue, Medical District')}</p>
                 </div>
                 <div className={styles.contactItem}>
                   <span>📞</span>
-                  <p>+91 98765 43210</p>
+                  <p>{pick(demo?.phone, '+91 98765 43210')}</p>
                 </div>
                 <div className={styles.contactItem}>
                   <span>🕐</span>
-                  <p>Mon-Sat: 8am - 9pm | Sun: 9am - 2pm</p>
+                  <p>{pick(demo?.hours, 'Mon-Sat: 8am - 9pm | Sun: 9am - 2pm')}</p>
                 </div>
                 <div className={styles.contactItem}>
                   <span>✉️</span>
-                  <p>care@{businessName.replace(/\s+/g, '').toLowerCase()}.com</p>
+                  <p>{pick(demo?.email, `care@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>
                 </div>
               </div>
             </div>

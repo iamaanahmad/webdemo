@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Restaurant2.module.css';
 
-const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
+const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -22,7 +23,8 @@ const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
           <div className={styles.heroContent}>
             <span className={styles.heroTag}>☕ Artisanal Cafe & Eatery</span>
             <h1>Fresh. Local. Delicious.</h1>
-            <p>Your neighborhood spot for artisanal coffee, fresh pastries, and wholesome meals made from scratch daily.</p>
+            <p>{pick(demo?.about, 'Your neighborhood spot for artisanal coffee, fresh pastries, and wholesome meals made from scratch daily.')}</p>
+            <RatingBadge demo={demo} />
             <div className={styles.heroButtons}>
               <button className={styles.btnPrimary}>View Menu</button>
               <button className={styles.btnOutline}>Order Online</button>
@@ -153,17 +155,23 @@ const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
               <div className={styles.locationDetails}>
                 <div>
                   <h4>📍 Address</h4>
-                  <p>456 Cafe Lane, Sunnyvale, CA 94086</p>
+                  <p>{pick(demo?.address, '456 Cafe Lane, Sunnyvale, CA 94086')}</p>
                 </div>
                 <div>
                   <h4>🕐 Hours</h4>
+                  {demo?.hours ? (
+                    <p>{demo.hours}</p>
+                  ) : (
+                    <>
                   <p>Mon - Fri: 7am - 4pm</p>
                   <p>Sat - Sun: 8am - 5pm</p>
+                    </>
+                  )}
                 </div>
                 <div>
                   <h4>📞 Contact</h4>
-                  <p>(555) 234-5678</p>
-                  <p>hello@{businessName.replace(/\s+/g, '').toLowerCase()}.com</p>
+                  <p>{pick(demo?.phone, '(555) 234-5678')}</p>
+                  <p>{pick(demo?.email, `hello@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>
                 </div>
               </div>
             </div>

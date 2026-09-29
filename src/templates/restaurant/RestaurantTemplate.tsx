@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Restaurant.module.css';
 
-const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName }) => {
+const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -21,6 +22,7 @@ const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName }) => {
             <div className={styles.heroContent}>
               <span className={styles.subtitle}>An Exquisite Culinary Journey</span>
               <h1>Elevating the Art of Dining.</h1>
+              <RatingBadge demo={demo} />
               <div className={styles.heroButtons}>
                 <button className="btn-primary" style={{ background: 'var(--accent-color)', color: 'var(--text-primary)' }}>Book Reservation</button>
               </div>
@@ -33,7 +35,7 @@ const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName }) => {
           <div className={styles.introContent}>
             <h2>A Symphony of Flavors</h2>
             <div className={styles.divider}></div>
-            <p>At {businessName}, we source the finest seasonal ingredients to craft innovative dishes that honor culinary traditions while pushing boundaries. Experience unparalleled service in our elegantly appointed dining room.</p>
+            <p>{pick(demo?.about, `At ${businessName}, we source the finest seasonal ingredients to craft innovative dishes that honor culinary traditions while pushing boundaries. Experience unparalleled service in our elegantly appointed dining room.`)}</p>
           </div>
           <div className={styles.introImage} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=800&auto=format&fit=crop')" }}></div>
         </section>
@@ -112,14 +114,20 @@ const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName }) => {
         <div className={styles.footerInner}>
           <div className={styles.footerCol}>
             <h2>{businessName}</h2>
-            <p>123 Culinary Way, Gourmet District</p>
-            <p>(555) 019-8765</p>
+            <p>📍 {pick(demo?.address, '123 Culinary Way, Gourmet District')}</p>
+            <p>📞 {pick(demo?.phone, '(555) 019-8765')}</p>
           </div>
           <div className={styles.footerCol}>
             <h4>Hours</h4>
+            {demo?.hours ? (
+              <p>{demo.hours}</p>
+            ) : (
+              <>
             <p>Mon - Thu: 5pm - 10pm</p>
             <p>Fri - Sat: 5pm - 11pm</p>
             <p>Sunday: Closed</p>
+              </>
+            )}
           </div>
           <div className={styles.footerCol}>
             <h4>Follow Us</h4>

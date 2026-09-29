@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Salon.module.css';
 
-const SalonTemplate: React.FC<TemplateProps> = ({ businessName }) => {
+const SalonTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -21,7 +22,8 @@ const SalonTemplate: React.FC<TemplateProps> = ({ businessName }) => {
         <section className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>Enhance Your Natural Beauty at {businessName}</h1>
-            <p>Luxury salon services designed to make you look and feel your absolute best in a relaxing atmosphere.</p>
+            <p>{pick(demo?.about, 'Luxury salon services designed to make you look and feel your absolute best in a relaxing atmosphere.')}</p>
+            <RatingBadge demo={demo} />
             <div className={styles.heroButtons}>
               <button className="btn-primary">Discover Services</button>
               <button className={styles.btnSecondary}>View Gallery</button>
@@ -36,6 +38,16 @@ const SalonTemplate: React.FC<TemplateProps> = ({ businessName }) => {
             <p>Elevate your style with our premium offerings.</p>
           </div>
           <div className={styles.grid}>
+            {demo?.services && demo.services.length > 0 ? (
+              demo.services.map((service, i) => (
+                <div key={i} className={styles.card}>
+                  <div className={styles.cardIcon}>{service.icon || '✨'}</div>
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                </div>
+              ))
+            ) : (
+              <>
             <div className={styles.card}>
               <div className={styles.cardIcon}>✂️</div>
               <h3>Hair Styling</h3>
@@ -51,6 +63,8 @@ const SalonTemplate: React.FC<TemplateProps> = ({ businessName }) => {
               <h3>Spa & Massage</h3>
               <p>Relaxing massages and rejuvenating facials to melt away your stress.</p>
             </div>
+              </>
+            )}
           </div>
         </section>
 
@@ -174,9 +188,10 @@ const SalonTemplate: React.FC<TemplateProps> = ({ businessName }) => {
               <h2>Book Your Experience</h2>
               <p>Treat yourself to a day of luxury. Reserve your appointment today.</p>
               <ul className={styles.contactList}>
-                <li>📍 789 Beauty Blvd, Fashion District</li>
-                <li>📞 +1 (555) 987-6543</li>
-                <li>✉️ hello@{businessName.replace(/\s+/g, '').toLowerCase()}.com</li>
+                <li>📍 {pick(demo?.address, '789 Beauty Blvd, Fashion District')}</li>
+                <li>📞 {pick(demo?.phone, '+1 (555) 987-6543')}</li>
+                <li>✉️ {pick(demo?.email, `hello@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</li>
+                {demo?.hours && <li>🕒 {demo.hours}</li>}
               </ul>
             </div>
             <div className={styles.contactForm}>

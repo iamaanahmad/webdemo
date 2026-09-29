@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Hotel2.module.css';
 
-const HotelTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
+const HotelTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -22,7 +23,8 @@ const HotelTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
           <div className={styles.heroContent}>
             <span className={styles.heroTag}>Boutique Hotel & Lifestyle</span>
             <h1>Intimate. Curated. Unique.</h1>
-            <p>A boutique hotel experience in the heart of the cultural district. Where local charm meets modern comfort and every detail tells a story.</p>
+            <p>{pick(demo?.about, 'A boutique hotel experience in the heart of the cultural district. Where local charm meets modern comfort and every detail tells a story.')}</p>
+            <RatingBadge demo={demo} />
             <div className={styles.heroButtons}>
               <button className={styles.btnDark}>Book Your Stay</button>
             </div>
@@ -178,9 +180,9 @@ const HotelTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
           </div>
           <div className={styles.footerCol}>
             <h4>Contact</h4>
-            <p>100 Creative Way, Arts District</p>
-            <p>hello@{businessName.replace(/\s+/g, '').toLowerCase()}.com</p>
-            <p>(555) 789-0123</p>
+            <p>📍 {pick(demo?.address, '100 Creative Way, Arts District')}</p>
+            <p>✉️ {pick(demo?.email, `hello@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>
+            <p>📞 {pick(demo?.phone, '(555) 789-0123')}</p>
           </div>
           <div className={styles.footerCol}>
             <h4>Social</h4>

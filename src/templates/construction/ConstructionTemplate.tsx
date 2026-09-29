@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Construction.module.css';
 
-const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName }) => {
+const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -22,7 +23,8 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName }) => {
         <section className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>Building the Future with {businessName}</h1>
-            <p>Reliable, high-quality construction services for residential and commercial projects. We turn your vision into reality.</p>
+            <p>{pick(demo?.about, 'Reliable, high-quality construction services for residential and commercial projects. We turn your vision into reality.')}</p>
+            <RatingBadge demo={demo} />
             <div className={styles.heroButtons}>
               <button className="btn-primary" style={{ background: 'var(--primary-color)', color: 'black' }}>View Our Work</button>
               <button className={styles.btnSecondary}>Request a Quote</button>
@@ -37,6 +39,16 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName }) => {
             <p>From foundation to finish, we deliver excellence.</p>
           </div>
           <div className={styles.grid}>
+            {demo?.services && demo.services.length > 0 ? (
+              demo.services.map((service, i) => (
+                <div key={i} className={styles.card}>
+                  <div className={styles.cardIcon}>{service.icon || '🔧'}</div>
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                </div>
+              ))
+            ) : (
+              <>
             <div className={styles.card}>
               <div className={styles.cardIcon}>🏗️</div>
               <h3>Commercial Construction</h3>
@@ -52,6 +64,8 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName }) => {
               <h3>Renovation & Remodeling</h3>
               <p>Breathing new life into existing structures with modern upgrades.</p>
             </div>
+              </>
+            )}
           </div>
         </section>
 
@@ -178,9 +192,10 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName }) => {
               <h2>Ready to Start Building?</h2>
               <p>Contact our team of experts today for a free consultation and project estimate.</p>
               <ul className={styles.contactList}>
-                <li>📍 400 Industrial Parkway, Builder's Zone</li>
-                <li>📞 +1 (555) 321-7654</li>
-                <li>✉️ estimates@{businessName.replace(/\s+/g, '').toLowerCase()}.com</li>
+                <li>📍 {pick(demo?.address, "400 Industrial Parkway, Builder's Zone")}</li>
+                <li>📞 {pick(demo?.phone, '+1 (555) 321-7654')}</li>
+                <li>✉️ {pick(demo?.email, `estimates@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</li>
+                {demo?.hours && <li>🕒 {demo.hours}</li>}
               </ul>
             </div>
             <div className={styles.contactForm}>

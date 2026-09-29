@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Education2.module.css';
 
-const EducationTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
+const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -27,7 +28,8 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
           <div className={styles.heroContent}>
             <span className={styles.heroTag}>NAAC A++ Accredited Institution</span>
             <h1>Tradition Meets Innovation.</h1>
-            <p>A prestigious academic institution dedicated to advancing knowledge, fostering research, and shaping future global leaders since 1895.</p>
+            <p>{pick(demo?.about, 'A prestigious academic institution dedicated to advancing knowledge, fostering research, and shaping future global leaders since 1895.')}</p>
+            <RatingBadge demo={demo} />
             <div className={styles.heroButtons}>
               <button className={styles.btnPrimary}>Apply for Fall 2026</button>
               <button className={styles.btnOutline}>Academic Catalog</button>
@@ -260,9 +262,8 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
               <span className={styles.crest}>🏛️</span>
               {businessName}
             </div>
-            <p>Central Campus, University Avenue</p>
-            <p>State 12345, India</p>
-            <p>+91 11 2345 6789</p>
+            <p>📍 {pick(demo?.address, 'Central Campus, University Avenue, State 12345, India')}</p>
+            <p>📞 {pick(demo?.phone, '+91 11 2345 6789')}</p>
           </div>
           <div className={styles.footerCol}>
             <h4>Academics</h4>

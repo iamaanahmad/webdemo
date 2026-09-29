@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Hotel.module.css';
 
-const HotelTemplate: React.FC<TemplateProps> = ({ businessName }) => {
+const HotelTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -22,7 +23,8 @@ const HotelTemplate: React.FC<TemplateProps> = ({ businessName }) => {
             <div className={styles.heroContent}>
               <span className={styles.stars}>★★★★★</span>
               <h1>Escape to Paradise.</h1>
-              <p>Experience unparalleled luxury and breathtaking views at our exclusive resort.</p>
+              <p>{pick(demo?.about, 'Experience unparalleled luxury and breathtaking views at our exclusive resort.')}</p>
+              <RatingBadge demo={demo} />
               <button className="btn-primary" style={{ background: 'var(--accent-color)', color: 'var(--primary-color)' }}>Check Availability</button>
             </div>
           </div>
@@ -60,6 +62,15 @@ const HotelTemplate: React.FC<TemplateProps> = ({ businessName }) => {
           <div className={styles.amenitiesOverlay}>
             <h2>World-Class Amenities</h2>
             <div className={styles.amenitiesGrid}>
+              {demo?.services && demo.services.length > 0 ? (
+                demo.services.map((service, i) => (
+                  <div key={i} className={styles.amenityItem}>
+                    <span className={styles.amenityIcon}>{service.icon || '✨'}</span>
+                    <h4>{service.name}</h4>
+                  </div>
+                ))
+              ) : (
+                <>
               <div className={styles.amenityItem}>
                 <span className={styles.amenityIcon}>💆‍♀️</span>
                 <h4>Award-Winning Spa</h4>
@@ -76,6 +87,8 @@ const HotelTemplate: React.FC<TemplateProps> = ({ businessName }) => {
                 <span className={styles.amenityIcon}>⛳</span>
                 <h4>Golf Course</h4>
               </div>
+                </>
+              )}
             </div>
           </div>
         </section>
@@ -114,8 +127,9 @@ const HotelTemplate: React.FC<TemplateProps> = ({ businessName }) => {
         <div className={styles.footerInner}>
           <div className={styles.footerBrand}>
             <h2>{businessName}</h2>
-            <p>1 Resort Drive, Paradise Island</p>
-            <p>reservations@{businessName.replace(/\s+/g, '').toLowerCase()}.com</p>
+            <p>📍 {pick(demo?.address, '1 Resort Drive, Paradise Island')}</p>
+            {demo?.phone && <p>📞 {demo.phone}</p>}
+            <p>✉️ {pick(demo?.email, `reservations@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>
           </div>
           <div className={styles.footerLinks}>
             <div>

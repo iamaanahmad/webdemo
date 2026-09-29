@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Education.module.css';
 
-const EducationTemplate: React.FC<TemplateProps> = ({ businessName }) => {
+const EducationTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       {/* Top Banner */}
@@ -31,7 +32,8 @@ const EducationTemplate: React.FC<TemplateProps> = ({ businessName }) => {
             <div className={styles.heroContent}>
               <span className={styles.heroTag}>Excellence in Education Since 2005</span>
               <h1>Empowering the Next Generation of Leaders.</h1>
-              <p>Welcome to {businessName}, where academic excellence meets holistic development in a nurturing environment designed to unlock every student&apos;s potential.</p>
+              <p>{pick(demo?.about, `Welcome to ${businessName}, where academic excellence meets holistic development in a nurturing environment designed to unlock every student's potential.`)}</p>
+              <RatingBadge demo={demo} />
               <div className={styles.heroButtons}>
                 <button className={styles.btnPrimary}>Explore Programs</button>
                 <button className={styles.btnSecondary}>Virtual Tour →</button>
@@ -181,7 +183,7 @@ const EducationTemplate: React.FC<TemplateProps> = ({ businessName }) => {
         <section id="testimonials" className={styles.testimonialSection}>
           <div className={styles.sectionHeader}>
             <h2 style={{ color: 'white' }}>What Parents Say</h2>
-            <p style={{ color: 'rgba(255,255,255,0.8)' }}>Trusted by hundreds of families across the city.</p>
+            <p style={{ color: 'rgba(255,255,255,0.8)' }}>Trusted by hundreds of families{demo?.city ? ` across ${demo.city}` : ' across the city'}.</p>
           </div>
           <div className={styles.testimonialGrid}>
             <div className={styles.testimonialCard}>
@@ -256,9 +258,10 @@ const EducationTemplate: React.FC<TemplateProps> = ({ businessName }) => {
               <span className={styles.logoIcon}>🎓</span>
               {businessName}
             </div>
-            <p>123 Education Blvd, Knowledge City</p>
-            <p>+91 98765 43210</p>
-            <p>info@{businessName.replace(/\s+/g, '').toLowerCase()}.edu</p>
+            <p>📍 {pick(demo?.address, '123 Education Blvd, Knowledge City')}</p>
+            <p>📞 {pick(demo?.phone, '+91 98765 43210')}</p>
+            <p>✉️ {pick(demo?.email, `info@${businessName.replace(/\s+/g, '').toLowerCase()}.edu`)}</p>
+            {demo?.hours && <p>🕒 {demo.hours}</p>}
           </div>
           <div className={styles.footerLinksGroup}>
             <div className={styles.footerLinks}>

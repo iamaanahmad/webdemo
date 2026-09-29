@@ -1,8 +1,9 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Salon2.module.css';
 
-const SalonTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
+const SalonTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <div className={styles.topBar}>
@@ -27,7 +28,8 @@ const SalonTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
             <div className={styles.heroContent}>
               <span className={styles.subtitle}>Premium Salon Services</span>
               <h1>Discover Your True Beauty.</h1>
-              <p>Experience luxury styling and spa treatments in the heart of the city. Where artistry meets self-care.</p>
+              <p>{pick(demo?.about, 'Experience luxury styling and spa treatments in the heart of the city. Where artistry meets self-care.')}</p>
+              <RatingBadge demo={demo} />
               <button className={styles.heroBtn}>View Our Menu</button>
             </div>
           </div>
@@ -40,27 +42,19 @@ const SalonTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
             <div className={styles.divider}></div>
           </div>
           <div className={styles.servicesGrid}>
-            <div className={styles.serviceItem}>
-              <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80" alt="Hair Styling" className={styles.serviceImg} />
-              <div className={styles.serviceText}>
-                <h3>Precision Haircuts</h3>
-                <p>Tailored cuts designed for your face shape and lifestyle by master stylists.</p>
+            {(demo?.services && demo.services.length > 0 ? demo.services : [
+              { name: 'Precision Haircuts', description: 'Tailored cuts designed for your face shape and lifestyle by master stylists.', icon: '✂️' },
+              { name: 'Master Coloring', description: 'From balayage to vivid colors, our experts bring your vision to life with premium products.', icon: '🎨' },
+              { name: 'Rejuvenating Spa', description: 'Relax with our signature facials, body wraps, and deep tissue massages.', icon: '💆' },
+            ]).map((service, i) => (
+              <div key={i} className={styles.serviceItem}>
+                <img src={`https://images.unsplash.com/${['photo-1560066984-138dadb4c035', 'photo-1600948836101-f9ffda59d250', 'photo-1616394584738-fc6e612e71b9'][i % 3]}?w=500&q=80`} alt={service.name} className={styles.serviceImg} />
+                <div className={styles.serviceText}>
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                </div>
               </div>
-            </div>
-            <div className={styles.serviceItem}>
-              <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=500&q=80" alt="Coloring" className={styles.serviceImg} />
-              <div className={styles.serviceText}>
-                <h3>Master Coloring</h3>
-                <p>From balayage to vivid colors, our experts bring your vision to life with premium products.</p>
-              </div>
-            </div>
-            <div className={styles.serviceItem}>
-              <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=500&q=80" alt="Spa" className={styles.serviceImg} />
-              <div className={styles.serviceText}>
-                <h3>Rejuvenating Spa</h3>
-                <p>Relax with our signature facials, body wraps, and deep tissue massages.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
@@ -173,10 +167,10 @@ const SalonTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
               <h2>Book Your Visit</h2>
               <p>Treat yourself to a day of luxury. Walk-ins welcome, appointments preferred.</p>
               <div className={styles.contactDetails}>
-                <p>📍 123 Luxury Lane, Style District</p>
-                <p>📞 (555) 123-4567</p>
-                <p>🕐 Mon-Sat: 9am - 8pm</p>
-                <p>✉️ hello@{businessName.replace(/\s+/g, '').toLowerCase()}.com</p>
+                <p>📍 {pick(demo?.address, '123 Luxury Lane, Style District')}</p>
+                <p>📞 {pick(demo?.phone, '(555) 123-4567')}</p>
+                <p>🕐 {pick(demo?.hours, 'Mon-Sat: 9am - 8pm')}</p>
+                <p>✉️ {pick(demo?.email, `hello@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>
               </div>
             </div>
             <div className={styles.contactForm}>

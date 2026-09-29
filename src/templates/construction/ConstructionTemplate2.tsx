@@ -1,15 +1,16 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Construction2.module.css';
 
-const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
+const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.headerTop}>
           <div className={styles.contactBar}>
-            <span>📞 (555) 987-6543</span>
-            <span>✉️ info@{businessName.replace(/\s+/g, '').toLowerCase()}.com</span>
+            <span>📞 {pick(demo?.phone, '(555) 987-6543')}</span>
+            <span>✉️ {pick(demo?.email, `info@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</span>
           </div>
           <div className={styles.socialBar}>
             <span>in</span>
@@ -34,7 +35,8 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
         <section className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>Solid Foundations. <br/> Exceptional Builds.</h1>
-            <p>From commercial high-rises to residential developments, {businessName} delivers unmatched quality, precision, and on-time project delivery.</p>
+            <p>{pick(demo?.about, `From commercial high-rises to residential developments, ${businessName} delivers unmatched quality, precision, and on-time project delivery.`)}</p>
+            <RatingBadge demo={demo} />
             <div className={styles.heroButtons}>
               <button className={styles.btnPrimary}>Start Your Project</button>
               <button className={styles.btnOutline}>View Portfolio</button>
@@ -63,30 +65,20 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
             <h2>Core Services</h2>
           </div>
           <div className={styles.servicesGrid}>
-            <div className={styles.serviceBox}>
-              <div className={styles.serviceImage} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80')" }}></div>
-              <div className={styles.serviceContent}>
-                <h3>Commercial Build-Outs</h3>
-                <p>Retail spaces, office buildings, and industrial facilities built to exact specifications and timelines.</p>
-                <a href="#contact" className={styles.serviceLink}>Learn More →</a>
+            {(demo?.services && demo.services.length > 0 ? demo.services : [
+              { name: 'Commercial Build-Outs', description: 'Retail spaces, office buildings, and industrial facilities built to exact specifications and timelines.' },
+              { name: 'Residential Construction', description: 'Custom homes, villas, and large-scale residential developments with premium finishes.' },
+              { name: 'Heavy Civil & Infrastructure', description: 'Roads, bridges, earthmoving, and large-scale infrastructure projects.' },
+            ]).map((service, i) => (
+              <div key={i} className={styles.serviceBox}>
+                <div className={styles.serviceImage} style={{ backgroundImage: `url('https://images.unsplash.com/${['photo-1503387762-592deb58ef4e', 'photo-1600596542815-ffad4c1539a9', 'photo-1589939705384-5185137a7f0f'][i % 3]}?w=600&q=80&auto=format&fit=crop')` }}></div>
+                <div className={styles.serviceContent}>
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                  <a href="#contact" className={styles.serviceLink}>Learn More →</a>
+                </div>
               </div>
-            </div>
-            <div className={styles.serviceBox}>
-              <div className={styles.serviceImage} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80')" }}></div>
-              <div className={styles.serviceContent}>
-                <h3>Residential Construction</h3>
-                <p>Custom homes, villas, and large-scale residential developments with premium finishes.</p>
-                <a href="#contact" className={styles.serviceLink}>Learn More →</a>
-              </div>
-            </div>
-            <div className={styles.serviceBox}>
-              <div className={styles.serviceImage} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&q=80')" }}></div>
-              <div className={styles.serviceContent}>
-                <h3>Heavy Civil & Infrastructure</h3>
-                <p>Roads, bridges, earthmoving, and large-scale infrastructure projects.</p>
-                <a href="#contact" className={styles.serviceLink}>Learn More →</a>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
@@ -189,7 +181,8 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName }) => {
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.logo} style={{ color: 'white' }}>{businessName}</div>
-          <p className={styles.footerAddress}>456 Industrial Blvd, Builders Park</p>
+          <p className={styles.footerAddress}>📍 {pick(demo?.address, '456 Industrial Blvd, Builders Park')}</p>
+          {demo?.phone && <p className={styles.footerAddress}>📞 {demo.phone}</p>}
           <div className={styles.footerLinks}>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
