@@ -40,13 +40,28 @@ const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => 
           <div className={styles.introImage} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=800&auto=format&fit=crop')" }}></div>
         </section>
 
-        {/* Featured Menu */}
+        {/* Featured Menu — renders the business's real menu/services when provided */}
         <section id="menu" className={styles.menuSection}>
           <div className={styles.sectionHeader}>
-            <h2>Tasting Menu</h2>
+            <h2>{demo?.services && demo.services.length > 0 ? 'Our Menu' : 'Tasting Menu'}</h2>
             <div className={styles.divider}></div>
           </div>
-          
+
+          {demo?.services && demo.services.length > 0 ? (
+            <div className={styles.menuGrid}>
+              <div className={styles.menuColumn}>
+                <h3>What We Serve</h3>
+                {demo.services.map((service, i) => (
+                  <div key={i} className={styles.menuItem}>
+                    <div className={styles.menuItemHeader}>
+                      <h4>{service.icon ? `${service.icon} ` : ''}{service.name}</h4>
+                    </div>
+                    <p>{service.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
           <div className={styles.menuGrid}>
             <div className={styles.menuColumn}>
               <h3>First Course</h3>
@@ -84,6 +99,7 @@ const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => 
               </div>
             </div>
           </div>
+          )}
           
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <button className={styles.btnOutline}>View Full Menu</button>
