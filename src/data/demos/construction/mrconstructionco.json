@@ -1,0 +1,30 @@
+{
+  "businessName": "M.R. Construction Co.",
+  "industry": "construction",
+  "phone": "+1 281-306-9566",
+  "email": "mrconstco@gmail.com",
+  "city": "Houston",
+  "about": "Construction company in Houston — remodeling, renovations and home repairs for residential clients.",
+  "services": [
+    {
+      "name": "Remodeling",
+      "description": "Home remodeling for kitchens, baths and living spaces.",
+      "icon": "🔨"
+    },
+    {
+      "name": "Renovations",
+      "description": "Full and partial home renovations.",
+      "icon": "🏠"
+    },
+    {
+      "name": "Home Repairs",
+      "description": "Repairs big and small around the home.",
+      "icon": "🔧"
+    },
+    {
+      "name": "General Construction",
+      "description": "General construction services for homeowners.",
+      "icon": "🏗️"
+    }
+  ]
+}

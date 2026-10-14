@@ -1,0 +1,30 @@
+{
+  "businessName": "BSM Installations",
+  "industry": "construction",
+  "phone": "+1 469-355-4101",
+  "address": "6069 Belt Line Rd, Dallas, TX 75254",
+  "city": "Dallas",
+  "about": "Multi-media installation company serving the Dallas-Fort Worth metroplex since 2010 — surveillance cameras, TVs and media rooms for commercial and residential clients.",
+  "services": [
+    {
+      "name": "Surveillance Camera Installation",
+      "description": "Security and surveillance camera systems.",
+      "icon": "📹"
+    },
+    {
+      "name": "TV Installation & Mounting",
+      "description": "TV mounting and setup for home and business.",
+      "icon": "📺"
+    },
+    {
+      "name": "Media Room Setup",
+      "description": "Complete home theater and media room installation.",
+      "icon": "🎬"
+    },
+    {
+      "name": "Commercial AV Installation",
+      "description": "Audio-visual installations for commercial spaces.",
+      "icon": "🏢"
+    }
+  ]
+}

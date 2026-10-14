@@ -1,0 +1,31 @@
+{
+  "businessName": "Circle Supply of Dallas",
+  "industry": "construction",
+  "phone": "+1 214-462-7900",
+  "email": "claurence@circlesupplydallas.com",
+  "address": "2561 Merrell Rd, Dallas, TX 75229",
+  "city": "Dallas",
+  "about": "Masonry equipment and supplies in Dallas — stucco manufacturers and distributors, plaster products and exterior coating supplies for contractors.",
+  "services": [
+    {
+      "name": "Masonry Equipment & Supplies",
+      "description": "Equipment and supplies for masonry contractors.",
+      "icon": "🧱"
+    },
+    {
+      "name": "Stucco Products",
+      "description": "Stucco materials from leading manufacturers.",
+      "icon": "🏗️"
+    },
+    {
+      "name": "Plaster Products",
+      "description": "Plaster products for interior and exterior work.",
+      "icon": "🎨"
+    },
+    {
+      "name": "Exterior Coating Supplies",
+      "description": "Exterior coatings and finishing supplies.",
+      "icon": "🏢"
+    }
+  ]
+}

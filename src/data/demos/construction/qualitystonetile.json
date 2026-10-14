@@ -1,0 +1,36 @@
+{
+  "businessName": "Quality Stone and Tile Installation",
+  "industry": "construction",
+  "phone": "+1 602-622-7470",
+  "email": "azcustomstone@gmail.com",
+  "address": "5022 E Kirkland Rd, Phoenix, AZ 85054",
+  "city": "Phoenix",
+  "about": "Tile and stone installation in the Phoenix area since 2006 — bathrooms, kitchens, patios and fireplaces, plus interior and exterior granite and natural stone. Run by owner Mike Aman.",
+  "services": [
+    {
+      "name": "Bathroom Tile",
+      "description": "Tile installation for bathrooms, showers and tub surrounds.",
+      "icon": "🚿"
+    },
+    {
+      "name": "Kitchen Tile & Backsplash",
+      "description": "Kitchen floors, countertops and backsplashes.",
+      "icon": "🍳"
+    },
+    {
+      "name": "Fireplaces",
+      "description": "One-of-a-kind stone and tile fireplaces.",
+      "icon": "🔥"
+    },
+    {
+      "name": "Patios & Outdoor Tile",
+      "description": "Tile and stone for patios and outdoor living.",
+      "icon": "🌞"
+    },
+    {
+      "name": "Natural Stone Installation",
+      "description": "Interior and exterior granite and natural stone.",
+      "icon": "🪨"
+    }
+  ]
+}

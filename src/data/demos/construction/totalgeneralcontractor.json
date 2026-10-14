@@ -1,0 +1,30 @@
+{
+  "businessName": "Total General Contractor",
+  "industry": "construction",
+  "phone": "+1 713-294-1580",
+  "email": "vjones@veronicatjones.com",
+  "city": "Houston",
+  "about": "General contractor in Houston — home construction, renovations and project management from start to finish.",
+  "services": [
+    {
+      "name": "General Contracting",
+      "description": "Full-service general contracting for home projects.",
+      "icon": "🏗️"
+    },
+    {
+      "name": "Home Renovation",
+      "description": "Renovations that add comfort and value.",
+      "icon": "🏠"
+    },
+    {
+      "name": "Repairs & Improvements",
+      "description": "Repairs and improvements, big or small.",
+      "icon": "🔧"
+    },
+    {
+      "name": "Project Management",
+      "description": "Your project managed start to finish.",
+      "icon": "📋"
+    }
+  ]
+}

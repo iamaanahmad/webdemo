@@ -1,0 +1,36 @@
+{
+  "businessName": "Handy Services",
+  "industry": "construction",
+  "phone": "+1 214-597-4485",
+  "city": "Dallas",
+  "about": "Handyman services across the Dallas area — backsplash, tile work, flooring and recessed lighting, with free quotes and extended weekend and evening hours.",
+  "rating": 4.7,
+  "reviewCount": 86,
+  "services": [
+    {
+      "name": "Backsplash Installation",
+      "description": "Kitchen and bath backsplash installation.",
+      "icon": "🍳"
+    },
+    {
+      "name": "Tile Work",
+      "description": "Tile installation and repair.",
+      "icon": "🧱"
+    },
+    {
+      "name": "Flooring Installation",
+      "description": "Flooring installation for homes and offices.",
+      "icon": "🏠"
+    },
+    {
+      "name": "Recessed Lighting",
+      "description": "Recessed lighting installation and upgrades.",
+      "icon": "💡"
+    },
+    {
+      "name": "General Home Repairs",
+      "description": "Repairs and projects, big or small.",
+      "icon": "🔧"
+    }
+  ]
+}

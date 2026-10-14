@@ -1,0 +1,30 @@
+{
+  "businessName": "Elio's Remodeling & Handyman",
+  "industry": "construction",
+  "phone": "+1 602-577-3997",
+  "email": "elio971@cox.net",
+  "city": "Phoenix",
+  "about": "Remodeling and handyman services in Phoenix — home remodels, repairs and maintenance done right.",
+  "services": [
+    {
+      "name": "Home Remodeling",
+      "description": "Kitchen, bath and whole-home remodeling.",
+      "icon": "🔨"
+    },
+    {
+      "name": "Handyman Repairs",
+      "description": "Everyday repairs and fixes around the home.",
+      "icon": "🔧"
+    },
+    {
+      "name": "Painting",
+      "description": "Interior and exterior painting.",
+      "icon": "🎨"
+    },
+    {
+      "name": "General Maintenance",
+      "description": "Ongoing home maintenance services.",
+      "icon": "🛠️"
+    }
+  ]
+}

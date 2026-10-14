@@ -1,0 +1,29 @@
+{
+  "businessName": "E M Roofing",
+  "industry": "construction",
+  "phone": "+1 512-442-8053",
+  "city": "Austin",
+  "about": "Roofing contractor serving Austin, Texas — roof repairs, installations and inspections for homes and businesses.",
+  "services": [
+    {
+      "name": "Roof Repair",
+      "description": "Repairs for leaks, damage and worn roofing.",
+      "icon": "🔧"
+    },
+    {
+      "name": "Roof Installation",
+      "description": "Full roof installation and replacement.",
+      "icon": "🏠"
+    },
+    {
+      "name": "Roof Inspection",
+      "description": "Thorough inspections with honest assessments.",
+      "icon": "🔍"
+    },
+    {
+      "name": "Roof Maintenance",
+      "description": "Maintenance plans to extend roof life.",
+      "icon": "🛡️"
+    }
+  ]
+}

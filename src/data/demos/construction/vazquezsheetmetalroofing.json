@@ -1,0 +1,36 @@
+{
+  "businessName": "Vazquez Sheet Metal & Roofing",
+  "industry": "construction",
+  "phone": "+1 713-956-1419",
+  "email": "beronicovasquez@sbcglobal.net",
+  "address": "2441 McAllister Rd #N, Houston, TX 77092",
+  "city": "Houston",
+  "about": "Sheet metal and roofing contractor in Houston with 23 years in business — roof installation, repairs and maintenance, custom sheet metal work and waterproofing, known for quality workmanship and customer service.",
+  "services": [
+    {
+      "name": "Roof Installation",
+      "description": "New roof installation for residential and commercial properties.",
+      "icon": "🏠"
+    },
+    {
+      "name": "Roof Repair",
+      "description": "Repairs for leaks, storm damage and worn roofing.",
+      "icon": "🔧"
+    },
+    {
+      "name": "Sheet Metal Work",
+      "description": "Custom sheet metal fabrication and installation.",
+      "icon": "🏭"
+    },
+    {
+      "name": "Waterproofing",
+      "description": "Waterproofing solutions to protect your property.",
+      "icon": "💧"
+    },
+    {
+      "name": "Roof Maintenance",
+      "description": "Ongoing maintenance to extend your roof's life.",
+      "icon": "🛡️"
+    }
+  ]
+}
