@@ -1,0 +1,43 @@
+{
+  "about": "Back to Balance Remedial Massage Therapy in Botany Downs, Auckland — helping busy professionals overcome pain and move freely with remedial massage techniques. Book online via Ovatu.",
+  "address": "2/12 Kells Place, Botany Downs, Auckland 2010, New Zealand",
+  "bookingUrl": "https://back-to-balance-remedial-massage.book.app/",
+  "businessName": "Back to Balance Remedial Massage Therapy",
+  "city": "Auckland",
+  "email": "info@backtobalanceremedialmassage.co.nz",
+  "industry": "clinic",
+  "instagram": "@backtobalanceremedialmassage",
+  "phone": "+64 21 054 3241",
+  "services": [
+    {
+      "name": "Remedial Massage",
+      "icon": "💆",
+      "description": "Targeted remedial massage for pain relief and better movement — reach out for session details."
+    },
+    {
+      "name": "Deep Tissue Massage",
+      "icon": "💪",
+      "description": "Deep tissue work for chronic tension and muscular pain — contact the clinic for details."
+    },
+    {
+      "name": "Sports Massage",
+      "icon": "🏃",
+      "description": "Sports massage for recovery and injury prevention — contact the clinic for details."
+    },
+    {
+      "name": "Trigger Point Therapy",
+      "icon": "🎯",
+      "description": "Trigger point therapy for stubborn knots and referral pain — contact the clinic for details."
+    },
+    {
+      "name": "Relaxation Massage",
+      "icon": "🕯️",
+      "description": "A full-body relaxation massage to unwind — contact the clinic for details."
+    },
+    {
+      "name": "Pain Management",
+      "icon": "✋",
+      "description": "Ongoing care for back, neck, and shoulder pain — contact the clinic for details."
+    }
+  ]
+}
