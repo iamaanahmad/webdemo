@@ -1,0 +1,30 @@
+{
+  "businessName": "3 Nails Contracting, Inc.",
+  "industry": "construction",
+  "phone": "+1 602-909-4631",
+  "address": "5131 N 15th St Apt 454, Phoenix, AZ 85014",
+  "city": "Phoenix",
+  "about": "Family-owned Phoenix contractor with 22 years in business — residential and commercial remodels, rehabilitation, and restorations. Licensed, bonded, and insured in Arizona; free estimates.",
+  "services": [
+    {
+      "name": "Residential Remodels",
+      "description": "Home remodeling and rehabilitation for Phoenix homeowners.",
+      "icon": "🏠"
+    },
+    {
+      "name": "Commercial Remodels",
+      "description": "Commercial remodeling and restoration services.",
+      "icon": "🏢"
+    },
+    {
+      "name": "Plumbing & Electrical",
+      "description": "Specialty plumbing and electrical work.",
+      "icon": "🔧"
+    },
+    {
+      "name": "Free Estimates",
+      "description": "Contact us for a free estimate on your project.",
+      "icon": "📋"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "businessName": "Tier-One Stone",
+  "industry": "construction",
+  "phone": "+1 832-876-1083",
+  "address": "Houston, TX",
+  "city": "Houston",
+  "about": "Houston stone and tile specialist — countertops, backsplashes, cabinetry, and kitchen remodeling projects across the Houston area.",
+  "services": [
+    {
+      "name": "Countertops",
+      "description": "Stone countertop fabrication and installation.",
+      "icon": "🪨"
+    },
+    {
+      "name": "Backsplashes",
+      "description": "Tile backsplash design and installation.",
+      "icon": "🧱"
+    },
+    {
+      "name": "Kitchen Remodeling",
+      "description": "Full kitchen remodels — countertops, cabinetry, and tile.",
+      "icon": "🍳"
+    },
+    {
+      "name": "Project Gallery",
+      "description": "Contact us to see completed projects and request an estimate.",
+      "icon": "🖼️"
+    }
+  ]
+}

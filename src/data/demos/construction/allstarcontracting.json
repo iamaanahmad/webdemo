@@ -1,0 +1,30 @@
+{
+  "businessName": "All Star Contracting Inc",
+  "industry": "construction",
+  "phone": "+1 602-702-9653",
+  "address": "5025 N Central Ave, Phoenix, AZ 85012",
+  "city": "Phoenix",
+  "about": "Full-service general contractor in Phoenix, AZ since 1987 — residential and commercial contracting across the Valley.",
+  "services": [
+    {
+      "name": "General Contracting",
+      "description": "Full-service general contracting for residential and commercial projects.",
+      "icon": "🏗️"
+    },
+    {
+      "name": "Residential Projects",
+      "description": "Home construction and remodeling for Phoenix homeowners.",
+      "icon": "🏠"
+    },
+    {
+      "name": "Commercial Projects",
+      "description": "Contracting services for commercial clients across the Valley.",
+      "icon": "🏢"
+    },
+    {
+      "name": "Estimates",
+      "description": "Contact us for a project estimate.",
+      "icon": "📋"
+    }
+  ]
+}

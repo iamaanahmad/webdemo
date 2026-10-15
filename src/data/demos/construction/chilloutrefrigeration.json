@@ -1,0 +1,30 @@
+{
+  "businessName": "Chill Out Refrigeration",
+  "industry": "construction",
+  "phone": "+1 508-830-6944",
+  "address": "27 Sheridan Dr, Plymouth, MA 02360",
+  "city": "Plymouth",
+  "about": "Plymouth, MA air conditioning and refrigeration contractor serving Plymouth County — AC and refrigeration service, repair, and installations.",
+  "services": [
+    {
+      "name": "AC Service & Repair",
+      "description": "Air conditioning service and repair for homes and businesses.",
+      "icon": "❄️"
+    },
+    {
+      "name": "Refrigeration Service",
+      "description": "Commercial and residential refrigeration service.",
+      "icon": "🧊"
+    },
+    {
+      "name": "New Installations",
+      "description": "New AC and refrigeration system installations.",
+      "icon": "🛠️"
+    },
+    {
+      "name": "Quote Requests",
+      "description": "Call for service or a free quote.",
+      "icon": "📋"
+    }
+  ]
+}

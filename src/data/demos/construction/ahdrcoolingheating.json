@@ -1,0 +1,30 @@
+{
+  "businessName": "AHDR Cooling & Heating",
+  "industry": "construction",
+  "phone": "+1 602-242-5022",
+  "address": "2341 W Berridge Ln, Phoenix, AZ 85015",
+  "city": "Phoenix",
+  "about": "Phoenix heating and cooling contractor serving residential customers across the Valley — AC repair, heating service, and system installations.",
+  "services": [
+    {
+      "name": "AC Repair",
+      "description": "Fast air conditioning repair for Phoenix homes.",
+      "icon": "❄️"
+    },
+    {
+      "name": "Heating Service",
+      "description": "Heating system service and repair.",
+      "icon": "🔥"
+    },
+    {
+      "name": "System Installation",
+      "description": "New heating and cooling system installations — free estimates.",
+      "icon": "🛠️"
+    },
+    {
+      "name": "Maintenance",
+      "description": "Seasonal maintenance to keep your system running efficiently.",
+      "icon": "🧰"
+    }
+  ]
+}

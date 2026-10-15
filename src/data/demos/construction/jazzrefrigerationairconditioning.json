@@ -1,0 +1,30 @@
+{
+  "businessName": "Jazz Refrigeration & Air Conditioning",
+  "industry": "construction",
+  "phone": "+1 602-349-8944",
+  "address": "18808 N 25th Pl, Phoenix, AZ 85050",
+  "city": "Phoenix",
+  "about": "Family-owned Phoenix HVAC contractor with 13 years in business — heating and air conditioning replacement, service, and new installations for residential and light commercial customers.",
+  "services": [
+    {
+      "name": "AC Service & Repair",
+      "description": "Air conditioning service and repair across the Phoenix Valley.",
+      "icon": "❄️"
+    },
+    {
+      "name": "Heating Replacement",
+      "description": "Heating system replacement for homes and light commercial properties.",
+      "icon": "🔥"
+    },
+    {
+      "name": "New Installations",
+      "description": "New HVAC installations — call for a free consultation.",
+      "icon": "🛠️"
+    },
+    {
+      "name": "Commercial Refrigeration",
+      "description": "Refrigeration and ice machine service for businesses.",
+      "icon": "🧊"
+    }
+  ]
+}

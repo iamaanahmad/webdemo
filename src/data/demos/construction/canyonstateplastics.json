@@ -1,0 +1,30 @@
+{
+  "businessName": "Canyon State Plastics",
+  "industry": "construction",
+  "phone": "+1 602-272-4373",
+  "address": "3115 N 33rd Ave, Phoenix, AZ 85017",
+  "city": "Phoenix",
+  "about": "Phoenix plastic fabricator with 23 years in business — plastic fabricating, finishing, and decorating for commercial and industrial customers, plus rods, tubes, sheets, and supply center products.",
+  "services": [
+    {
+      "name": "Plastic Fabrication",
+      "description": "Custom plastic fabricating for commercial and industrial projects.",
+      "icon": "🏭"
+    },
+    {
+      "name": "Finishing & Decorating",
+      "description": "Plastic finishing and decorating services.",
+      "icon": "✨"
+    },
+    {
+      "name": "Sheet & Rod Supply",
+      "description": "Plastic rods, tubes, sheets, and related supply center products.",
+      "icon": "📦"
+    },
+    {
+      "name": "Quote Requests",
+      "description": "Contact us with your specs for a fabrication quote.",
+      "icon": "📋"
+    }
+  ]
+}
