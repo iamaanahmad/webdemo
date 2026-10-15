@@ -1,0 +1,42 @@
+{
+  "about": "D Gentleman Barbershop on Bolton Street, Dublin — open 7 days for classic cuts, skin fades, and beard trims.",
+  "address": "35B Bolton St, Dublin, D01 R270, Ireland",
+  "businessName": "D Gentleman Barbershop",
+  "city": "Dublin",
+  "hours": "Mon–Sat: 9:00 AM – 7:00 PM, Sun: 10:00 AM – 6:00 PM",
+  "industry": "salon",
+  "instagram": "@dgentlemanbarbershop",
+  "phone": "+353 89 456 8880",
+  "services": [
+    {
+      "name": "Men's Haircut",
+      "icon": "💇‍♂️",
+      "description": "Classic cuts tailored to your style — contact the shop for pricing."
+    },
+    {
+      "name": "Skin Fade",
+      "icon": "⚡",
+      "description": "Sharp skin fades with clean lines — contact the shop for pricing."
+    },
+    {
+      "name": "Beard Trim",
+      "icon": "🧔",
+      "description": "Beard trim and shape-up for a crisp look — contact the shop for pricing."
+    },
+    {
+      "name": "Hot Towel Shave",
+      "icon": "🪒",
+      "description": "Traditional hot towel shave — contact the shop for pricing."
+    },
+    {
+      "name": "Kids Cut",
+      "icon": "👦",
+      "description": "Kid-friendly cuts — contact the shop for pricing."
+    },
+    {
+      "name": "Head Shave",
+      "icon": "✂️",
+      "description": "Clean head shave — contact the shop for pricing."
+    }
+  ]
+}
