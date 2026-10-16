@@ -1,0 +1,20 @@
+{
+ "businessName": "M G S Contracting LLC",
+ "industry": "construction",
+ "phone": "+971 4 267 0200",
+ "address": "Al Qusais, Dubai, UAE",
+ "city": "Dubai",
+ "about": "M G S Contracting LLC is a contracting company based in Al Qusais, Dubai, working in road and general construction.",
+ "services": [
+  {
+   "name": "Road Construction",
+   "description": "Road and infrastructure contracting works.",
+   "icon": "🛣️"
+  },
+  {
+   "name": "General Contracting",
+   "description": "Commercial and industrial construction projects.",
+   "icon": "🏗️"
+  }
+ ]
+}
