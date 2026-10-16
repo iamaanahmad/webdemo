@@ -1,0 +1,31 @@
+{
+ "businessName": "Techno Industrial Supplies Co FZE",
+ "industry": "construction",
+ "phone": "+971 6 526 0445",
+ "email": "sales@technofze.com",
+ "address": "P.O. Box 41801, Hamriyah Free Zone, Sharjah, UAE",
+ "city": "Sharjah",
+ "about": "Techno Industrial Supplies Co FZE, established in 2007, is an oilfield supply company in Hamriyah Free Zone, Sharjah, serving oilfield, marine and industrial companies across the UAE.",
+ "services": [
+  {
+   "name": "Pipes & Fittings",
+   "description": "Carbon steel, stainless steel and alloy pipes with buttweld and forged fittings.",
+   "icon": "🔧"
+  },
+  {
+   "name": "Flanges & Valves",
+   "description": "Industrial flanges and valves for oilfield and marine applications.",
+   "icon": "⚙️"
+  },
+  {
+   "name": "Gaskets & Fasteners",
+   "description": "Gaskets, fasteners and bends for high-spec industrial projects.",
+   "icon": "🔩"
+  },
+  {
+   "name": "Oilfield & Marine Supply",
+   "description": "Tailored supply programs for oilfield, marine and industrial clients.",
+   "icon": "🛢️"
+  }
+ ]
+}
