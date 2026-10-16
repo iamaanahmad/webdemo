@@ -1,0 +1,25 @@
+{
+ "businessName": "Express Contracting Establishment",
+ "industry": "construction",
+ "phone": "+971 4 347 4447",
+ "address": "Behind Gold & Diamond Park, Al Quoz, Dubai, UAE",
+ "city": "Dubai",
+ "about": "Express Contracting Establishment is a construction company based in Al Quoz, Dubai.",
+ "services": [
+  {
+   "name": "General Contracting",
+   "description": "Full-service contracting for commercial and residential projects.",
+   "icon": "🏗️"
+  },
+  {
+   "name": "Commercial Construction",
+   "description": "Office, retail and industrial building works.",
+   "icon": "🏢"
+  },
+  {
+   "name": "Residential Construction",
+   "description": "Villas and residential buildings across Dubai.",
+   "icon": "🏠"
+  }
+ ]
+}
