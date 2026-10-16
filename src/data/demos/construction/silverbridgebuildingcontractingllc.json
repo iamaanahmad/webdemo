@@ -1,0 +1,25 @@
+{
+ "businessName": "Silver Bridge Building Contracting LLC",
+ "industry": "construction",
+ "phone": "+971 4 280 9444",
+ "address": "Port Said Business Village, Deira, Dubai, UAE",
+ "city": "Dubai",
+ "about": "Silver Bridge Building Contracting LLC is a building contractor in Deira, Dubai, helping owners study projects and navigate construction challenges.",
+ "services": [
+  {
+   "name": "Building Contracting",
+   "description": "Residential and commercial building construction.",
+   "icon": "🏗️"
+  },
+  {
+   "name": "Project Studies",
+   "description": "Smart project studies and owner advisory before you build.",
+   "icon": "📊"
+  },
+  {
+   "name": "Construction Management",
+   "description": "Keeping your project on time and on budget.",
+   "icon": "👷"
+  }
+ ]
+}
