@@ -1,0 +1,26 @@
+{
+ "businessName": "Western Engineering Consultancy",
+ "industry": "construction",
+ "phone": "+971 4 228 8286",
+ "email": "[email protected]",
+ "address": "Deira, Dubai, UAE",
+ "city": "Dubai",
+ "about": "Western Engineering Consultancy is an engineering consultancy based in Deira, Dubai, licensed with the Abu Dhabi Department of Municipalities and Transport.",
+ "services": [
+  {
+   "name": "Engineering Design",
+   "description": "Design and engineering consultancy for building projects.",
+   "icon": "📐"
+  },
+  {
+   "name": "Project Supervision",
+   "description": "Site supervision and project management support.",
+   "icon": "👷"
+  },
+  {
+   "name": "Approvals & Compliance",
+   "description": "Guidance through authority approvals and compliance requirements.",
+   "icon": "📋"
+  }
+ ]
+}
