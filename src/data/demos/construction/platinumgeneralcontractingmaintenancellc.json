@@ -1,0 +1,25 @@
+{
+ "businessName": "Platinum General Contracting & Maintenance LLC",
+ "industry": "construction",
+ "phone": "+971 2 641 9008",
+ "address": "Abu Dhabi, UAE",
+ "city": "Abu Dhabi",
+ "about": "Platinum General Contracting & Maintenance LLC is a contracting and maintenance company based in Abu Dhabi.",
+ "services": [
+  {
+   "name": "General Contracting",
+   "description": "Building contracting for commercial and residential clients.",
+   "icon": "🏗️"
+  },
+  {
+   "name": "Building Maintenance",
+   "description": "Planned and reactive maintenance services.",
+   "icon": "🔧"
+  },
+  {
+   "name": "Fit-out Works",
+   "description": "Interior fit-out and refurbishment projects.",
+   "icon": "🏢"
+  }
+ ]
+}
