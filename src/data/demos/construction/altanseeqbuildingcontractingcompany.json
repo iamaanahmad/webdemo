@@ -1,0 +1,20 @@
+{
+ "businessName": "Al Tanseeq Building Contracting Company",
+ "industry": "construction",
+ "phone": "+971 6 882 2666",
+ "address": "Al Dhaid City, Sharjah, UAE",
+ "city": "Sharjah",
+ "about": "Al Tanseeq Building Contracting Company is a building contractor based in Al Dhaid City, Sharjah.",
+ "services": [
+  {
+   "name": "Building Contracting",
+   "description": "Residential and commercial building construction.",
+   "icon": "🏗️"
+  },
+  {
+   "name": "Project Management",
+   "description": "End-to-end management of construction projects.",
+   "icon": "📋"
+  }
+ ]
+}
