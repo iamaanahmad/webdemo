@@ -1,0 +1,25 @@
+{
+ "businessName": "Multigroup Contracting",
+ "industry": "construction",
+ "phone": "+971 4 273 0990",
+ "address": "Frij Al Murar, Dubai, UAE",
+ "city": "Dubai",
+ "about": "Multigroup Contracting is a general contractor based in Frij Al Murar, Dubai.",
+ "services": [
+  {
+   "name": "General Contracting",
+   "description": "Building construction and contracting services.",
+   "icon": "🏗️"
+  },
+  {
+   "name": "Commercial Projects",
+   "description": "Commercial building works across Dubai.",
+   "icon": "🏢"
+  },
+  {
+   "name": "Residential Projects",
+   "description": "Residential construction and renovation.",
+   "icon": "🏠"
+  }
+ ]
+}
