@@ -1,0 +1,28 @@
+{
+ "businessName": "Vina Nail Studio",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Eyebrow Threading",
+   "icon": "🧵",
+   "description": "Precise eyebrow threading."
+  },
+  {
+   "name": "Body Sculpting",
+   "icon": "💪",
+   "description": "Body sculpting and cellulite treatments."
+  },
+  {
+   "name": "Makeup",
+   "icon": "💄",
+   "description": "Professional makeup services."
+  }
+ ],
+ "city": "Onehunga, Auckland",
+ "address": "151 Arthur Street, Onehunga, Auckland 1061, New Zealand",
+ "phone": "+64 9 636 8105",
+ "email": "Vinanail.beauty@gmail.com",
+ "hours": "Mon–Wed: 9:30am–6pm; Thu–Fri: 9:30am–7pm; Sat: 9am–6pm; Sun: 9am–6pm",
+ "bookingLink": "https://www.fresha.com/lvp/vina-nail-studio-arthur-street-auckland-bxZ76A",
+ "about": "Vina Nail Studio in Onehunga, Auckland — nails, threading, body sculpting and makeup services."
+}
