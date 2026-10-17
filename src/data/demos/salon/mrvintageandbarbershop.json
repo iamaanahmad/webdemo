@@ -1,0 +1,37 @@
+{
+ "businessName": "Mr Vintage & Barbershop",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Haircut",
+   "icon": "💈",
+   "description": "Precision haircut, HK$250, 45 min."
+  },
+  {
+   "name": "Beard Trim",
+   "icon": "🧔",
+   "description": "Beard trim, HK$250, 30 min."
+  },
+  {
+   "name": "Wet Shave",
+   "icon": "🪒",
+   "description": "Classic wet shave, HK$300, 45 min."
+  },
+  {
+   "name": "Eyebrow Shaping",
+   "icon": "✨",
+   "description": "Eyebrow shaping, HK$100, 15 min."
+  },
+  {
+   "name": "Cut & Colour / Perm",
+   "icon": "🎨",
+   "description": "Men's cut with colour or perm from HK$900."
+  }
+ ],
+ "city": "Mong Kok, Hong Kong",
+ "address": "2/F, 44 Sai Yeung Choi St S, Mong Kok, Hong Kong",
+ "phone": "+852 9493 4737",
+ "hours": "Daily: 12:30 PM – 9:00 PM",
+ "bookingLink": "https://www.fresha.com/a/mr-vintage-barbershop-jiu-long-44-xi-yang-cai-nan-jie-uzqpnnr0",
+ "about": "Mr Vintage & Barbershop is a 5.0-rated barbershop in Mong Kok, Hong Kong — a 1990s American pop-culture themed shop known for precise fades, run by barber Tony."
+}
