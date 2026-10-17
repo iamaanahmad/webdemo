@@ -1,0 +1,22 @@
+{
+ "businessName": "Good Barbershop",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Classic Haircut",
+   "icon": "💈",
+   "description": "Classic barber haircuts."
+  },
+  {
+   "name": "Beard & Shave",
+   "icon": "🧔",
+   "description": "Beard trims and shaves."
+  }
+ ],
+ "city": "Sai Wan, Hong Kong",
+ "address": "Sai Wan, Hong Kong",
+ "phone": "+852 9183 8686",
+ "hours": "",
+ "bookingLink": "https://wa.me/85291838686",
+ "about": "Good Barbershop is a 5.0-rated barbershop in Sai Wan, Hong Kong — classic barbering with WhatsApp booking."
+}
