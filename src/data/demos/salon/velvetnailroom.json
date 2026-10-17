@@ -1,0 +1,23 @@
+{
+ "businessName": "VELVET Nail Room",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Gel Manicure",
+   "icon": "💅",
+   "description": "Gel manicures."
+  },
+  {
+   "name": "Nail Art",
+   "icon": "🎨",
+   "description": "Nail art designs."
+  }
+ ],
+ "city": "Wellington, New Zealand",
+ "address": "Wellington, New Zealand",
+ "phone": "",
+ "email": "manners@velvest.co.nz",
+ "hours": "",
+ "bookingLink": "mailto:manners@velvest.co.nz",
+ "about": "VELVET Nail Room in Wellington — 5.0 from 954 reviews. They own velvest.co.nz, currently showing a coming-soon page."
+}
