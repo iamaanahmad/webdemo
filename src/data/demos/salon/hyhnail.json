@@ -1,0 +1,22 @@
+{
+ "businessName": "HYH Nail",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Custom Nail Service",
+   "icon": "💅",
+   "description": "Customised, individualised nail service."
+  },
+  {
+   "name": "Nail Art",
+   "icon": "🎨",
+   "description": "Custom nail art."
+  }
+ ],
+ "city": "Perth CBD",
+ "address": "Perth CBD, WA, Australia",
+ "phone": "",
+ "hours": "Mon–Fri: 10am–5:30pm; Sat: 10am–5pm; Sun: 12–5pm",
+ "bookingLink": "https://www.instagram.com/hyh_nail/",
+ "about": "HYH Nail in Perth CBD — customised, individualised nail service. Booking by SMS or Instagram; booking is essential."
+}
