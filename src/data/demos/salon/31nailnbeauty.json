@@ -1,0 +1,22 @@
+{
+ "businessName": "31 Nail n Beauty",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Gel Nails",
+   "icon": "💅",
+   "description": "Gel nail services."
+  },
+  {
+   "name": "Nail Art",
+   "icon": "🎨",
+   "description": "Nail art designs."
+  }
+ ],
+ "city": "Brisbane",
+ "address": "Sunnybank Hills, Brisbane, QLD, Australia",
+ "phone": "",
+ "hours": "",
+ "bookingLink": "https://www.instagram.com/31nailnbeautylounge/",
+ "about": "31 Nail n Beauty — a home salon in Sunnybank Hills, Brisbane. DM for bookings."
+}
