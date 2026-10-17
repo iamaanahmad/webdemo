@@ -1,0 +1,23 @@
+{
+ "businessName": "Calla Nail NZ",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Gel Nails",
+   "icon": "💅",
+   "description": "Quality gel nails that last 5–6 weeks."
+  },
+  {
+   "name": "Nail Art",
+   "icon": "🎨",
+   "description": "Custom nail art designs."
+  }
+ ],
+ "city": "Massey, Auckland",
+ "address": "Massey, Auckland, New Zealand",
+ "phone": "",
+ "email": "callanailnz@gmail.com",
+ "hours": "",
+ "bookingLink": "mailto:callanailnz@gmail.com",
+ "about": "Calla Nail NZ in Massey, Auckland — nail artist Mandy, known for quality products and nails that last 5–6 weeks. 5.0 rated."
+}
