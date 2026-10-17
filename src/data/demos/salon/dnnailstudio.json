@@ -1,0 +1,33 @@
+{
+ "businessName": "D&N Nail Studio",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Classic Pedicure",
+   "icon": "🦶",
+   "description": "Classic pedi from SGD 38."
+  },
+  {
+   "name": "Treatment Pedicure",
+   "icon": "💆",
+   "description": "Treatment pedi from SGD 48."
+  },
+  {
+   "name": "Spa Mani + Pedi",
+   "icon": "✨",
+   "description": "Spa manicure and pedicure combo, SGD 50."
+  },
+  {
+   "name": "Nail Extensions & Art",
+   "icon": "💅",
+   "description": "Nail extensions and custom nail art."
+  }
+ ],
+ "city": "Bencoolen, Singapore",
+ "address": "180 Bencoolen Street, #01-65 The Bencoolen, Singapore 189646",
+ "phone": "+65 8642 4639",
+ "email": "dn.nail.studio@gmail.com",
+ "hours": "",
+ "bookingLink": "https://www.fresha.com/lp/en/tt/men's-pedicures/in/sg-singapore/orchard",
+ "about": "D&N Nail Studio is a nail studio at The Bencoolen, Singapore — manicures, pedicures, nail extensions and nail art."
+}
