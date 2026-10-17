@@ -1,0 +1,33 @@
+{
+ "businessName": "Nail Art Welly",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Gel X Extensions",
+   "icon": "💅",
+   "description": "Gel X extensions, short length NZ$79."
+  },
+  {
+   "name": "Builder Gel",
+   "icon": "✨",
+   "description": "Gel polish with builder gel, NZ$59; infill NZ$59."
+  },
+  {
+   "name": "Bespoke Nail Art",
+   "icon": "🎨",
+   "description": "Creative custom nail art."
+  },
+  {
+   "name": "Lash Lift",
+   "icon": "👁️",
+   "description": "Lash lift NZ$70; lift & tint NZ$90."
+  }
+ ],
+ "city": "Te Aro, Wellington",
+ "address": "221 Cuba Street, Te Aro, Wellington 6011, New Zealand",
+ "phone": "",
+ "email": "nailartwelly221@gmail.com",
+ "hours": "Mon–Sat: 10am–7pm; Sun: 10am–6pm",
+ "bookingLink": "https://www.fresha.com/a/nail-art-welly-wellington-221-cuba-street-n3m6whiz",
+ "about": "Nail Art Welly on Cuba Street, Wellington — eco-friendly nail and lash specialists where beauty meets creativity. 4.9 rated."
+}
