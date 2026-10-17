@@ -1,0 +1,28 @@
+{
+ "businessName": "Mani Pedi Studio SG",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Classic Manicure",
+   "icon": "💅",
+   "description": "Classic manicure, gel and non-gel options."
+  },
+  {
+   "name": "Classic Pedicure",
+   "icon": "🦶",
+   "description": "Classic pedicure, gel and non-gel options."
+  },
+  {
+   "name": "Nail Art",
+   "icon": "🎨",
+   "description": "Creative nail art designs, including bedazzled gem looks."
+  }
+ ],
+ "city": "Orchard, Singapore",
+ "address": "14 Scotts Rd, #04-65 Far East Plaza, Singapore 228213",
+ "phone": "",
+ "email": "Yenpmh@gmail.com",
+ "hours": "",
+ "bookingLink": "https://www.instagram.com/manipedistudiosg/",
+ "about": "Mani Pedi Studio SG is a nail studio in Far East Plaza, Orchard — classic and gel manicures and pedicures plus nail art, a ClassPass wellness partner."
+}
