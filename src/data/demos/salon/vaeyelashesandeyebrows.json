@@ -1,0 +1,32 @@
+{
+ "businessName": "VA Eyelashes and Eyebrows",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Eyelash Extensions",
+   "icon": "👁️",
+   "description": "Holistic lash extensions."
+  },
+  {
+   "name": "Threading",
+   "icon": "🧵",
+   "description": "Eyebrow and facial threading."
+  },
+  {
+   "name": "Henna Brows",
+   "icon": "✨",
+   "description": "Henna brow treatments."
+  },
+  {
+   "name": "PMU",
+   "icon": "💫",
+   "description": "Permanent makeup services."
+  }
+ ],
+ "city": "Newtown, Sydney",
+ "address": "2 Enmore Rd, Newtown, Sydney, Australia",
+ "phone": "",
+ "hours": "",
+ "bookingLink": "https://www.instagram.com/eyelashes_vivian_/",
+ "about": "VA Eyelashes and Eyebrows — Newtown Holistic Lashes & Brows by VA, a Sydney lash artist since 2011. Lashes, threading, henna and PMU. Book online, DM, or walk in."
+}
