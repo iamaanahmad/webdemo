@@ -1,0 +1,22 @@
+{
+ "businessName": "Lily Lash SG",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Eyelash Extensions",
+   "icon": "👁️",
+   "description": "Classic and volume eyelash extensions."
+  },
+  {
+   "name": "Lash Lift",
+   "icon": "✨",
+   "description": "Lash lift for longer, fuller-looking natural lashes."
+  }
+ ],
+ "city": "Serangoon, Singapore",
+ "address": "8b Clifton Vale, Singapore 359679",
+ "phone": "+65 8725 2187",
+ "hours": "",
+ "bookingLink": "https://wa.me/6587252187",
+ "about": "Lily Lash SG is a lash studio in Serangoon, Singapore — eyelash extensions and lash lifts."
+}
