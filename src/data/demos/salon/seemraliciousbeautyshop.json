@@ -1,0 +1,37 @@
+{
+ "businessName": "Seemralicious Beauty Shop",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Haircut & Styling",
+   "icon": "💇",
+   "description": "Cuts and styling tailored to you — reviewers love the honest advice."
+  },
+  {
+   "name": "Keratin Treatments",
+   "icon": "✨",
+   "description": "Smoothing keratin treatments that strengthen hair, with take-home aftercare kits."
+  },
+  {
+   "name": "Facials",
+   "icon": "🌸",
+   "description": "Facials tailored to your skin concerns, leaving skin refreshed and glowing."
+  },
+  {
+   "name": "Bridal & Party Makeup",
+   "icon": "💄",
+   "description": "Professional makeup for weddings and special occasions."
+  },
+  {
+   "name": "Threading & Waxing",
+   "icon": "🧵",
+   "description": "Precise eyebrow threading and waxing services."
+  }
+ ],
+ "city": "Woodlands, Singapore",
+ "address": "Blk 166 Woodlands Street 13 #01-531, Singapore 730166",
+ "phone": "+65 8163 7199",
+ "hours": "Mon–Sun: 11am – 9pm",
+ "bookingLink": "https://wa.me/6581637199",
+ "about": "Seemralicious Beauty Shop is a well-loved beauty salon in Woodlands, Singapore — haircuts and colour, keratin treatments, facials, threading and bridal makeup, with easy WhatsApp booking."
+}
