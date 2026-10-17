@@ -1,0 +1,22 @@
+{
+ "businessName": "Hana Nail",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Korean Gel Nail Art",
+   "icon": "💅",
+   "description": "Korean-style gel nail art, booking essential."
+  },
+  {
+   "name": "Nail Classes",
+   "icon": "🎓",
+   "description": "Nail education and classes."
+  }
+ ],
+ "city": "Auckland CBD",
+ "address": "Auckland CBD, New Zealand",
+ "phone": "",
+ "hours": "Mon–Fri: 9am–7pm; Sat: 8am–7pm",
+ "bookingLink": "https://www.instagram.com/hananail_nz/",
+ "about": "Hana Nail is a Korean gel nail art studio in Auckland CBD — booking by DM, SMS or call, plus nail education classes from a nail YouTuber."
+}
