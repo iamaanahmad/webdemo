@@ -1,0 +1,28 @@
+{
+ "businessName": "Wonderbu Nails",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "SuperGel (BIAB) Manicure",
+   "icon": "💅",
+   "description": "One-colour SuperGel builder gel overlay from A$89."
+  },
+  {
+   "name": "Nail Art Full Set",
+   "icon": "🎨",
+   "description": "Full-set nail art from A$145 — the popular service."
+  },
+  {
+   "name": "Gel Extension Infill",
+   "icon": "✨",
+   "description": "Nail extension infill with one colour, A$130."
+  }
+ ],
+ "city": "Melbourne CBD",
+ "address": "Level 1, 382 Little Collins Street, Melbourne VIC 3000, Australia",
+ "phone": "",
+ "email": "wonderbunail@gmail.com",
+ "hours": "Daily: 10:00am – 8:00pm",
+ "bookingLink": "https://www.fresha.com/a/wonderbu-nails-melbourne-level-1-382-little-collins-street-pmuqsj9h",
+ "about": "Wonderbu Nails is a Melbourne CBD nail studio known for elevated minimalism and Korean/Japanese-style gel art — a nail industry spotlight winner, 5.0 rated."
+}
