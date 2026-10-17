@@ -1,0 +1,28 @@
+{
+ "businessName": "S&J Nail Room",
+ "industry": "salon",
+ "services": [
+  {
+   "name": "Manicure",
+   "icon": "💅",
+   "description": "Manicures and nail care."
+  },
+  {
+   "name": "Pedicure",
+   "icon": "🦶",
+   "description": "Pedicures and nail care."
+  },
+  {
+   "name": "Nail Art",
+   "icon": "🎨",
+   "description": "Nail art designs."
+  }
+ ],
+ "city": "Victoria Park, Perth",
+ "address": "Victoria Park, WA, Australia",
+ "phone": "",
+ "email": "sjnailroom@gmail.com",
+ "hours": "",
+ "bookingLink": "mailto:sjnailroom@gmail.com",
+ "about": "S&J Nail Room in Victoria Park, Perth — nail services, 4.4 from 197 reviews."
+}
