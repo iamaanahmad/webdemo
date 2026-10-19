@@ -4,16 +4,20 @@ import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Construction.module.css';
 
 const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
+  // Placeholder sections (team, projects, reviews, marketing claims) are only
+  // honest on generic demos. When a real business's data is present they must
+  // not render fabricated staff, projects, reviews or claims in its name.
+  const isGeneric = !demo;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.logo}>{businessName}</div>
         <nav className={styles.nav}>
           <a href="#services">Services</a>
-          <a href="#why-us">Why Us</a>
-          <a href="#team">Team</a>
-          <a href="#projects">Projects</a>
-          <a href="#testimonials">Reviews</a>
+          {isGeneric && <a href="#why-us">Why Us</a>}
+          {isGeneric && <a href="#team">Team</a>}
+          {isGeneric && <a href="#projects">Projects</a>}
+          {isGeneric && <a href="#testimonials">Reviews</a>}
           <a href="#contact" className="btn-primary" style={{ background: 'var(--primary-color)', color: 'black' }}>Get a Quote</a>
         </nav>
       </header>
@@ -22,11 +26,11 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <h1>Building the Future with {businessName}</h1>
-            <p>{pick(demo?.about, 'Reliable, high-quality construction services for residential and commercial projects. We turn your vision into reality.')}</p>
+            <h1>{businessName}.</h1>
+            <p>{pick(demo?.about, 'Professional services done right — quality work you can count on.')}</p>
             <RatingBadge demo={demo} />
             <div className={styles.heroButtons}>
-              <button className="btn-primary" style={{ background: 'var(--primary-color)', color: 'black' }}>View Our Work</button>
+              <button className="btn-primary" style={{ background: 'var(--primary-color)', color: 'black' }}>Explore Services</button>
               <button className={styles.btnSecondary}>Request a Quote</button>
             </div>
           </div>
@@ -35,8 +39,8 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
         {/* Services Section */}
         <section id="services" className={styles.section}>
           <div className={styles.sectionHeader}>
-            <h2>Our Expertise</h2>
-            <p>From foundation to finish, we deliver excellence.</p>
+            <h2>Our Services</h2>
+            <p>Everything {businessName} offers, all in one place.</p>
           </div>
           <div className={styles.grid}>
             {demo?.services && demo.services.length > 0 ? (
@@ -69,7 +73,9 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
           </div>
         </section>
 
-        {/* Why Choose Us Section */}
+        {/* Why Choose Us Section — generic marketing claims only; never
+            attribute unverified claims to a real business. */}
+        {isGeneric && (
         <section id="why-us" className={`${styles.section} ${styles.bgLight}`}>
           <div className={styles.sectionHeader}>
             <h2>Why Build With Us?</h2>
@@ -106,8 +112,10 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
             </div>
           </div>
         </section>
+        )}
 
-        {/* Team Section */}
+        {/* Team Section — only on generic demos; never invent staff for a real business */}
+        {isGeneric && (
         <section id="team" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2>Our Leadership</h2>
@@ -131,8 +139,10 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
             </div>
           </div>
         </section>
+        )}
 
-        {/* Projects Section (Image Grid) */}
+        {/* Projects Section — only on generic demos; never invent projects for a real business */}
+        {isGeneric && (
         <section id="projects" className={`${styles.section} ${styles.bgDark}`}>
           <div className={styles.sectionHeader}>
             <h2 style={{ color: 'white' }}>Featured Projects</h2>
@@ -162,8 +172,10 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
             </div>
           </div>
         </section>
+        )}
 
-        {/* Testimonials */}
+        {/* Testimonials — only on generic demos; never invent reviews for a real business */}
+        {isGeneric && (
         <section id="testimonials" className={`${styles.section} ${styles.bgLight}`}>
           <div className={styles.sectionHeader}>
             <h2>Client Testimonials</h2>
@@ -184,17 +196,18 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
             </div>
           </div>
         </section>
+        )}
 
         {/* Contact/Quote Section */}
         <section id="contact" className={styles.section}>
           <div className={styles.contactWrapper}>
             <div className={styles.contactInfo}>
-              <h2>Ready to Start Building?</h2>
-              <p>Contact our team of experts today for a free consultation and project estimate.</p>
+              <h2>Get in Touch with {businessName}</h2>
+              <p>Have a question or ready to get started? Reach out today.</p>
               <ul className={styles.contactList}>
                 <li>📍 {pick(demo?.address, "400 Industrial Parkway, Builder's Zone")}</li>
                 <li>📞 {pick(demo?.phone, '+1 (555) 321-7654')}</li>
-                <li>✉️ {pick(demo?.email, `estimates@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</li>
+                {demo?.email && <li>✉️ {demo.email}</li>}
                 {demo?.hours && <li>🕒 {demo.hours}</li>}
               </ul>
             </div>
@@ -211,7 +224,7 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
 
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
-          <p>&copy; {new Date().getFullYear()} {businessName} Construction Group. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {businessName}. All rights reserved.</p>
           <p className={styles.credit}>
             Designed and Developed by <a href="https://www.cit.org.in" target="_blank" rel="noopener noreferrer">Centre for Information Technology</a>
           </p>

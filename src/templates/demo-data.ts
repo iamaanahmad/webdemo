@@ -40,6 +40,9 @@ export type BusinessDemoData = {
   rating?: number;
   /** Google review count, e.g. 214 */
   reviewCount?: number;
+  /** Where the rating/reviews come from, e.g. "Google", "Setmore", "Yelp", "Booksy".
+   *  Defaults to "Google" when rating is present but the source is unknown. */
+  reviewSource?: string;
   /** 1-2 sentence about blurb written from the GBP listing */
   about?: string;
   /** Real services offered, taken from the GBP categories/services */
@@ -89,6 +92,13 @@ const INDUSTRY_ALIASES: Record<string, string> = {
   electrician: 'construction',
   hvac: 'construction',
   roofing: 'construction',
+  services: 'services',
+  detailing: 'services',
+  grooming: 'services',
+  repair: 'services',
+  cleaning: 'services',
+  handyman: 'services',
+  pestcontrol: 'services',
 };
 
 export function resolveIndustry(raw: string): string {

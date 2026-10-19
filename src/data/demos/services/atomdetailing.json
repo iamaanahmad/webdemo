@@ -1,0 +1,31 @@
+{
+  "businessName": "Atom Detailing",
+  "industry": "services",
+  "city": "Toronto",
+  "address": "Mobile — serving Toronto and the GTA",
+  "phone": "+1 437-779-1780",
+  "bookingLink": "https://www.instagram.com/atom_detailing_service/",
+  "about": "Atom Detailing is a premium mobile detailing service covering Toronto and the GTA — full interior and exterior details from $300, done at your home or office. Book straight through Instagram or by phone.",
+  "services": [
+    {
+      "name": "Full Detail",
+      "description": "Premium full detail — complete interior and exterior transformation, from $300.",
+      "icon": "✨"
+    },
+    {
+      "name": "Interior Detailing",
+      "description": "Deep clean of seats, carpets, dashboard and every interior surface.",
+      "icon": "🪑"
+    },
+    {
+      "name": "Exterior Detailing",
+      "description": "Thorough wash, decontamination and shine for your car's exterior.",
+      "icon": "🚗"
+    },
+    {
+      "name": "Mobile Convenience",
+      "description": "We come to you anywhere in Toronto and the GTA — no waiting rooms.",
+      "icon": "📍"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "businessName": "Urgent Car Care",
+  "industry": "services",
+  "city": "Ajman",
+  "address": "Al Muwaihat 3, Ajman, UAE",
+  "phone": "+971 56 107 1726",
+  "email": "Spotupclean@gmail.com",
+  "bookingLink": "https://www.instagram.com/urgentcarcare/",
+  "about": "Urgent Car Care is a car interior cleaning service in Ajman — keeping your auto interiors clean and spotless.",
+  "services": [
+    {
+      "name": "Interior Deep Cleaning",
+      "description": "Thorough deep clean of your car's interior, top to bottom.",
+      "icon": "🧽"
+    },
+    {
+      "name": "Seat & Carpet Shampooing",
+      "description": "Shampooing and stain treatment for seats and carpets.",
+      "icon": "🪑"
+    },
+    {
+      "name": "Odour Removal",
+      "description": "Fresh, spotless interiors that look and smell like new.",
+      "icon": "🌿"
+    }
+  ]
+}

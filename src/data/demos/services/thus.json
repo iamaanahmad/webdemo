@@ -1,0 +1,26 @@
+{
+  "businessName": "Thus",
+  "industry": "services",
+  "city": "Toronto",
+  "address": "2879 Dundas St W, Toronto, ON M6P 1Y9",
+  "hours": "Tue–Sun 11am–7pm, Mon closed",
+  "bookingLink": "https://www.instagram.com/thats_thus/",
+  "about": "Thus is a curated vintage and thrift boutique in Toronto's Junction neighbourhood — secondhand clothing, shoes, accessories and home goods from local and international artisans.",
+  "services": [
+    {
+      "name": "Curated Vintage Clothing",
+      "description": "Hand-picked secondhand clothing and shoes in a stylish boutique setting.",
+      "icon": "👗"
+    },
+    {
+      "name": "Home Goods & Ceramics",
+      "description": "Ethically sourced ceramics, textiles and accessories from independent makers.",
+      "icon": "🏺"
+    },
+    {
+      "name": "Accessories & Jewellery",
+      "description": "A discerning selection of accessories and jewellery to elevate everyday style.",
+      "icon": "💍"
+    }
+  ]
+}

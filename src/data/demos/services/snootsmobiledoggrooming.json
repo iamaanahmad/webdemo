@@ -1,0 +1,31 @@
+{
+  "businessName": "SNOOTS Mobile Dog Grooming",
+  "industry": "services",
+  "city": "Sydney",
+  "address": "Mobile — serving Rockdale, Brighton Le Sands, Hurstville and Bexley, NSW",
+  "phone": "+61 432 011 479",
+  "bookingLink": "https://www.instagram.com/snoots_mdg/",
+  "about": "SNOOTS Mobile Dog Grooming brings certified, experienced grooming to your door across southern Sydney — Rockdale, Brighton Le Sands, Hurstville, Bexley and surrounds. One-on-one attention for your dog, no cages, no stress.",
+  "services": [
+    {
+      "name": "Full Groom",
+      "description": "Bath, haircut, nails and finishing — the complete pamper.",
+      "icon": "🐶"
+    },
+    {
+      "name": "Bath & Blow Dry",
+      "description": "Thorough bath, blow dry and brush-out.",
+      "icon": "🛁"
+    },
+    {
+      "name": "Bath & De-Shed",
+      "description": "De-shedding treatment for a lighter, healthier coat.",
+      "icon": "✨"
+    },
+    {
+      "name": "Mobile Salon",
+      "description": "We come to you — familiar surroundings, calmer dogs.",
+      "icon": "🚐"
+    }
+  ]
+}
