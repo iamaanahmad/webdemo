@@ -23,8 +23,11 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
       </header>
       
       <main>
-        {/* Hero Section */}
-        <section className={styles.hero}>
+        {/* Hero Section — uses the business's hero image when provided */}
+        <section
+          className={styles.hero}
+          style={demo?.heroImage ? { background: `linear-gradient(rgba(28, 25, 23, 0.85), rgba(28, 25, 23, 0.95)), url('${demo.heroImage}') center/cover` } : undefined}
+        >
           <div className={styles.heroContent}>
             <h1>{businessName}.</h1>
             <p>{pick(demo?.about, 'Professional services done right — quality work you can count on.')}</p>
