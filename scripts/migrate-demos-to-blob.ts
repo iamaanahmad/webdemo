@@ -58,7 +58,7 @@ async function migrateDemos(): Promise<MigrationResult[]> {
 
         // Upload to Blob
         const blob = await put(blobPath, JSON.stringify(data, null, 2), {
-          access: 'public',
+          access: 'private',
           addRandomSuffix: false,
           contentType: 'application/json',
         });

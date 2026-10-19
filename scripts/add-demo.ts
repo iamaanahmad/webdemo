@@ -115,7 +115,7 @@ async function main() {
     // Upload to Blob
     const blobPath = `demos/${industry}/${slug}.json`;
     const blob = await put(blobPath, JSON.stringify(cleanData, null, 2), {
-      access: 'public',
+      access: 'private',
       addRandomSuffix: false,
       contentType: 'application/json',
     });

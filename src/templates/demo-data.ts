@@ -113,8 +113,11 @@ export function resolveIndustry(raw: string): string {
 /**
  * Loads demo data from Vercel Blob with local fallback.
  *
- * Production: Fetches from Blob storage at demos/{industry}/{slug}.json
- * Development: Falls back to local JSON files if Blob fetch fails
+ * Production: Reads from Blob storage at demos/{industry}/{slug}.json.
+ * The store is private, so reads go through the authenticated `get()` call
+ * (server-side, BLOB_READ_WRITE_TOKEN) instead of a public fetch.
+ * `useCache: false` bypasses the CDN so uploads/updates reflect immediately.
+ * Development: Falls back to local JSON files if Blob read fails.
  */
 export async function getDemoData(
   industry: string,
@@ -124,19 +127,18 @@ export async function getDemoData(
   if (!slug) return null;
 
   // Try Vercel Blob first (production path)
-  if (process.env.BLOB_STORE_ID) {
+  if (process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID) {
     try {
-      const { head } = await import('@vercel/blob');
+      const { get } = await import('@vercel/blob');
       const blobPath = `demos/${industry}/${slug}.json`;
 
-      const blob = await head(blobPath);
-      if (blob) {
-        const response = await fetch(blob.url, {
-          next: { revalidate: 3600 }, // Cache for 1 hour (ISR)
-        });
-        if (response.ok) {
-          return response.json();
-        }
+      const result = await get(blobPath, {
+        access: 'private',
+        useCache: false,
+      });
+      if (result) {
+        const text = await new Response(result.stream).text();
+        return JSON.parse(text) as BusinessDemoData;
       }
     } catch {
       // Blob not found or error - fall through to local fallback

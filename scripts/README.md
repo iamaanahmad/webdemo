@@ -2,13 +2,18 @@
 
 These scripts help you manage demo data in Vercel Blob without git commits or rebuilds.
 
+> The Blob store is **private**. Uploads use `access: 'private'` and the site reads
+> demos server-side through the authenticated SDK, so JSONs are never publicly
+> browsable. Reads bypass the CDN (`useCache: false`), so uploads and updates
+> reflect on the live site immediately — no rebuild, no waiting.
+
 ## Prerequisites
 
 Set these environment variables (already done in Vercel, create `.env.local` for local use):
 
 ```bash
+BLOB_READ_WRITE_TOKEN=your_read_write_token  # required for uploads AND reads
 BLOB_STORE_ID=your_store_id
-BLOB_WEBHOOK_PUBLIC_KEY=your_webhook_key
 ```
 
 ## Quick Reference
