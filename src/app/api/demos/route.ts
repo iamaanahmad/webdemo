@@ -56,8 +56,53 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   return NextResponse.json({
-    message: 'Demo upload API. Use POST to upload a demo.',
+    message: 'Demo management API. POST to upload a demo, DELETE to remove one.',
     requiredFields: ['industry', 'businessName', 'data'],
     dataFields: ['businessName', 'industry', 'city'],
+    deleteFields: ['industry', 'businessName'],
   });
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { industry, businessName, path } = body as {
+      industry?: string;
+      businessName?: string;
+      path?: string;
+    };
+
+    let blobPath: string;
+    if (path) {
+      blobPath = path;
+    } else {
+      if (!industry || !businessName) {
+        return NextResponse.json(
+          { error: 'Missing required fields: industry and businessName (or path)' },
+          { status: 400 }
+        );
+      }
+      const slug = businessName.toLowerCase().replace(/[^a-z0-9]/g, '');
+      blobPath = `demos/${industry}/${slug}.json`;
+    }
+
+    // Safety: only blobs under demos/ may be deleted through this endpoint
+    if (!blobPath.startsWith('demos/')) {
+      return NextResponse.json(
+        { error: 'Only blobs under demos/ can be deleted' },
+        { status: 400 }
+      );
+    }
+
+    const { del } = await import('@vercel/blob');
+    await del(blobPath);
+
+    return NextResponse.json({ success: true, path: blobPath });
+  } catch (error) {
+    console.error('Failed to delete demo:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete demo', details: String(error) },
+      { status: 500 }
+    );
+  }
 }
