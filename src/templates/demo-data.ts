@@ -110,13 +110,40 @@ export function resolveIndustry(raw: string): string {
   return INDUSTRY_ALIASES[key] ?? key;
 }
 
-/** Loads the personalization JSON for a business, or null when none exists. */
+/**
+ * Loads demo data from Vercel Blob with local fallback.
+ *
+ * Production: Fetches from Blob storage at demos/{industry}/{slug}.json
+ * Development: Falls back to local JSON files if Blob fetch fails
+ */
 export async function getDemoData(
   industry: string,
   businessName: string
 ): Promise<BusinessDemoData | null> {
   const slug = demoSlug(businessName);
   if (!slug) return null;
+
+  // Try Vercel Blob first (production path)
+  if (process.env.BLOB_STORE_ID) {
+    try {
+      const { head } = await import('@vercel/blob');
+      const blobPath = `demos/${industry}/${slug}.json`;
+
+      const blob = await head(blobPath);
+      if (blob) {
+        const response = await fetch(blob.url, {
+          next: { revalidate: 3600 }, // Cache for 1 hour (ISR)
+        });
+        if (response.ok) {
+          return response.json();
+        }
+      }
+    } catch {
+      // Blob not found or error - fall through to local fallback
+    }
+  }
+
+  // Local fallback (development or missing blob)
   try {
     const mod = await import(`@/data/demos/${industry}/${slug}.json`);
     return (mod.default ?? mod) as BusinessDemoData;
