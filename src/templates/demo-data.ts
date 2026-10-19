@@ -49,6 +49,10 @@ export type BusinessDemoData = {
   services?: DemoService[];
   /** Opening hours summary, e.g. "Mon-Sat: 9:00 AM - 8:00 PM" */
   hours?: string;
+  /** Hero background image URL — must be a relevant, working stock photo for the business */
+  heroImage?: string;
+  /** Optional gallery image URLs — relevant stock photos for the business */
+  gallery?: string[];
 };
 
 /** "AlShifaClinic" -> "alshifaclinic" */

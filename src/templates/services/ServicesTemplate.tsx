@@ -44,8 +44,11 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
       </header>
 
       <main>
-        {/* Hero Section */}
-        <section className={styles.hero}>
+        {/* Hero Section — uses the business's hero image when provided */}
+        <section
+          className={styles.hero}
+          style={demo?.heroImage ? { backgroundImage: `url('${demo.heroImage}')` } : undefined}
+        >
           <div className={styles.heroOverlay}>
             <div className={styles.heroContent}>
               <span className={styles.heroTag}>Quality • Trust • Service</span>
@@ -124,8 +127,25 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
         </section>
 
+        {/* Gallery — renders the business's photos when provided */}
+        {demo?.gallery && demo.gallery.length > 0 && (
+        <section className={styles.section} style={{ background: '#f1f5f9' }}>
+          <div className={styles.sectionHeader}>
+            <h2>See {businessName} in Action</h2>
+            <p>A glimpse of the quality we deliver.</p>
+          </div>
+          <div className={styles.whyGrid}>
+            {demo.gallery.slice(0, 3).map((img, i) => (
+              <div key={i} className={styles.whyCard} style={{ padding: 0, overflow: 'hidden' }}>
+                <img src={img} alt={`${businessName} photo ${i + 1}`} style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} loading="lazy" />
+              </div>
+            ))}
+          </div>
+        </section>
+        )}
+
         {/* About Section */}
-        <section id="about" className={styles.section} style={{ background: '#f1f5f9' }}>
+        <section id="about" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2>About {businessName}</h2>
             <p>{pick(demo?.about, `${businessName} is an independent local business built on quality, honesty and personal service.`)}</p>
