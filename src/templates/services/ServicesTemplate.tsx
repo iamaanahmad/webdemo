@@ -161,7 +161,7 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
         <section id="testimonials" className={styles.testimonialSection}>
           <div className={styles.sectionHeader}>
             <h2 style={{ color: 'white' }}>What Our Customers Say</h2>
-            <p style={{ color: 'rgba(255,255,255,0.8)' }}>Trusted by customers{demo?.city ? ` across ${demo.city}` : ''}.</p>
+            <p style={{ color: 'rgba(255,255,255,0.8)' }}>Trusted by happy customers everywhere.</p>
           </div>
           <div className={styles.testimonialGrid}>
             <div className={styles.testimonialCard}>
