@@ -1,0 +1,27 @@
+{
+  "businessName": "Caldera Engineering Consultants",
+  "industry": "construction",
+  "city": "Ajman",
+  "address": "SF8025, 1st Floor, C1 Building, Sheikh Rashed Bin Saeed Al Maktoum Road, Ajman, UAE",
+  "phone": "+971 50 570 6998",
+  "email": "info@calderaec.com",
+  "about": "Caldera Engineering Consultants is a multidisciplinary engineering consultancy in Ajman, delivering solutions across energy, oil & gas, infrastructure, marine, industrial and architectural sectors.",
+  "services": [
+    {
+      "name": "Multidisciplinary Engineering",
+      "description": "Technical engineering expertise across energy, infrastructure and industrial sectors.",
+      "icon": "📐"
+    },
+    {
+      "name": "Project Management",
+      "description": "Strategic execution support turning concepts into high-performing projects.",
+      "icon": "📋"
+    },
+    {
+      "name": "Regulatory & Safety Advisory",
+      "description": "Compliance, safety and operational integrity guidance for complex projects.",
+      "icon": "🛡️"
+    }
+  ],
+  "heroImage": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Cad_crank.jpg"
+}

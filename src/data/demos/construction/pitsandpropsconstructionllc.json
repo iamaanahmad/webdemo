@@ -1,0 +1,32 @@
+{
+  "businessName": "Pits and Props Construction LLC",
+  "industry": "construction",
+  "city": "Ajman",
+  "address": "Horizon Tower, D Block, Office 2109, Rashidiya-1, Ajman, UAE",
+  "phone": "+971 6 527 7937",
+  "email": "Contact@pitsandprops.com",
+  "about": "Pits and Props Construction LLC builds pipeline, sewage and stormwater infrastructure across the UAE — secure, adaptable networks delivered with a focus on safety and continuous progress.",
+  "services": [
+    {
+      "name": "Pipeline Construction",
+      "description": "Pipeline construction services for industries and sectors across the region.",
+      "icon": "🛢️"
+    },
+    {
+      "name": "Sewage Network",
+      "description": "Installation of municipal, commercial and residential sewer systems.",
+      "icon": "🌊"
+    },
+    {
+      "name": "Manhole Construction",
+      "description": "Skilled manhole construction with methods specific to your project.",
+      "icon": "🔧"
+    },
+    {
+      "name": "Stormwater Drainage",
+      "description": "Large-scale storm drainage systems crucial to the UAE's ecosystem.",
+      "icon": "🌧️"
+    }
+  ],
+  "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Crosscountryoilpipeline.jpg/1280px-Crosscountryoilpipeline.jpg"
+}

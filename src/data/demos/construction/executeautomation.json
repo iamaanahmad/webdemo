@@ -1,0 +1,32 @@
+{
+  "businessName": "Execute Automation",
+  "industry": "construction",
+  "city": "Dubai",
+  "address": "Al Qusais, Dubai, UAE",
+  "phone": "+971 50 317 0761",
+  "email": "info@executeautomation.ae",
+  "about": "Execute Automation – Electromechanical Equipment Installation LLC delivers electrical and industrial automation solutions in Dubai, with a dedicated team and 24/7 availability.",
+  "services": [
+    {
+      "name": "Electrical Installations",
+      "description": "Professional electrical installation work for residential, commercial and industrial clients.",
+      "icon": "⚡"
+    },
+    {
+      "name": "Industrial Automation",
+      "description": "Automation solutions that keep plants and facilities running efficiently.",
+      "icon": "🤖"
+    },
+    {
+      "name": "Maintenance & Repairs",
+      "description": "Planned maintenance and fast response repairs for electrical systems.",
+      "icon": "🔧"
+    },
+    {
+      "name": "24/7 Support",
+      "description": "Round-the-clock availability when electrical problems can't wait.",
+      "icon": "🕒"
+    }
+  ],
+  "heroImage": "https://upload.wikimedia.org/wikipedia/commons/7/72/Automa%C3%A7%C3%A3o_e_acionamentos_el%C3%A9tricos_industriais.jpg"
+}

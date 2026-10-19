@@ -1,0 +1,27 @@
+{
+  "businessName": "Jazeerat Al Hai Contracting LLC",
+  "industry": "construction",
+  "city": "Dubai",
+  "address": "Dubai, UAE",
+  "phone": "+971 50 420 1600",
+  "email": "info@jazeeratalhaicontracting.com",
+  "about": "Jazeerat Al Hai Contracting LLC is a Dubai-based construction and contracting company serving residential and commercial clients.",
+  "services": [
+    {
+      "name": "General Contracting",
+      "description": "End-to-end contracting for building and construction projects.",
+      "icon": "🏗️"
+    },
+    {
+      "name": "Renovation & Fit-Out",
+      "description": "Renovation and interior fit-out work delivered to specification.",
+      "icon": "🔨"
+    },
+    {
+      "name": "Project Management",
+      "description": "Coordinated delivery keeping your project on time and on budget.",
+      "icon": "📋"
+    }
+  ],
+  "heroImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Ascot2005construction.jpg/1280px-Ascot2005construction.jpg"
+}

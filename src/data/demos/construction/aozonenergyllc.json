@@ -1,0 +1,32 @@
+{
+  "businessName": "Aozon Energy LLC",
+  "industry": "construction",
+  "city": "Dubai",
+  "address": "Al Satwa, Dubai, UAE",
+  "phone": "+971 50 164 6936",
+  "email": "info@aozonenergy.com",
+  "about": "Aozon Energy LLC provides advanced electro-mechanical solutions in Dubai — installation, maintenance and energy-efficient systems for industrial, commercial and infrastructure clients.",
+  "services": [
+    {
+      "name": "System Installation & Commissioning",
+      "description": "Professional installation of electro-mechanical systems including HVAC, plumbing and electrical networks.",
+      "icon": "⚙️"
+    },
+    {
+      "name": "Preventive & Corrective Maintenance",
+      "description": "Maintenance programs that extend equipment lifespan and prevent breakdowns.",
+      "icon": "🔧"
+    },
+    {
+      "name": "Electrical Systems Integration",
+      "description": "Integration of electrical components, control panels and automation systems.",
+      "icon": "⚡"
+    },
+    {
+      "name": "Safety & Compliance",
+      "description": "Audits and upgrades meeting the highest industry safety standards.",
+      "icon": "🛡️"
+    }
+  ],
+  "heroImage": "https://upload.wikimedia.org/wikipedia/commons/2/23/110kV_substation_wiring.JPG"
+}

@@ -1,0 +1,32 @@
+{
+  "businessName": "YSA Interior Design LLC",
+  "industry": "construction",
+  "city": "Dubai",
+  "address": "Dubai Investments Park, Dubai, UAE",
+  "phone": "+971 50 366 9662",
+  "email": "info@ysa-interior.com",
+  "about": "YSA Interior Design LLC — founded in 2010 — is one of Dubai's trusted interior fit-out contractors, delivering restaurant, hotel, retail and commercial fit-outs plus architectural products across the GCC.",
+  "services": [
+    {
+      "name": "Restaurant Fit-Out",
+      "description": "Complete restaurant interiors, from concept to snag-free handover.",
+      "icon": "🍽️"
+    },
+    {
+      "name": "Hotel Fit-Out",
+      "description": "Premium hotel interiors built for durability and guest experience.",
+      "icon": "🏨"
+    },
+    {
+      "name": "Retail Fit-Out",
+      "description": "Retail spaces designed to showcase products and draw footfall.",
+      "icon": "🛍️"
+    },
+    {
+      "name": "Commercial Fit-Out",
+      "description": "Office and commercial interiors delivered on time and on budget.",
+      "icon": "🏢"
+    }
+  ],
+  "heroImage": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Westin_Harbour_Castle_Hotel_Lobby_2023.jpg"
+}
