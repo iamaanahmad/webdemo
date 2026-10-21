@@ -1,0 +1,36 @@
+{
+  "businessName": "619 Boxing Gym",
+  "industry": "gym",
+  "city": "San Diego",
+  "phone": "+1 619-573-4154",
+  "address": "6120 Business Center Ct Ste 100, San Diego, CA 92154",
+  "about": "A boxing studio in San Diego, California. \"We make Champions!\" — train, condition and build real boxing skills in a gym that takes the craft seriously.",
+  "services": [
+    {
+      "name": "Boxing Classes",
+      "description": "Group boxing sessions for all levels — footwork, combos, bag and pad work.",
+      "icon": "🥊"
+    },
+    {
+      "name": "Muay Thai & Kickboxing",
+      "description": "Striking training from the Muay Thai and kickboxing traditions — technique, timing and fight fitness.",
+      "icon": "🥋"
+    },
+    {
+      "name": "Personal Training",
+      "description": "One-on-one coaching focused on your goals, from fitness to fight preparation.",
+      "icon": "💪"
+    },
+    {
+      "name": "Strength & Conditioning",
+      "description": "Strength and conditioning work to build power, stamina and agility.",
+      "icon": "🏋️"
+    }
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=2000&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop"
+  ]
+}

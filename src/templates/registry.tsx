@@ -12,6 +12,8 @@ import ConstructionTemplate2 from './construction/ConstructionTemplate2';
 import EducationTemplate from './education/EducationTemplate';
 import EducationTemplate2 from './education/EducationTemplate2';
 import ServicesTemplate from './services/ServicesTemplate';
+import GymTemplate from './gym/GymTemplate';
+import CoworkingTemplate from './coworking/CoworkingTemplate';
 import RestaurantTemplate from './restaurant/RestaurantTemplate';
 import RestaurantTemplate2 from './restaurant/RestaurantTemplate2';
 import HotelTemplate from './hotel/HotelTemplate';
@@ -52,6 +54,12 @@ export const TemplateRegistry: TemplateRegistryType = {
   ],
   services: [
     { id: '1', name: 'Local Services', component: ServicesTemplate }
+  ],
+  gym: [
+    { id: '1', name: 'Boxing & Fitness', component: GymTemplate }
+  ],
+  coworking: [
+    { id: '1', name: 'Workspace & Wellness', component: CoworkingTemplate }
   ],
   restaurant: [
     { id: '1', name: 'Fine Dining', component: RestaurantTemplate },

@@ -1,0 +1,36 @@
+{
+  "businessName": "Hussle and Meditate",
+  "industry": "coworking",
+  "city": "Phoenix",
+  "phone": "+1 313-910-9368",
+  "address": "130 N Central Ave Ste 203, Phoenix, AZ 85004",
+  "about": "A co-working space and private meditation oasis in downtown Phoenix. Founded by Ebony & Steven Anderson, Detroit natives — a Black-owned space built for focus, calm and community in the heart of the city.",
+  "services": [
+    {
+      "name": "Co-working Space",
+      "description": "Top-of-the-line co-working space for small business owners and professionals in downtown Phoenix.",
+      "icon": "💻"
+    },
+    {
+      "name": "Meditation Oasis",
+      "description": "A private meditation oasis with massage lounge chairs — rest your mind and spirit between deep-work sessions.",
+      "icon": "🧘"
+    },
+    {
+      "name": "Meetings & Trainings",
+      "description": "A place to host meetings and trainings for your team, clients and community.",
+      "icon": "💬"
+    },
+    {
+      "name": "Business Coaching",
+      "description": "Business coaching and spiritual readings for founders and professionals pursuing their next step.",
+      "icon": "📈"
+    }
+  ],
+  "heroImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop",
+  "gallery": [
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1200&auto=format&fit=crop"
+  ]
+}
