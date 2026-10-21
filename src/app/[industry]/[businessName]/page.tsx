@@ -37,11 +37,14 @@ export async function generateMetadata({ params }: PageProps) {
   const industrySlug = resolveIndustry(industry);
   const demo = await getDemoData(industrySlug, businessName);
   const city = demo?.city ? ` in ${demo.city}` : '';
+  // Prefer the verified name from the demo data over the slug-derived one
+  // (e.g. "619 Boxing Gym", not "619Boxing Gym").
+  const displayName = demo?.businessName || formattedName;
 
   return {
-    title: `${formattedName} | Premium ${industry} Services`,
+    title: `${displayName} | Premium ${industry} Services`,
     description:
-      demo?.about ?? `Welcome to ${formattedName}${city}. The best ${industry} in town.`,
+      demo?.about ?? `Welcome to ${displayName}${city}. The best ${industry} in town.`,
   };
 }
 
@@ -61,14 +64,17 @@ export default async function DynamicDemoPage({ params, searchParams }: PageProp
   const formattedName = formatBusinessName(businessName);
   // Per-business personalization JSON at src/data/demos/{industry}/{slug}.json (null when absent)
   const demo = await getDemoData(industrySlug, businessName);
+  // Prefer the verified name from the demo data over the slug-derived one
+  // (e.g. "619 Boxing Gym", not "619Boxing Gym"; "2Mood Beauty Studio", not "Two Mood Beauty Studio").
+  const displayName = demo?.businessName || formattedName;
 
   return (
     <>
-      <TemplateComponent businessName={formattedName} demo={demo} />
+      <TemplateComponent businessName={displayName} demo={demo} />
       <DemoSwitcher
         currentIndustry={industry.toLowerCase()}
         businessName={businessName}
-        displayName={formattedName}
+        displayName={displayName}
         currentVariant={variantId || '1'}
         variants={variants}
       />
