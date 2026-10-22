@@ -4,6 +4,7 @@ import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Restaurant2.module.css';
 
 const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
+  const isGeneric = !demo;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -11,7 +12,7 @@ const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) =>
         <nav className={styles.nav}>
           <a href="#menu">Our Menu</a>
           <a href="#about">Our Story</a>
-          <a href="#reviews">Reviews</a>
+          {isGeneric && <a href="#reviews">Reviews</a>}
           <a href="#location">Find Us</a>
           <a href="#order" className={styles.navCta}>Order Online</a>
         </nav>
@@ -67,11 +68,13 @@ const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) =>
               <h2>Our Story</h2>
               <p>What started as a small coffee cart in 2015 has grown into the neighborhood&apos;s favorite gathering spot. At {businessName}, we believe food should be honest, fresh, and made with love.</p>
               <p>Every recipe is crafted with locally sourced ingredients, and our baristas are trained to bring out the best in every single cup. We&apos;re not just a cafe — we&apos;re your community&apos;s living room.</p>
+              {isGeneric && (
               <div className={styles.aboutHighlights}>
                 <div><strong>2015</strong><span>Founded</span></div>
                 <div><strong>100%</strong><span>Organic Coffee</span></div>
                 <div><strong>Local</strong><span>Farm Partners</span></div>
               </div>
+              )}
             </div>
           </div>
         </section>
@@ -113,7 +116,8 @@ const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) =>
           </div>
         </section>
 
-        {/* Reviews */}
+        {/* Reviews — generic demos only; never fabricate reviews for a real business */}
+        {isGeneric && (
         <section id="reviews" className={styles.reviewsSection}>
           <div className={styles.sectionHeader}>
             <h2>What People Say</h2>
@@ -137,6 +141,7 @@ const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) =>
             </div>
           </div>
         </section>
+        )}
 
         {/* Order CTA */}
         <section id="order" className={styles.ctaSection}>

@@ -4,6 +4,7 @@ import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Construction2.module.css';
 
 const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
+  const isGeneric = !demo;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -24,7 +25,7 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
             <a href="#services">Services</a>
             <a href="#projects">Projects</a>
             <a href="#process">Process</a>
-            <a href="#testimonials">Reviews</a>
+            {isGeneric && <a href="#testimonials">Reviews</a>}
             <a href="#contact" className={styles.navCta}>Get Quote</a>
           </nav>
         </div>
@@ -42,6 +43,7 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
               <button className={styles.btnOutline}>View Portfolio</button>
             </div>
           </div>
+          {isGeneric && (
           <div className={styles.heroStats}>
             <div className={styles.statBox}>
               <h3>15+</h3>
@@ -56,6 +58,7 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
               <p>Safety Record</p>
             </div>
           </div>
+          )}
         </section>
 
         {/* Services Section */}
@@ -143,7 +146,8 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Testimonials — generic demos only; never fabricate reviews for a real business */}
+        {isGeneric && (
         <section id="testimonials" className={styles.section} style={{ background: '#f4f4f5' }}>
           <div className={styles.sectionHeader}>
             <span className={styles.tag}>Client Feedback</span>
@@ -164,6 +168,7 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
             </div>
           </div>
         </section>
+        )}
 
         {/* CTA + Contact */}
         <section id="contact" className={styles.ctaSection}>

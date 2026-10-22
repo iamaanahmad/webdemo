@@ -70,14 +70,18 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
               <h3>100%</h3>
               <p>Customer Satisfaction Focus</p>
             </div>
-            <div className={styles.highlightCard}>
-              <h3>{demo?.reviewCount ? `${demo.reviewCount}+` : '500+'}</h3>
-              <p>Happy Customers</p>
-            </div>
-            <div className={styles.highlightCard}>
-              <h3>{services ? services.length : '10+'}</h3>
-              <p>Services Offered</p>
-            </div>
+            {demo?.reviewCount ? (
+              <div className={styles.highlightCard}>
+                <h3>{`${demo.reviewCount}+`}</h3>
+                <p>Happy Customers</p>
+              </div>
+            ) : null}
+            {services ? (
+              <div className={styles.highlightCard}>
+                <h3>{services.length}</h3>
+                <p>Services Offered</p>
+              </div>
+            ) : null}
             <div className={styles.highlightCard}>
               <h3>{demo?.city || 'Local'}</h3>
               <p>Proudly Serving</p>

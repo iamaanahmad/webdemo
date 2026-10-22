@@ -4,6 +4,7 @@ import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Hotel2.module.css';
 
 const HotelTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
+  const isGeneric = !demo;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -11,7 +12,7 @@ const HotelTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
         <nav className={styles.nav}>
           <a href="#rooms">Rooms</a>
           <a href="#experiences">Experiences</a>
-          <a href="#reviews">Reviews</a>
+          {isGeneric && <a href="#reviews">Reviews</a>}
           <a href="#location">Neighborhood</a>
           <a href="#book" className={styles.btnOutline}>Check Dates</a>
         </nav>
@@ -107,7 +108,8 @@ const HotelTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
         </section>
 
-        {/* Reviews */}
+        {/* Reviews — generic demos only; never fabricate reviews for a real business */}
+        {isGeneric && (
         <section id="reviews" className={styles.reviewsSection}>
           <div className={styles.sectionHeader}>
             <h2>Guest Stories</h2>
@@ -128,6 +130,7 @@ const HotelTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* Neighborhood */}
         <section id="location" className={styles.locationSection}>

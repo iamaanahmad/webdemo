@@ -4,6 +4,7 @@ import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Clinic.module.css';
 
 const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
+  const isGeneric = !demo;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -11,8 +12,8 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
         <nav className={styles.nav}>
           <a href="#services">Services</a>
           <a href="#why-us">Why Us</a>
-          <a href="#doctors">Our Doctors</a>
-          <a href="#testimonials">Reviews</a>
+          {isGeneric && <a href="#doctors">Our Doctors</a>}
+          {isGeneric && <a href="#testimonials">Reviews</a>}
           <a href="#contact" className="btn-primary">Book Appointment</a>
         </nav>
       </header>
@@ -106,7 +107,8 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
         </section>
 
-        {/* Doctors Section */}
+        {/* Doctors Section — generic demos only; never invent staff for a real business */}
+        {isGeneric && (
         <section id="doctors" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2>Meet Our Specialists</h2>
@@ -130,8 +132,10 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
             </div>
           </div>
         </section>
+        )}
 
-        {/* Testimonials Section */}
+        {/* Testimonials — generic demos only; never fabricate reviews for a real business */}
+        {isGeneric && (
         <section id="testimonials" className={`${styles.section} ${styles.bgLight}`}>
           <div className={styles.sectionHeader}>
             <h2>Patient Stories</h2>
@@ -155,6 +159,7 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* Contact/Appointment Section */}
         <section id="contact" className={styles.section}>

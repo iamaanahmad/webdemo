@@ -13,6 +13,7 @@ import styles from './Education.module.css';
  */
 const EducationTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
   const services = demo?.services && demo.services.length > 0 ? demo.services : null;
+  const isGeneric = !demo;
 
   return (
     <div className={styles.container}>
@@ -32,7 +33,7 @@ const EducationTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
         <nav className={styles.nav}>
           <a href="#about">About Us</a>
           <a href="#services">Services</a>
-          <a href="#testimonials">Reviews</a>
+          {isGeneric && <a href="#testimonials">Reviews</a>}
           <a href="#contact" className={styles.navCta}>Contact Us</a>
         </nav>
       </header>
@@ -61,14 +62,18 @@ const EducationTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
               <h3>100%</h3>
               <p>Customer Satisfaction Focus</p>
             </div>
-            <div className={styles.highlightCard}>
-              <h3>{demo?.reviewCount ? `${demo.reviewCount}+` : '500+'}</h3>
-              <p>Happy Customers</p>
-            </div>
-            <div className={styles.highlightCard}>
-              <h3>{services ? services.length : '10+'}</h3>
-              <p>Services Offered</p>
-            </div>
+            {demo?.reviewCount ? (
+              <div className={styles.highlightCard}>
+                <h3>{`${demo.reviewCount}+`}</h3>
+                <p>Happy Customers</p>
+              </div>
+            ) : null}
+            {services ? (
+              <div className={styles.highlightCard}>
+                <h3>{services.length}</h3>
+                <p>Services Offered</p>
+              </div>
+            ) : null}
             <div className={styles.highlightCard}>
               <h3>{demo?.city || 'Local'}</h3>
               <p>Proudly Serving</p>
@@ -150,11 +155,12 @@ const EducationTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Testimonials — generic demos only; never fabricate reviews for a real business */}
+        {isGeneric && (
         <section id="testimonials" className={styles.testimonialSection}>
           <div className={styles.sectionHeader}>
             <h2 style={{ color: 'white' }}>What Our Customers Say</h2>
-            <p style={{ color: 'rgba(255,255,255,0.8)' }}>Trusted by customers{demo?.city ? ` across ${demo.city}` : ''}.</p>
+            <p style={{ color: 'rgba(255,255,255,0.8)' }}>Trusted by customers.</p>
           </div>
           <div className={styles.testimonialGrid}>
             <div className={styles.testimonialCard}>
@@ -180,6 +186,7 @@ const EducationTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* How It Works */}
         <section className={styles.section}>
@@ -239,7 +246,7 @@ const EducationTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
               <h4>Quick Links</h4>
               <a href="#about">About Us</a>
               <a href="#services">Services</a>
-              <a href="#testimonials">Reviews</a>
+              {isGeneric && <a href="#testimonials">Reviews</a>}
               <a href="#contact">Contact</a>
             </div>
             <div className={styles.footerLinks}>

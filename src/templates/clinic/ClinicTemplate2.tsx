@@ -4,6 +4,7 @@ import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Clinic2.module.css';
 
 const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
+  const isGeneric = !demo;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -14,8 +15,8 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
         <nav className={styles.nav}>
           <a href="#about">About</a>
           <a href="#services">Services</a>
-          <a href="#doctors">Doctors</a>
-          <a href="#testimonials">Reviews</a>
+          {isGeneric && <a href="#doctors">Doctors</a>}
+          {isGeneric && <a href="#testimonials">Reviews</a>}
           <a href="#contact" className={styles.navCta}>Patient Portal</a>
         </nav>
       </header>
@@ -24,7 +25,7 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
         {/* Modern Split Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <span className={styles.heroTag}>Trusted by 10,000+ Patients</span>
+            {isGeneric && <span className={styles.heroTag}>Trusted by 10,000+ Patients</span>}
             <h1>Modern Healthcare, Delivered With Compassion.</h1>
             <p>{pick(demo?.about, `Welcome to ${businessName}. We blend advanced medical technology with a personalized approach to ensure you receive the best care possible.`)}</p>
             <RatingBadge demo={demo} />
@@ -36,7 +37,8 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
           <div className={styles.heroImage}></div>
         </section>
 
-        {/* Stats Strip */}
+        {/* Stats Strip — generic demos only; never attribute invented stats to a real business */}
+        {isGeneric && (
         <section className={styles.statsStrip}>
           <div className={styles.statItem}>
             <h3>15+</h3>
@@ -55,6 +57,7 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
             <p>Emergency Care</p>
           </div>
         </section>
+        )}
 
         {/* About Section */}
         <section id="about" className={styles.section}>
@@ -134,7 +137,8 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
         </section>
 
-        {/* Doctors Section */}
+        {/* Doctors Section — generic demos only; never invent staff for a real business */}
+        {isGeneric && (
         <section id="doctors" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2>Our Specialists</h2>
@@ -175,8 +179,10 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
             </div>
           </div>
         </section>
+        )}
 
-        {/* Testimonials */}
+        {/* Testimonials — generic demos only; never fabricate reviews for a real business */}
+        {isGeneric && (
         <section id="testimonials" className={`${styles.section} ${styles.bgLight}`}>
           <div className={styles.sectionHeader}>
             <h2>Patient Reviews</h2>
@@ -200,6 +206,7 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* Contact / Appointment */}
         <section id="contact" className={styles.section}>

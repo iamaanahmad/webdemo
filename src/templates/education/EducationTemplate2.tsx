@@ -4,6 +4,7 @@ import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Education2.module.css';
 
 const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
+  const isGeneric = !demo;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -26,7 +27,7 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
         {/* Prestige Hero */}
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <span className={styles.heroTag}>NAAC A++ Accredited Institution</span>
+            {isGeneric && <span className={styles.heroTag}>NAAC A++ Accredited Institution</span>}
             <h1>Tradition Meets Innovation.</h1>
             <p>{pick(demo?.about, 'A prestigious academic institution dedicated to advancing knowledge, fostering research, and shaping future global leaders since 1895.')}</p>
             <RatingBadge demo={demo} />
@@ -37,7 +38,8 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
           </div>
         </section>
 
-        {/* Statistics Banner */}
+        {/* Statistics Banner — generic demos only; never attribute invented stats to a real institution */}
+        {isGeneric && (
         <section className={styles.statsBanner}>
           <div className={styles.statItem}>
             <h3>1895</h3>
@@ -56,6 +58,7 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
             <p>National Ranking</p>
           </div>
         </section>
+        )}
 
         {/* About Section */}
         <section id="about" className={styles.section}>
@@ -65,6 +68,7 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
               <div className={styles.divider}></div>
               <p>For over a century, {businessName} has been at the forefront of academic excellence, producing leaders who shape industries, governments, and communities worldwide.</p>
               <p>Our commitment to interdisciplinary learning, cutting-edge research, and inclusive education makes us one of the most sought-after institutions in the country.</p>
+              {isGeneric && (
               <div className={styles.aboutHighlights}>
                 <div className={styles.aboutHighlight}>
                   <strong>500+</strong>
@@ -79,6 +83,7 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
                   <span>International Collaborations</span>
                 </div>
               </div>
+              )}
             </div>
             <div className={styles.aboutImage} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80')" }}></div>
           </div>
@@ -139,6 +144,7 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
               <div className={styles.divider}></div>
               <p style={{ color: 'rgba(255,255,255,0.8)' }}>Pushing the boundaries of knowledge across disciplines.</p>
             </div>
+            {isGeneric && (
             <div className={styles.researchGrid}>
               <div className={styles.researchCard}>
                 <h3>₹250 Cr+</h3>
@@ -157,6 +163,7 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
                 <p>Incubated Startups</p>
               </div>
             </div>
+            )}
           </div>
         </section>
 
@@ -167,6 +174,7 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
             <div className={styles.divider}></div>
             <p>Our graduates are recruited by the world&apos;s leading organizations.</p>
           </div>
+          {isGeneric && (
           <div className={styles.placementGrid}>
             <div className={styles.placementStat}>
               <h3>₹28 LPA</h3>
@@ -185,6 +193,8 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
               <p>Recruiting Companies</p>
             </div>
           </div>
+          )}
+          {isGeneric && (
           <div className={styles.recruiters}>
             <p className={styles.recruitersLabel}>Top Recruiters</p>
             <div className={styles.recruitersList}>
@@ -198,9 +208,11 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
               <span>Infosys</span>
             </div>
           </div>
+          )}
         </section>
 
-        {/* Testimonials */}
+        {/* Testimonials — generic demos only; never fabricate reviews for a real institution */}
+        {isGeneric && (
         <section className={styles.testimonialSection}>
           <div className={styles.sectionHeader}>
             <h2>Alumni Voices</h2>
@@ -223,6 +235,7 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
             </div>
           </div>
         </section>
+        )}
 
         {/* Admissions */}
         <section id="admissions" className={styles.contactSection}>
