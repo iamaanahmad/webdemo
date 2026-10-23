@@ -158,10 +158,13 @@ const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) =>
             <div className={styles.locationInfo}>
               <h2>Find Us</h2>
               <div className={styles.locationDetails}>
+                {/* Address renders only from supplied demo data — never invent one for a real business */}
+                {(demo?.address || isGeneric) && (
                 <div>
                   <h4>📍 Address</h4>
                   <p>{pick(demo?.address, '456 Cafe Lane, Sunnyvale, CA 94086')}</p>
                 </div>
+                )}
                 <div>
                   <h4>🕐 Hours</h4>
                   {demo?.hours ? (
@@ -173,11 +176,14 @@ const RestaurantTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) =>
                     </>
                   )}
                 </div>
+                {/* Contact renders only from supplied demo data — never invent a phone or email for a real business */}
+                {(demo?.phone || demo?.email || isGeneric) && (
                 <div>
                   <h4>📞 Contact</h4>
-                  <p>{pick(demo?.phone, '(555) 234-5678')}</p>
-                  <p>{pick(demo?.email, `hello@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>
+                  {(demo?.phone || isGeneric) && <p>{pick(demo?.phone, '(555) 234-5678')}</p>}
+                  {(demo?.email || isGeneric) && <p>{pick(demo?.email, `hello@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>}
                 </div>
+                )}
               </div>
             </div>
             <div className={styles.locationMap} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80')" }}></div>

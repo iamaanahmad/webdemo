@@ -4,6 +4,7 @@ import { RatingBadge, pick } from '@/components/DemoBits';
 import styles from './Restaurant.module.css';
 
 const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
+  const isGeneric = !demo;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -130,8 +131,9 @@ const RestaurantTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => 
         <div className={styles.footerInner}>
           <div className={styles.footerCol}>
             <h2>{businessName}</h2>
-            <p>📍 {pick(demo?.address, '123 Culinary Way, Gourmet District')}</p>
-            <p>📞 {pick(demo?.phone, '(555) 019-8765')}</p>
+            {/* Contact lines render only from supplied demo data — never invent an address or phone for a real business */}
+            {(demo?.address || isGeneric) && <p>📍 {pick(demo?.address, '123 Culinary Way, Gourmet District')}</p>}
+            {(demo?.phone || isGeneric) && <p>📞 {pick(demo?.phone, '(555) 019-8765')}</p>}
           </div>
           <div className={styles.footerCol}>
             <h4>Hours</h4>
