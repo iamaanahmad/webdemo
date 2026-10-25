@@ -1,42 +1,46 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
-import { RatingBadge, pick } from '@/components/DemoBits';
+import { ServiceMark } from '@/components/DemoBits';
+import DemoHero from '@/components/DemoHero';
+import DemoGallery from '@/components/DemoGallery';
+import { fallbackHeroImage } from '../demo-data';
 import styles from './Education2.module.css';
 
 const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   const isGeneric = !demo;
+  const tel = demo?.phone ? `tel:${demo.phone.replace(/[^+0-9]/g, '')}` : null;
+  const photo = demo?.heroImage || fallbackHeroImage('education');
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <div className={styles.logo}>
-            <span className={styles.crest}>🏛️</span>
+            <span className={styles.crest}>
+              <ServiceMark industry="education" size={32} />
+            </span>
             {businessName}
           </div>
           <nav className={styles.nav}>
             <a href="#about">Institution</a>
             <a href="#faculties">Faculties</a>
             <a href="#research">Research</a>
-            <a href="#placements">Placements</a>
+            {isGeneric && <a href="#placements">Placements</a>}
             <a href="#admissions">Admissions</a>
           </nav>
         </div>
       </header>
 
       <main>
-        {/* Prestige Hero */}
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            {isGeneric && <span className={styles.heroTag}>NAAC A++ Accredited Institution</span>}
-            <h1>Tradition Meets Innovation.</h1>
-            <p>{pick(demo?.about, 'A prestigious academic institution dedicated to advancing knowledge, fostering research, and shaping future global leaders since 1895.')}</p>
-            <RatingBadge demo={demo} />
-            <div className={styles.heroButtons}>
-              <button className={styles.btnPrimary}>Apply for Fall 2026</button>
-              <button className={styles.btnOutline}>Academic Catalog</button>
-            </div>
-          </div>
-        </section>
+        <DemoHero
+          demo={demo}
+          businessName={businessName}
+          industry="education"
+          layout="split"
+          display="serif"
+          accent="#881337"
+          contactHref="#admissions"
+          servicesHref="#faculties"
+        />
 
         {/* Statistics Banner — generic demos only; never attribute invented stats to a real institution */}
         {isGeneric && (
@@ -60,14 +64,23 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
         </section>
         )}
 
-        {/* About Section */}
+        {/* About Section — real copy only from the demo; showcase claims stay generic-only */}
         <section id="about" className={styles.section}>
           <div className={styles.aboutGrid}>
             <div className={styles.aboutContent}>
               <h2>About {businessName}</h2>
               <div className={styles.divider}></div>
-              <p>For over a century, {businessName} has been at the forefront of academic excellence, producing leaders who shape industries, governments, and communities worldwide.</p>
-              <p>Our commitment to interdisciplinary learning, cutting-edge research, and inclusive education makes us one of the most sought-after institutions in the country.</p>
+              {demo?.about ? (
+                <>
+                  <p>{demo.about}</p>
+                  {demo?.hours && <p>{demo.hours}</p>}
+                </>
+              ) : (
+                <>
+                  <p>For over a century, {businessName} has been at the forefront of academic excellence, producing leaders who shape industries, governments, and communities worldwide.</p>
+                  <p>Our commitment to interdisciplinary learning, cutting-edge research, and inclusive education makes us one of the most sought-after institutions in the country.</p>
+                </>
+              )}
               {isGeneric && (
               <div className={styles.aboutHighlights}>
                 <div className={styles.aboutHighlight}>
@@ -85,11 +98,12 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
               </div>
               )}
             </div>
-            <div className={styles.aboutImage} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80')" }}></div>
+            <div className={styles.aboutImage} style={{ backgroundImage: `url(${photo})` }}></div>
           </div>
         </section>
 
-        {/* Faculties Section */}
+        {/* Faculties Section — real services when provided; showcase
+            departments only on generic demos */}
         <section id="faculties" className={styles.section} style={{ background: '#fafaf9' }}>
           <div className={styles.sectionHeader}>
             <h2>Our Faculties</h2>
@@ -97,44 +111,76 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
             <p>World-class academic departments led by renowned scholars and industry experts.</p>
           </div>
           <div className={styles.grid}>
+            {demo?.services && demo.services.length > 0 ? (
+              demo.services.map((service, i) => (
+                <div key={i} className={styles.card}>
+                  <div className={styles.cardIcon} aria-hidden="true">
+                    <ServiceMark industry="education" size={32} />
+                  </div>
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                </div>
+              ))
+            ) : isGeneric ? (
+              <>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🔬</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="education" size={32} />
+              </div>
               <h3>Sciences & Engineering</h3>
               <p>Cutting-edge laboratories and research facilities fostering technological breakthroughs and innovation.</p>
               <span className={styles.cardMeta}>32 Programs • 120 Faculty</span>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>⚖️</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="education" size={32} />
+              </div>
               <h3>Law & Public Policy</h3>
               <p>Developing the next generation of legal minds, policymakers, and public servants.</p>
               <span className={styles.cardMeta}>8 Programs • 45 Faculty</span>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>💼</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="education" size={32} />
+              </div>
               <h3>Business & Economics</h3>
               <p>Strategic thinking and leadership training for the modern global economy and entrepreneurship.</p>
               <span className={styles.cardMeta}>15 Programs • 80 Faculty</span>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🎨</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="education" size={32} />
+              </div>
               <h3>Arts & Humanities</h3>
               <p>Exploring the depths of human culture, history, philosophy, and creative expression.</p>
               <span className={styles.cardMeta}>22 Programs • 65 Faculty</span>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🏥</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="education" size={32} />
+              </div>
               <h3>Medical Sciences</h3>
               <p>Training compassionate healthcare professionals with state-of-the-art clinical facilities.</p>
               <span className={styles.cardMeta}>18 Programs • 95 Faculty</span>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🖥️</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="education" size={32} />
+              </div>
               <h3>Computer Science & AI</h3>
               <p>Pioneering research in artificial intelligence, cybersecurity, and data science.</p>
               <span className={styles.cardMeta}>12 Programs • 55 Faculty</span>
             </div>
+              </>
+            ) : (
+              <p style={{ textAlign: 'center' }}>
+                A personalized program menu can be added here after the institution confirms its details.
+              </p>
+            )}
           </div>
         </section>
+
+        <DemoGallery demo={demo} title="Gallery" />
 
         {/* Research Section */}
         <section id="research" className={styles.researchSection}>
@@ -167,14 +213,15 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
           </div>
         </section>
 
-        {/* Placements */}
+        {/* Placements — generic demos only; never attribute placement
+            stats or recruiters to a real institution */}
+        {isGeneric && (
         <section id="placements" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2>Placement Highlights</h2>
             <div className={styles.divider}></div>
             <p>Our graduates are recruited by the world&apos;s leading organizations.</p>
           </div>
-          {isGeneric && (
           <div className={styles.placementGrid}>
             <div className={styles.placementStat}>
               <h3>₹28 LPA</h3>
@@ -193,8 +240,6 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
               <p>Recruiting Companies</p>
             </div>
           </div>
-          )}
-          {isGeneric && (
           <div className={styles.recruiters}>
             <p className={styles.recruitersLabel}>Top Recruiters</p>
             <div className={styles.recruitersList}>
@@ -208,8 +253,8 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
               <span>Infosys</span>
             </div>
           </div>
-          )}
         </section>
+        )}
 
         {/* Testimonials — generic demos only; never fabricate reviews for a real institution */}
         {isGeneric && (
@@ -237,34 +282,69 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
         </section>
         )}
 
-        {/* Admissions */}
+        {/* Admissions — generic showcase block only; real institutions get
+            an honest contact panel with real links, never a dead form */}
         <section id="admissions" className={styles.contactSection}>
-          <div className={styles.contactContent}>
-            <h2>Admissions 2026-27</h2>
-            <p>Applications are now open for undergraduate and postgraduate programs. Join a legacy of excellence.</p>
-            <div className={styles.admissionSteps}>
-              <div className={styles.admStep}>
-                <strong>1</strong>
-                <span>Register Online</span>
+          {isGeneric ? (
+            <div className={styles.contactContent}>
+              <h2>Admissions 2026-27</h2>
+              <p>Applications are now open for undergraduate and postgraduate programs. Join a legacy of excellence.</p>
+              <div className={styles.admissionSteps}>
+                <div className={styles.admStep}>
+                  <strong>1</strong>
+                  <span>Register Online</span>
+                </div>
+                <div className={styles.admStep}>
+                  <strong>2</strong>
+                  <span>Entrance Exam</span>
+                </div>
+                <div className={styles.admStep}>
+                  <strong>3</strong>
+                  <span>Counseling</span>
+                </div>
+                <div className={styles.admStep}>
+                  <strong>4</strong>
+                  <span>Enrollment</span>
+                </div>
               </div>
-              <div className={styles.admStep}>
-                <strong>2</strong>
-                <span>Entrance Exam</span>
-              </div>
-              <div className={styles.admStep}>
-                <strong>3</strong>
-                <span>Counseling</span>
-              </div>
-              <div className={styles.admStep}>
-                <strong>4</strong>
-                <span>Enrollment</span>
+              <div className={styles.formGroup}>
+                <input type="email" placeholder="Your Email Address" className={styles.input} />
+                <button className={styles.btnPrimary}>Get Prospectus</button>
               </div>
             </div>
-            <div className={styles.formGroup}>
-              <input type="email" placeholder="Your Email Address" className={styles.input} />
-              <button className={styles.btnPrimary}>Get Prospectus</button>
+          ) : (
+            <div className={styles.contactContent}>
+              <h2>Contact {businessName}</h2>
+              <p>
+                This concept shows a possible layout. A finished website can include confirmed
+                programs, the institution&apos;s own photos, and its existing admissions route.
+              </p>
+              <p>No request is submitted from this preview.</p>
+              <div className={styles.formGroup}>
+                {demo?.bookingUrl && (
+                  <a
+                    href={demo.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.btnPrimary}
+                    style={{ textDecoration: 'none', textAlign: 'center' }}
+                  >
+                    Apply Online
+                  </a>
+                )}
+                {demo?.phone && tel && (
+                  <a href={tel} className={styles.btnPrimary} style={{ textDecoration: 'none', textAlign: 'center' }}>
+                    Call {demo.phone}
+                  </a>
+                )}
+                {demo?.email && (
+                  <a href={`mailto:${demo.email}`} className={styles.btnPrimary} style={{ textDecoration: 'none', textAlign: 'center' }}>
+                    Email Us
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </section>
       </main>
 
@@ -272,32 +352,43 @@ const EducationTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => 
         <div className={styles.footerInner}>
           <div className={styles.footerCol}>
             <div className={styles.logo} style={{ color: 'white', marginBottom: '1rem' }}>
-              <span className={styles.crest}>🏛️</span>
+              <span className={styles.crest}>
+                <ServiceMark industry="education" size={32} />
+              </span>
               {businessName}
             </div>
-            <p>📍 {pick(demo?.address, 'Central Campus, University Avenue, State 12345, India')}</p>
-            <p>📞 {pick(demo?.phone, '+91 11 2345 6789')}</p>
+            {demo?.address && <p>📍 {demo.address}</p>}
+            {demo?.phone && tel && (
+              <p>
+                📞 <a href={tel}>{demo.phone}</a>
+              </p>
+            )}
+            {demo?.email && (
+              <p>
+                ✉️ <a href={`mailto:${demo.email}`}>{demo.email}</a>
+              </p>
+            )}
+            {demo?.hours && <p>🕒 {demo.hours}</p>}
+            {isGeneric && (
+              <>
+                <p>📍 Central Campus, University Avenue, State 12345, India</p>
+                <p>📞 +91 11 2345 6789</p>
+              </>
+            )}
           </div>
           <div className={styles.footerCol}>
             <h4>Academics</h4>
-            <a href="#">Undergraduate</a>
-            <a href="#">Postgraduate</a>
-            <a href="#">PhD Programs</a>
-            <a href="#">Online Courses</a>
+            <a href="#faculties">Undergraduate</a>
+            <a href="#faculties">Postgraduate</a>
+            <a href="#faculties">PhD Programs</a>
+            <a href="#faculties">Online Courses</a>
           </div>
           <div className={styles.footerCol}>
             <h4>Resources</h4>
-            <a href="#">Library</a>
-            <a href="#">Alumni Association</a>
-            <a href="#">Career Services</a>
-            <a href="#">Directory</a>
-          </div>
-          <div className={styles.footerCol}>
-            <h4>Legal</h4>
-            <a href="#">Title IX</a>
-            <a href="#">Accessibility</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">RTI</a>
+            <a href="#research">Library</a>
+            <a href="#research">Alumni Association</a>
+            <a href="#placements">Career Services</a>
+            <a href="#faculties">Directory</a>
           </div>
         </div>
         <div className={styles.footerBottom}>

@@ -41,7 +41,11 @@
   gap: 0.5rem;
 }
 
-.logoIcon { font-size: 2rem; }
+.logoIcon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
 
 .nav {
   display: flex;
@@ -224,8 +228,9 @@
 }
 
 .whyIcon {
-  font-size: 2.5rem;
+  color: var(--primary-color);
   margin-bottom: 1rem;
+  display: flex;
 }
 
 .whyCard h3 {

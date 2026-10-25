@@ -1,6 +1,8 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
-import { RatingBadge, pick } from '@/components/DemoBits';
+import { ServiceMark } from '@/components/DemoBits';
+import DemoHero from '@/components/DemoHero';
+import DemoGallery from '@/components/DemoGallery';
 import styles from './Construction.module.css';
 
 const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
@@ -8,6 +10,7 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
   // honest on generic demos. When a real business's data is present they must
   // not render fabricated staff, projects, reviews or claims in its name.
   const isGeneric = !demo;
+  const tel = demo?.phone ? `tel:${demo.phone.replace(/[^+0-9]/g, '')}` : null;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -21,23 +24,16 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
           <a href="#contact" className="btn-primary" style={{ background: 'var(--primary-color)', color: 'black' }}>Get a Quote</a>
         </nav>
       </header>
-      
+
       <main>
-        {/* Hero Section — uses the business's hero image when provided */}
-        <section
-          className={styles.hero}
-          style={demo?.heroImage ? { background: `linear-gradient(rgba(28, 25, 23, 0.85), rgba(28, 25, 23, 0.95)), url('${demo.heroImage}') center/cover` } : undefined}
-        >
-          <div className={styles.heroContent}>
-            <h1>{businessName}.</h1>
-            <p>{pick(demo?.about, 'Professional services done right — quality work you can count on.')}</p>
-            <RatingBadge demo={demo} />
-            <div className={styles.heroButtons}>
-              <button className="btn-primary" style={{ background: 'var(--primary-color)', color: 'black' }}>Explore Services</button>
-              <button className={styles.btnSecondary}>Request a Quote</button>
-            </div>
-          </div>
-        </section>
+        <DemoHero
+          demo={demo}
+          businessName={businessName}
+          industry="construction"
+          layout="banner"
+          display="sans"
+          accent="#d97706"
+        />
 
         {/* Services Section */}
         <section id="services" className={styles.section}>
@@ -49,32 +45,46 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
             {demo?.services && demo.services.length > 0 ? (
               demo.services.map((service, i) => (
                 <div key={i} className={styles.card}>
-                  <div className={styles.cardIcon}>{service.icon || '🔧'}</div>
+                  <div className={styles.cardIcon} aria-hidden="true">
+                    <ServiceMark industry="construction" size={30} />
+                  </div>
                   <h3>{service.name}</h3>
                   <p>{service.description}</p>
                 </div>
               ))
-            ) : (
+            ) : isGeneric ? (
               <>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🏗️</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="construction" size={30} />
+              </div>
               <h3>Commercial Construction</h3>
               <p>Office buildings, retail spaces, and industrial facilities built to exact specifications.</p>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🏠</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="construction" size={30} />
+              </div>
               <h3>Residential Build</h3>
               <p>Custom homes, multi-family units, and large-scale residential developments.</p>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🔨</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="construction" size={30} />
+              </div>
               <h3>Renovation & Remodeling</h3>
               <p>Breathing new life into existing structures with modern upgrades.</p>
             </div>
               </>
+            ) : (
+              <p style={{ textAlign: 'center' }}>
+                A personalized service menu can be added here after the business confirms its details.
+              </p>
             )}
           </div>
         </section>
+
+        <DemoGallery demo={demo} title="Gallery" />
 
         {/* Why Choose Us Section — generic marketing claims only; never
             attribute unverified claims to a real business. */}
@@ -86,28 +96,36 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
           </div>
           <div className={styles.featuresGrid}>
             <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>🛡️</div>
+              <div className={styles.featureIcon} aria-hidden="true">
+                <ServiceMark industry="construction" size={30} />
+              </div>
               <div>
                 <h3>Licensed & Insured</h3>
                 <p>Fully compliant with all state and local building codes for your peace of mind.</p>
               </div>
             </div>
             <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>📅</div>
+              <div className={styles.featureIcon} aria-hidden="true">
+                <ServiceMark industry="construction" size={30} />
+              </div>
               <div>
                 <h3>On-Time Delivery</h3>
                 <p>We stick to our schedule and communicate progress every step of the way.</p>
               </div>
             </div>
             <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>💎</div>
+              <div className={styles.featureIcon} aria-hidden="true">
+                <ServiceMark industry="construction" size={30} />
+              </div>
               <div>
                 <h3>Quality Materials</h3>
                 <p>We source only the best materials to ensure structural integrity and longevity.</p>
               </div>
             </div>
             <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>👷</div>
+              <div className={styles.featureIcon} aria-hidden="true">
+                <ServiceMark industry="construction" size={30} />
+              </div>
               <div>
                 <h3>Expert Workforce</h3>
                 <p>Our team consists of highly skilled tradesmen and project managers.</p>
@@ -201,25 +219,57 @@ const ConstructionTemplate: React.FC<TemplateProps> = ({ businessName, demo }) =
         </section>
         )}
 
-        {/* Contact/Quote Section */}
+        {/* Contact/Quote Section — every line renders only from supplied
+            data. No fabricated address or phone. */}
         <section id="contact" className={styles.section}>
           <div className={styles.contactWrapper}>
             <div className={styles.contactInfo}>
               <h2>Get in Touch with {businessName}</h2>
               <p>Have a question or ready to get started? Reach out today.</p>
               <ul className={styles.contactList}>
-                <li>📍 {pick(demo?.address, "400 Industrial Parkway, Builder's Zone")}</li>
-                <li>📞 {pick(demo?.phone, '+1 (555) 321-7654')}</li>
-                {demo?.email && <li>✉️ {demo.email}</li>}
+                {demo?.address && <li>📍 {demo.address}</li>}
+                {demo?.phone && tel && (
+                  <li>
+                    📞 <a href={tel}>{demo.phone}</a>
+                  </li>
+                )}
+                {demo?.email && (
+                  <li>
+                    ✉️ <a href={`mailto:${demo.email}`}>{demo.email}</a>
+                  </li>
+                )}
                 {demo?.hours && <li>🕒 {demo.hours}</li>}
+                {isGeneric && (
+                  <>
+                    <li>📍 400 Industrial Parkway, Builder&apos;s Zone</li>
+                    <li>📞 +1 (555) 321-7654</li>
+                  </>
+                )}
               </ul>
             </div>
             <div className={styles.contactForm}>
-              <input type="text" placeholder="Your Name or Company" className={styles.input} />
-              <input type="email" placeholder="Email Address" className={styles.input} />
-              <input type="tel" placeholder="Phone Number" className={styles.input} />
-              <textarea placeholder="Project Details & Scope" className={styles.input} rows={4}></textarea>
-              <button className="btn-primary" style={{ width: '100%', background: 'var(--primary-color)', color: 'black' }}>Submit Request</button>
+              <h3>Your website, your style</h3>
+              <p>
+                This concept shows a possible layout. A finished website can include a confirmed
+                service menu, the business&apos;s own project photos, and its existing quote route.
+              </p>
+              <p>No quote request is submitted from this preview.</p>
+              {demo?.bookingUrl && (
+                <a
+                  href={demo.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                  style={{ textAlign: 'center', textDecoration: 'none', background: 'var(--primary-color)', color: 'black' }}
+                >
+                  Request a Quote
+                </a>
+              )}
+              {demo?.phone && tel && (
+                <a href={tel} className="btn-primary" style={{ textAlign: 'center', textDecoration: 'none', background: 'var(--primary-color)', color: 'black' }}>
+                  Call {demo.phone}
+                </a>
+              )}
             </div>
           </div>
         </section>

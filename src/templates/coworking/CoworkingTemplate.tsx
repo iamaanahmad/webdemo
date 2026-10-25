@@ -1,6 +1,7 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
-import { RatingBadge, pick } from '@/components/DemoBits';
+import { ServiceMark, pick } from '@/components/DemoBits';
+import DemoHero from '@/components/DemoHero';
 import styles from './Coworking.module.css';
 
 /**
@@ -25,14 +26,16 @@ const CoworkingTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
       {/* Top Banner */}
       <div className={styles.topBanner}>
         <span>
-          🌿 Welcome to {businessName}
+          Welcome to {businessName}
           {demo?.city ? ` — work and recharge in ${demo.city}` : ' — work, meet, meditate'}!
         </span>
       </div>
 
       <header className={styles.header}>
         <div className={styles.logo}>
-          <span className={styles.logoIcon}>🪴</span>
+          <span className={styles.logoIcon} aria-hidden="true">
+            <ServiceMark industry="coworking" size={24} />
+          </span>
           {businessName}
         </div>
         <nav className={styles.nav}>
@@ -46,37 +49,38 @@ const CoworkingTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
 
       <main>
         {/* Hero Section — uses the space's hero image when provided */}
-        <section
-          className={styles.hero}
-          style={demo?.heroImage ? { backgroundImage: `url('${demo.heroImage}')` } : undefined}
-        >
-          <div className={styles.heroOverlay}>
-            <div className={styles.heroContent}>
-              <span className={styles.heroTag}>Work • Meet • Meditate</span>
-              <h1>{businessName}.</h1>
-              <p>{pick(demo?.about, `Welcome to ${businessName} — a calm, focused workspace where you can do your best work and still leave with a clear head.`)}</p>
-              <RatingBadge demo={demo} />
-              <div className={styles.heroButtons}>
-                <button className={styles.btnPrimary}>Explore the Space</button>
-                <button className={styles.btnSecondary}>{demo?.phone ? `Call ${demo.phone}` : 'Get in Touch →'}</button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <DemoHero
+          demo={demo}
+          businessName={businessName}
+          industry="coworking"
+          layout="banner"
+          display="sans"
+          accent="#0d9488"
+        />
 
         {/* Highlights — neutral, claim-free */}
         <section className={styles.highlightsSection}>
           <div className={styles.highlightsGrid}>
             <div className={styles.highlightCard}>
-              <h3>💻</h3>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem' }} aria-hidden="true">
+                  <ServiceMark industry="coworking" size={30} />
+                </div>
               <p>Focused Workspaces</p>
             </div>
             <div className={styles.highlightCard}>
-              <h3>🧘</h3>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem' }} aria-hidden="true">
+                  <ServiceMark industry="coworking" size={30} />
+                </div>
               <p>Space to Recharge</p>
             </div>
             <div className={styles.highlightCard}>
-              <h3>{services ? services.length : '🤝'}</h3>
+              {services ? (
+                <h3>{services.length}</h3>
+              ) : (
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem' }} aria-hidden="true">
+                  <ServiceMark industry="coworking" size={30} />
+                </div>
+              )}
               <p>{services ? 'Spaces & Services' : 'Community Driven'}</p>
             </div>
             <div className={styles.highlightCard}>
@@ -96,34 +100,38 @@ const CoworkingTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
             {services ? (
               services.map((service, i) => (
                 <div key={i} className={styles.whyCard}>
-                  <div className={styles.whyIcon}>{service.icon || '🌿'}</div>
+                  <div className={styles.whyIcon}><ServiceMark industry="coworking" size={30} /></div>
                   <h3>{service.name}</h3>
                   <p>{service.description}</p>
                 </div>
               ))
-            ) : (
+            ) : isGeneric ? (
               <>
                 <div className={styles.whyCard}>
-                  <div className={styles.whyIcon}>💻</div>
+                  <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
                   <h3>Co-working Space</h3>
                   <p>Desk space and memberships in a focused, community-driven workspace.</p>
                 </div>
                 <div className={styles.whyCard}>
-                  <div className={styles.whyIcon}>🧘</div>
+                  <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
                   <h3>Meditation Room</h3>
                   <p>A quiet, private room to reset and recharge during your workday.</p>
                 </div>
                 <div className={styles.whyCard}>
-                  <div className={styles.whyIcon}>💬</div>
+                  <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
                   <h3>Meeting Rooms</h3>
                   <p>Space for team sessions, workshops and one-on-one conversations.</p>
                 </div>
                 <div className={styles.whyCard}>
-                  <div className={styles.whyIcon}>📈</div>
+                  <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
                   <h3>Business Coaching</h3>
                   <p>Guidance and community for founders and professionals building something.</p>
                 </div>
               </>
+            ) : (
+              <p style={{ textAlign: 'center' }}>
+                Details can be added here after the business confirms them.
+              </p>
             )}
           </div>
         </section>
@@ -153,31 +161,35 @@ const CoworkingTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
           <div className={styles.whyGrid}>
             <div className={styles.whyCard}>
-              <div className={styles.whyIcon}>📍</div>
+              <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
               <h3>Visit Us</h3>
               <p>{pick(demo?.address, `Based in ${demo?.city || 'the local area'} — easy to reach, easy to settle into.`)}</p>
             </div>
-            <div className={styles.whyCard}>
-              <div className={styles.whyIcon}>📞</div>
-              <h3>Call Us</h3>
-              <p>{pick(demo?.phone, 'Give us a ring — we are happy to help with any question.')}</p>
-            </div>
+            {demo?.phone && (
+              <div className={styles.whyCard}>
+                <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
+                <h3>Call Us</h3>
+                <p>
+                  <a href={`tel:${demo.phone.replace(/[^+0-9]/g, '')}`}>{demo.phone}</a>
+                </p>
+              </div>
+            )}
             {demo?.email ? (
               <div className={styles.whyCard}>
-                <div className={styles.whyIcon}>✉️</div>
+                <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
                 <h3>Email Us</h3>
                 <p>{demo.email}</p>
               </div>
             ) : (
               <div className={styles.whyCard}>
-                <div className={styles.whyIcon}>🌿</div>
+                <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
                 <h3>Work, Then Breathe</h3>
                 <p>Focus on your professional goals, then rest your mind — both matter here.</p>
               </div>
             )}
             {demo?.hours && (
               <div className={styles.whyCard}>
-                <div className={styles.whyIcon}>🕒</div>
+                <div className={styles.whyIcon} aria-hidden="true"><ServiceMark industry="coworking" size={30} /></div>
                 <h3>Opening Hours</h3>
                 <p>{demo.hours}</p>
               </div>
@@ -253,8 +265,26 @@ const CoworkingTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           <h2>Come Work Calm at {businessName}</h2>
           <p>Book a tour today{demo?.phone ? ` — reach us on ${demo.phone}` : ''}.</p>
           <div className={styles.ctaButtons}>
-            <button className={styles.btnCtaWhite}>Book a Tour</button>
-            <button className={styles.btnCtaOutline}>{demo?.phone ? `Call ${demo.phone}` : 'Call Now'}</button>
+            {demo?.bookingUrl && (
+              <a
+                href={demo.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.btnCtaWhite}
+                style={{ textDecoration: 'none' }}
+              >
+                Book a Tour
+              </a>
+            )}
+            {demo?.phone && (
+              <a
+                href={`tel:${demo.phone.replace(/[^+0-9]/g, '')}`}
+                className={styles.btnCtaOutline}
+                style={{ textDecoration: 'none' }}
+              >
+                Call {demo.phone}
+              </a>
+            )}
           </div>
         </section>
       </main>
@@ -263,11 +293,17 @@ const CoworkingTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
         <div className={styles.footerContent}>
           <div className={styles.footerInfo}>
             <div className={styles.logo} style={{ color: 'white', marginBottom: '1rem' }}>
-              <span className={styles.logoIcon}>🪴</span>
+              <span className={styles.logoIcon} aria-hidden="true">
+            <ServiceMark industry="coworking" size={24} />
+          </span>
               {businessName}
             </div>
             <p>📍 {pick(demo?.address, `Based in ${demo?.city || 'the local area'}`)}</p>
-            <p>📞 {pick(demo?.phone, 'Call us — we are happy to help')}</p>
+            {demo?.phone && (
+              <p>
+                📞 <a href={`tel:${demo.phone.replace(/[^+0-9]/g, '')}`}>{demo.phone}</a>
+              </p>
+            )}
             {demo?.email && <p>✉️ {demo.email}</p>}
             {demo?.hours && <p>🕒 {demo.hours}</p>}
           </div>
@@ -277,12 +313,6 @@ const CoworkingTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
               <a href="#services">Spaces</a>
               <a href="#about">About Us</a>
               <a href="#contact">Contact</a>
-            </div>
-            <div className={styles.footerLinks}>
-              <h4>Connect</h4>
-              <a href="#">Instagram</a>
-              <a href="#">Facebook</a>
-              <a href="#">Privacy Policy</a>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@
   min-height: 100vh;
   background-color: var(--background-color);
   color: var(--text-primary);
-  font-family: 'Times New Roman', Times, serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
 .topBar {
@@ -38,6 +38,7 @@
   color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  font-family: var(--font-playfair), Georgia, serif;
 }
 
 .nav {
@@ -111,6 +112,7 @@
   font-weight: 400;
   margin-bottom: 1.5rem;
   line-height: 1.1;
+  font-family: var(--font-playfair), Georgia, serif;
 }
 
 .heroContent p {
@@ -136,6 +138,31 @@
 }
 
 .heroBtn:hover { background: var(--accent-color); color: white; }
+
+a.heroBtn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.heroBtnRow {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.serviceMark {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.5rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+}
 
 /* Sections */
 .section {

@@ -89,6 +89,8 @@
   font-size: 3.75rem;
   font-weight: 900;
   line-height: 1.1;
+  font-family: var(--font-oswald), 'Arial Narrow', sans-serif;
+  text-transform: uppercase;
   text-transform: uppercase;
   letter-spacing: -0.05em;
   margin-bottom: 1.5rem;
@@ -170,6 +172,7 @@
   font-size: 2.5rem;
   font-weight: 900;
   text-transform: uppercase;
+  font-family: var(--font-oswald), 'Arial Narrow', sans-serif;
   letter-spacing: -0.05em;
 }
 
@@ -186,6 +189,8 @@
   background: white;
   box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08);
   transition: transform 0.3s ease;
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 .serviceBox:hover { transform: translateY(-5px); }
@@ -195,6 +200,15 @@
   background-size: cover;
   background-position: center;
   border-bottom: 4px solid var(--primary-color);
+}
+
+.serviceIconBox {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fef3c7;
+  color: var(--primary-color);
 }
 
 .serviceContent { padding: 2rem; }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
-import { RatingBadge, pick } from '@/components/DemoBits';
+import { ServiceMark, pick } from '@/components/DemoBits';
+import DemoHero from '@/components/DemoHero';
 import styles from './Services.module.css';
 
 /**
@@ -25,14 +26,16 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
       {/* Top Banner */}
       <div className={styles.topBanner}>
         <span>
-          ✨ Welcome to {businessName}
+          Welcome to {businessName}
           {demo?.city ? ` — proudly serving ${demo.city}` : ''}!
         </span>
       </div>
 
       <header className={styles.header}>
         <div className={styles.logo}>
-          <span className={styles.logoIcon}>🛠️</span>
+          <span className={styles.logoIcon} aria-hidden="true">
+            <ServiceMark industry="services" size={24} />
+          </span>
           {businessName}
         </div>
         <nav className={styles.nav}>
@@ -44,24 +47,14 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
       </header>
 
       <main>
-        {/* Hero Section — uses the business's hero image when provided */}
-        <section
-          className={styles.hero}
-          style={demo?.heroImage ? { backgroundImage: `url('${demo.heroImage}')` } : undefined}
-        >
-          <div className={styles.heroOverlay}>
-            <div className={styles.heroContent}>
-              <span className={styles.heroTag}>Quality • Trust • Service</span>
-              <h1>{businessName}.</h1>
-              <p>{pick(demo?.about, `Welcome to ${businessName} — professional services done right, at your convenience.`)}</p>
-              <RatingBadge demo={demo} />
-              <div className={styles.heroButtons}>
-                <button className={styles.btnPrimary}>Explore Services</button>
-                <button className={styles.btnSecondary}>Get in Touch →</button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <DemoHero
+          demo={demo}
+          businessName={businessName}
+          industry="services"
+          layout="banner"
+          display="sans"
+          accent="#059669"
+        />
 
         {/* Highlights Section */}
         <section className={styles.highlightsSection}>
@@ -99,34 +92,48 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
             {services ? (
               services.map((service, i) => (
                 <div key={i} className={styles.whyCard}>
-                  <div className={styles.whyIcon}>{service.icon || '✨'}</div>
+                  <div className={styles.whyIcon} aria-hidden="true">
+                    <ServiceMark industry="services" size={30} />
+                  </div>
                   <h3>{service.name}</h3>
                   <p>{service.description}</p>
                 </div>
               ))
-            ) : (
+            ) : isGeneric ? (
               <>
                 <div className={styles.whyCard}>
-                  <div className={styles.whyIcon}>💬</div>
+                  <div className={styles.whyIcon} aria-hidden="true">
+                    <ServiceMark industry="services" size={30} />
+                  </div>
                   <h3>Free Quote</h3>
                   <p>Tell us what you need and we will give you a clear, honest price — no pressure, no jargon.</p>
                 </div>
                 <div className={styles.whyCard}>
-                  <div className={styles.whyIcon}>📍</div>
+                  <div className={styles.whyIcon} aria-hidden="true">
+                    <ServiceMark industry="services" size={30} />
+                  </div>
                   <h3>At Your Convenience</h3>
                   <p>Mobile and on-site service that fits around your schedule, not the other way round.</p>
                 </div>
                 <div className={styles.whyCard}>
-                  <div className={styles.whyIcon}>🤝</div>
+                  <div className={styles.whyIcon} aria-hidden="true">
+                    <ServiceMark industry="services" size={30} />
+                  </div>
                   <h3>Personal Service</h3>
                   <p>Real humans who know their craft and genuinely care about doing a great job.</p>
                 </div>
                 <div className={styles.whyCard}>
-                  <div className={styles.whyIcon}>⭐</div>
+                  <div className={styles.whyIcon} aria-hidden="true">
+                    <ServiceMark industry="services" size={30} />
+                  </div>
                   <h3>Satisfaction Guaranteed</h3>
                   <p>We stand behind every service we provide — if it is not right, we make it right.</p>
                 </div>
               </>
+            ) : (
+              <p style={{ textAlign: 'center' }}>
+                Service details can be added here after the business confirms them.
+              </p>
             )}
           </div>
         </section>
@@ -156,23 +163,39 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
           <div className={styles.whyGrid}>
             <div className={styles.whyCard}>
-              <div className={styles.whyIcon}>📍</div>
+              <div className={styles.whyIcon} aria-hidden="true">
+                <ServiceMark industry="services" size={30} />
+              </div>
               <h3>Find Us</h3>
               <p>{pick(demo?.address, `Serving ${demo?.city || 'the local area'} — easy to reach, easy to love.`)}</p>
             </div>
-            <div className={styles.whyCard}>
-              <div className={styles.whyIcon}>📞</div>
-              <h3>Call Us</h3>
-              <p>{pick(demo?.phone, 'Give us a ring — we are happy to help with any question.')}</p>
-            </div>
-            <div className={styles.whyCard}>
-              <div className={styles.whyIcon}>✉️</div>
-              <h3>Email Us</h3>
-              <p>{pick(demo?.email, 'Drop us a message any time and we will get back to you promptly.')}</p>
-            </div>
+            {demo?.phone && (
+              <div className={styles.whyCard}>
+                <div className={styles.whyIcon} aria-hidden="true">
+                  <ServiceMark industry="services" size={30} />
+                </div>
+                <h3>Call Us</h3>
+                <p>
+                  <a href={`tel:${demo.phone.replace(/[^+0-9]/g, '')}`}>{demo.phone}</a>
+                </p>
+              </div>
+            )}
+            {demo?.email && (
+              <div className={styles.whyCard}>
+                <div className={styles.whyIcon} aria-hidden="true">
+                  <ServiceMark industry="services" size={30} />
+                </div>
+                <h3>Email Us</h3>
+                <p>
+                  <a href={`mailto:${demo.email}`}>{demo.email}</a>
+                </p>
+              </div>
+            )}
             {demo?.hours && (
               <div className={styles.whyCard}>
-                <div className={styles.whyIcon}>🕒</div>
+                <div className={styles.whyIcon} aria-hidden="true">
+                  <ServiceMark industry="services" size={30} />
+                </div>
                 <h3>Opening Hours</h3>
                 <p>{demo.hours}</p>
               </div>
@@ -243,13 +266,31 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
         </section>
 
-        {/* Call to Action */}
+        {/* Call to Action — real links only; no dead buttons */}
         <section id="contact" className={styles.ctaSection}>
           <h2>Book with {businessName}</h2>
           <p>Ready to get started? Reach out today{demo?.phone ? ` on ${demo.phone}` : ''}.</p>
           <div className={styles.ctaButtons}>
-            <button className={styles.btnCtaWhite}>Book Now</button>
-            <button className={styles.btnCtaOutline}>{demo?.phone ? `Call ${demo.phone}` : 'Call Now'}</button>
+            {demo?.bookingUrl && (
+              <a
+                href={demo.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.btnCtaWhite}
+                style={{ textDecoration: 'none' }}
+              >
+                Book Now
+              </a>
+            )}
+            {demo?.phone && (
+              <a
+                href={`tel:${demo.phone.replace(/[^+0-9]/g, '')}`}
+                className={styles.btnCtaOutline}
+                style={{ textDecoration: 'none' }}
+              >
+                Call {demo.phone}
+              </a>
+            )}
           </div>
         </section>
       </main>
@@ -258,12 +299,22 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
         <div className={styles.footerContent}>
           <div className={styles.footerInfo}>
             <div className={styles.logo} style={{ color: 'white', marginBottom: '1rem' }}>
-              <span className={styles.logoIcon}>🛠️</span>
+              <span className={styles.logoIcon} aria-hidden="true">
+                <ServiceMark industry="services" size={24} />
+              </span>
               {businessName}
             </div>
             <p>📍 {pick(demo?.address, `Serving ${demo?.city || 'the local area'}`)}</p>
-            <p>📞 {pick(demo?.phone, 'Call us — we are happy to help')}</p>
-            <p>✉️ {pick(demo?.email, `info@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>
+            {demo?.phone && (
+              <p>
+                📞 <a href={`tel:${demo.phone.replace(/[^+0-9]/g, '')}`}>{demo.phone}</a>
+              </p>
+            )}
+            {demo?.email && (
+              <p>
+                ✉️ <a href={`mailto:${demo.email}`}>{demo.email}</a>
+              </p>
+            )}
             {demo?.hours && <p>🕒 {demo.hours}</p>}
           </div>
           <div className={styles.footerLinksGroup}>
@@ -272,12 +323,6 @@ const ServicesTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
               <a href="#about">About Us</a>
               <a href="#services">Services</a>
               <a href="#contact">Contact</a>
-            </div>
-            <div className={styles.footerLinks}>
-              <h4>Connect</h4>
-              <a href="#">Instagram</a>
-              <a href="#">Facebook</a>
-              <a href="#">Privacy Policy</a>
             </div>
           </div>
         </div>

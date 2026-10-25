@@ -240,9 +240,10 @@
 }
 
 .amenityIcon {
-  font-size: 3rem;
-  display: block;
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
+  color: #fff;
 }
 
 .amenityItem h4 {
@@ -419,4 +420,11 @@
     gap: 1rem;
     text-align: center;
   }
+}
+
+/* Service-mark header for real-service room cards (no invented room photos) */
+.cardMark {
+  padding: 2.5rem 2rem 0;
+  color: var(--accent-color, #d4af37);
+  display: flex;
 }

@@ -137,8 +137,10 @@
 }
 
 .cardIcon {
-  font-size: 3rem;
+  color: var(--primary-color);
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .card h3 {
@@ -166,12 +168,12 @@
 }
 
 .featureIcon {
-  font-size: 2.5rem;
   background: white;
   padding: 1rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   color: var(--primary-color);
+  display: flex;
 }
 
 .featureItem h3 {

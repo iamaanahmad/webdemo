@@ -1,0 +1,221 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background-color: #111827;
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 7rem 5% 6rem;
+  min-height: 540px;
+}
+
+.full {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 5%;
+  min-height: 92vh;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.42) 55%, rgba(0, 0, 0, 0.62) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.heroContent h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+}
+
+.serif .heroContent h1 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.condensed .heroContent h1 {
+  font-family: var(--font-oswald), 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.subhead {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  opacity: 0.92;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.btnPrimary,
+.btnOutline,
+.btnGhost {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+}
+
+.btnPrimary {
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.btnOutline {
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btnOutline:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.btnGhost {
+  color: #fff;
+  border: 1.5px solid transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Split layout: text + photo side by side (light background, dark text) */
+.split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 560px;
+  background: #fff;
+  color: #111827;
+}
+
+.splitText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 6%;
+}
+
+.split .heroContent {
+  margin: 0;
+  text-align: left;
+}
+
+.split .heroButtons {
+  justify-content: flex-start;
+}
+
+.split .btnOutline {
+  color: #111827;
+  border-color: #111827;
+  background: transparent;
+}
+
+.split .btnOutline:hover {
+  background: rgba(17, 24, 39, 0.06);
+}
+
+.split .btnGhost {
+  color: #111827;
+}
+
+.splitPhoto {
+  min-height: 320px;
+}
+
+.splitPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.contactHint {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+
+.contactHint a {
+  color: inherit;
+  opacity: 0.7;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 5rem 5% 4rem;
+    min-height: 460px;
+  }
+
+  .full {
+    min-height: 78vh;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .heroButtons a {
+    text-align: center;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .splitText {
+    padding: 3rem 5%;
+  }
+
+  .splitPhoto {
+    min-height: 260px;
+    order: -1;
+  }
+}

@@ -45,6 +45,10 @@ export type BusinessDemoData = {
   reviewSource?: string;
   /** 1-2 sentence about blurb written from the GBP listing */
   about?: string;
+  /** Short tagline supplied by the sweep, e.g. "Elevated colour, done properly" */
+  tagline?: string;
+  /** Where bookings actually happen (Fresha/Timely/Setmore/own site link). Never invented. */
+  bookingUrl?: string;
   /** Real services offered, taken from the GBP categories/services */
   services?: DemoService[];
   /** Opening hours summary, e.g. "Mon-Sat: 9:00 AM - 8:00 PM" */
@@ -60,6 +64,39 @@ export function demoSlug(raw: string): string {
   return decodeURIComponent(raw)
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '');
+}
+
+/**
+ * Per-industry fallback hero photos (verified Wikimedia Commons stock, 200
+ * image/*). Used when a demo has no heroImage of its own, so every page —
+ * and every WhatsApp/OG preview — still shows a relevant photo instead of a
+ * flat gradient. These are illustrative stock, never presented as the
+ * business's own photos.
+ */
+const FALLBACK_HERO_IMAGES: Record<string, string> = {
+  salon:
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Manicure_in_Simplicity.jpg/1280px-Manicure_in_Simplicity.jpg',
+  clinic:
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Physical_examinations_%28997009452457605171.jpg/1280px-Physical_examinations_%28997009452457605171.jpg',
+  restaurant:
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Birks_Restaurant%2C_Santa_Clara%2C_CA%2C_USA_%286613629377%29.jpg/1280px-Birks_Restaurant%2C_Santa_Clara%2C_CA%2C_USA_%286613629377%29.jpg',
+  hotel:
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Swimming_pool_and_main_building_of_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg/1280px-Swimming_pool_and_main_building_of_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg',
+  education:
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Peter_Pace_speaking_with_Wharton_business_students_during_a_lecture_at_the_University_of_Pennsylvania_%28061128-F-0193C-006%29.jpg/1280px-Peter_Pace_speaking_with_Wharton_business_students_during_a_lecture_at_the_University_of_Pennsylvania_%28061128-F-0193C-006%29.jpg',
+  construction:
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/New_building_Pilsonu_Street%2C_13_WMID4565627_241.jpg/1280px-New_building_Pilsonu_Street%2C_13_WMID4565627_241.jpg',
+  gym: 'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Health_club_in_Gothenburg_Sweden_in_March_2025.jpg/1280px-Health_club_in_Gothenburg_Sweden_in_March_2025.jpg',
+  coworking:
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/My_new_workspace_%283810862061%29.jpg/1280px-My_new_workspace_%283810862061%29.jpg',
+  services:
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/DFC_4703_A_mechanic_works_on_a_motorcycle_engine_on_the_workshop_floor_focused_on_repairing_the_bike_amid_tools_and_parts.jpg/1280px-DFC_4703_A_mechanic_works_on_a_motorcycle_engine_on_the_workshop_floor_focused_on_repairing_the_bike_amid_tools_and_parts.jpg',
+};
+
+export function fallbackHeroImage(industry: string): string {
+  return (
+    FALLBACK_HERO_IMAGES[industry] ?? FALLBACK_HERO_IMAGES.services
+  );
 }
 
 /**

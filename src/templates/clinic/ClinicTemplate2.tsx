@@ -1,10 +1,15 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
-import { RatingBadge, pick } from '@/components/DemoBits';
+import { ServiceMark } from '@/components/DemoBits';
+import DemoHero from '@/components/DemoHero';
+import DemoGallery from '@/components/DemoGallery';
+import { fallbackHeroImage } from '../demo-data';
 import styles from './Clinic2.module.css';
 
 const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   const isGeneric = !demo;
+  const tel = demo?.phone ? `tel:${demo.phone.replace(/[^+0-9]/g, '')}` : null;
+  const photo = demo?.heroImage || fallbackHeroImage('clinic');
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -22,20 +27,14 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
       </header>
 
       <main>
-        {/* Modern Split Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            {isGeneric && <span className={styles.heroTag}>Trusted by 10,000+ Patients</span>}
-            <h1>Modern Healthcare, Delivered With Compassion.</h1>
-            <p>{pick(demo?.about, `Welcome to ${businessName}. We blend advanced medical technology with a personalized approach to ensure you receive the best care possible.`)}</p>
-            <RatingBadge demo={demo} />
-            <div className={styles.heroButtons}>
-              <button className={styles.btnPrimary}>Schedule Visit</button>
-              <button className={styles.btnSecondary}>Our Specialists</button>
-            </div>
-          </div>
-          <div className={styles.heroImage}></div>
-        </section>
+        <DemoHero
+          demo={demo}
+          businessName={businessName}
+          industry="clinic"
+          layout="split"
+          display="sans"
+          accent="#3b82f6"
+        />
 
         {/* Stats Strip — generic demos only; never attribute invented stats to a real business */}
         {isGeneric && (
@@ -59,28 +58,37 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
         </section>
         )}
 
-        {/* About Section */}
+        {/* About Section — real copy only from the demo; showcase claims stay generic-only */}
         <section id="about" className={styles.section}>
           <div className={styles.aboutGrid}>
-            <div className={styles.aboutImage} style={{ backgroundImage: "url('https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80')" }}></div>
+            <div className={styles.aboutImage} style={{ backgroundImage: `url(${photo})` }}></div>
             <div className={styles.aboutContent}>
               <h2>About {businessName}</h2>
-              <p>Founded with a mission to make quality healthcare accessible, {businessName} has grown into a multi-specialty clinic trusted by thousands of families.</p>
-              <p>Our state-of-the-art facility combines cutting-edge diagnostics with compassionate care, ensuring every patient receives personalized attention from consultation to recovery.</p>
-              <div className={styles.aboutFeatures}>
-                <div className={styles.aboutFeature}>
-                  <span>✓</span> NABH Accredited
-                </div>
-                <div className={styles.aboutFeature}>
-                  <span>✓</span> Cashless Insurance
-                </div>
-                <div className={styles.aboutFeature}>
-                  <span>✓</span> Digital Health Records
-                </div>
-                <div className={styles.aboutFeature}>
-                  <span>✓</span> Same-Day Reports
-                </div>
-              </div>
+              {demo?.about ? (
+                <>
+                  <p>{demo.about}</p>
+                  {demo?.hours && <p>{demo.hours}</p>}
+                </>
+              ) : (
+                <>
+                  <p>Founded with a mission to make quality healthcare accessible, {businessName} has grown into a multi-specialty clinic trusted by thousands of families.</p>
+                  <p>Our state-of-the-art facility combines cutting-edge diagnostics with compassionate care, ensuring every patient receives personalized attention from consultation to recovery.</p>
+                  <div className={styles.aboutFeatures}>
+                    <div className={styles.aboutFeature}>
+                      <span>✓</span> NABH Accredited
+                    </div>
+                    <div className={styles.aboutFeature}>
+                      <span>✓</span> Cashless Insurance
+                    </div>
+                    <div className={styles.aboutFeature}>
+                      <span>✓</span> Digital Health Records
+                    </div>
+                    <div className={styles.aboutFeature}>
+                      <span>✓</span> Same-Day Reports
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>
@@ -95,47 +103,67 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
             {demo?.services && demo.services.length > 0 ? (
               demo.services.map((service, i) => (
                 <div key={i} className={styles.serviceCard}>
-                  <div className={styles.serviceIcon}>{service.icon || '✨'}</div>
+                  <div className={styles.serviceIcon} aria-hidden="true">
+                    <ServiceMark industry="clinic" size={30} />
+                  </div>
                   <h3>{service.name}</h3>
                   <p>{service.description}</p>
                 </div>
               ))
-            ) : (
+            ) : isGeneric ? (
               <>
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>⚕️</div>
+              <div className={styles.serviceIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>Internal Medicine</h3>
               <p>Comprehensive adult care focusing on the prevention, diagnosis, and treatment of complex diseases.</p>
             </div>
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>❤️</div>
+              <div className={styles.serviceIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>Cardiology</h3>
               <p>Advanced cardiovascular screening, ECG, Echo, and treatment by top-rated heart specialists.</p>
             </div>
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>🧠</div>
+              <div className={styles.serviceIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>Neurology</h3>
               <p>Cutting-edge diagnostics and therapies for neurological conditions and disorders.</p>
             </div>
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>🦴</div>
+              <div className={styles.serviceIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>Orthopedics</h3>
               <p>Expert care for bones, joints, ligaments, tendons, and muscles to keep you moving.</p>
             </div>
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>👶</div>
+              <div className={styles.serviceIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>Pediatrics</h3>
               <p>Gentle, compassionate care for infants, children, and adolescents by child specialists.</p>
             </div>
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>🔬</div>
+              <div className={styles.serviceIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>Diagnostics & Lab</h3>
               <p>In-house pathology, radiology, and advanced imaging for accurate and fast results.</p>
             </div>
               </>
+            ) : (
+              <p style={{ textAlign: 'center' }}>
+                A personalized service menu can be added here after the practice confirms its details.
+              </p>
             )}
           </div>
         </section>
+
+        <DemoGallery demo={demo} title="Gallery" />
 
         {/* Doctors Section — generic demos only; never invent staff for a real business */}
         {isGeneric && (
@@ -208,44 +236,83 @@ const ClinicTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
         </section>
         )}
 
-        {/* Contact / Appointment */}
+        {/* Contact / Appointment — every line renders only from supplied
+            data. No fabricated address, phone, hours, or email. */}
         <section id="contact" className={styles.section}>
           <div className={styles.contactGrid}>
             <div className={styles.contactInfo}>
               <h2>Book an Appointment</h2>
               <p>Take the first step towards better health. Walk-ins welcome, appointments preferred.</p>
               <div className={styles.contactDetails}>
-                <div className={styles.contactItem}>
-                  <span>📍</span>
-                  <p>{pick(demo?.address, '123 Health Avenue, Medical District')}</p>
-                </div>
-                <div className={styles.contactItem}>
-                  <span>📞</span>
-                  <p>{pick(demo?.phone, '+91 98765 43210')}</p>
-                </div>
-                <div className={styles.contactItem}>
-                  <span>🕐</span>
-                  <p>{pick(demo?.hours, 'Mon-Sat: 8am - 9pm | Sun: 9am - 2pm')}</p>
-                </div>
-                <div className={styles.contactItem}>
-                  <span>✉️</span>
-                  <p>{pick(demo?.email, `care@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</p>
-                </div>
+                {demo?.address && (
+                  <div className={styles.contactItem}>
+                    <span>📍</span>
+                    <p>{demo.address}</p>
+                  </div>
+                )}
+                {demo?.phone && tel && (
+                  <div className={styles.contactItem}>
+                    <span>📞</span>
+                    <p>
+                      <a href={tel}>{demo.phone}</a>
+                    </p>
+                  </div>
+                )}
+                {demo?.hours && (
+                  <div className={styles.contactItem}>
+                    <span>🕐</span>
+                    <p>{demo.hours}</p>
+                  </div>
+                )}
+                {demo?.email && (
+                  <div className={styles.contactItem}>
+                    <span>✉️</span>
+                    <p>
+                      <a href={`mailto:${demo.email}`}>{demo.email}</a>
+                    </p>
+                  </div>
+                )}
+                {isGeneric && (
+                  <>
+                    <div className={styles.contactItem}>
+                      <span>📍</span>
+                      <p>123 Health Avenue, Medical District</p>
+                    </div>
+                    <div className={styles.contactItem}>
+                      <span>📞</span>
+                      <p>+91 98765 43210</p>
+                    </div>
+                    <div className={styles.contactItem}>
+                      <span>🕐</span>
+                      <p>Mon-Sat: 8am - 9pm | Sun: 9am - 2pm</p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <div className={styles.contactForm}>
-              <input type="text" placeholder="Full Name" className={styles.input} />
-              <input type="tel" placeholder="Phone Number" className={styles.input} />
-              <select className={styles.input} defaultValue="">
-                <option value="" disabled>Select Department</option>
-                <option>Internal Medicine</option>
-                <option>Cardiology</option>
-                <option>Neurology</option>
-                <option>Orthopedics</option>
-                <option>Pediatrics</option>
-              </select>
-              <input type="date" className={styles.input} />
-              <button className={styles.btnPrimary} style={{ width: '100%' }}>Confirm Booking</button>
+              <h3>Your website, your style</h3>
+              <p>
+                This concept shows a possible layout. A finished website can include a confirmed
+                service menu, the practice&apos;s own photos, and its existing booking route.
+              </p>
+              <p>No booking request is submitted from this preview.</p>
+              {demo?.bookingUrl && (
+                <a
+                  href={demo.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.btnPrimary}
+                  style={{ textAlign: 'center', textDecoration: 'none' }}
+                >
+                  Book Online
+                </a>
+              )}
+              {demo?.phone && tel && (
+                <a href={tel} className={styles.btnPrimary} style={{ textAlign: 'center', textDecoration: 'none' }}>
+                  Call {demo.phone}
+                </a>
+              )}
             </div>
           </div>
         </section>

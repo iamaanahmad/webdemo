@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getTemplateForIndustry, getIndustryVariants } from '@/templates/registry';
-import { getDemoData, resolveIndustry } from '@/templates/demo-data';
+import { getDemoData, resolveIndustry, fallbackHeroImage } from '@/templates/demo-data';
 import DemoSwitcher from '@/components/DemoSwitcher';
 
 // Using Next.js 15+ async params
@@ -40,11 +40,31 @@ export async function generateMetadata({ params }: PageProps) {
   // Prefer the verified name from the demo data over the slug-derived one
   // (e.g. "619 Boxing Gym", not "619Boxing Gym").
   const displayName = demo?.businessName || formattedName;
+  const description =
+    demo?.about ?? `Welcome to ${displayName}${city}. The best ${industry} in town.`;
+  // WhatsApp/OG preview image: the business's own hero photo when the demo
+  // has one, otherwise a relevant per-industry stock photo. Absolute URL
+  // (via metadataBase) so link previews render it.
+  const ogImage = demo?.heroImage || fallbackHeroImage(industrySlug);
+  const pageUrl = `https://demo.cit.org.in/${industry}/${businessName}`;
 
   return {
     title: `${displayName} | Premium ${industry} Services`,
-    description:
-      demo?.about ?? `Welcome to ${displayName}${city}. The best ${industry} in town.`,
+    description,
+    openGraph: {
+      title: `${displayName} | Premium ${industry} Services`,
+      description,
+      url: pageUrl,
+      siteName: 'Demo Websites',
+      type: 'website',
+      images: [{ url: ogImage, alt: displayName }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${displayName} | Premium ${industry} Services`,
+      description,
+      images: [ogImage],
+    },
   };
 }
 

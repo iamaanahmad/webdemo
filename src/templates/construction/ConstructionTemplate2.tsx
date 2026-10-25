@@ -1,17 +1,34 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
-import { RatingBadge, pick } from '@/components/DemoBits';
+import { ServiceMark } from '@/components/DemoBits';
+import DemoHero from '@/components/DemoHero';
+import DemoGallery from '@/components/DemoGallery';
 import styles from './Construction2.module.css';
 
 const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) => {
   const isGeneric = !demo;
+  const tel = demo?.phone ? `tel:${demo.phone.replace(/[^+0-9]/g, '')}` : null;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.headerTop}>
           <div className={styles.contactBar}>
-            <span>📞 {pick(demo?.phone, '(555) 987-6543')}</span>
-            <span>✉️ {pick(demo?.email, `info@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</span>
+            {demo?.phone && tel && (
+              <span>
+                📞 <a href={tel}>{demo.phone}</a>
+              </span>
+            )}
+            {demo?.email && (
+              <span>
+                ✉️ <a href={`mailto:${demo.email}`}>{demo.email}</a>
+              </span>
+            )}
+            {isGeneric && (
+              <>
+                <span>📞 (555) 987-6543</span>
+                <span>✉️ info@example.com</span>
+              </>
+            )}
           </div>
           <div className={styles.socialBar}>
             <span>in</span>
@@ -23,7 +40,7 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
           <div className={styles.logo}>{businessName}</div>
           <nav className={styles.nav}>
             <a href="#services">Services</a>
-            <a href="#projects">Projects</a>
+            {isGeneric && <a href="#projects">Projects</a>}
             <a href="#process">Process</a>
             {isGeneric && <a href="#testimonials">Reviews</a>}
             <a href="#contact" className={styles.navCta}>Get Quote</a>
@@ -32,34 +49,14 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
       </header>
 
       <main>
-        {/* Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <h1>Solid Foundations. <br/> Exceptional Builds.</h1>
-            <p>{pick(demo?.about, `From commercial high-rises to residential developments, ${businessName} delivers unmatched quality, precision, and on-time project delivery.`)}</p>
-            <RatingBadge demo={demo} />
-            <div className={styles.heroButtons}>
-              <button className={styles.btnPrimary}>Start Your Project</button>
-              <button className={styles.btnOutline}>View Portfolio</button>
-            </div>
-          </div>
-          {isGeneric && (
-          <div className={styles.heroStats}>
-            <div className={styles.statBox}>
-              <h3>15+</h3>
-              <p>Years Experience</p>
-            </div>
-            <div className={styles.statBox}>
-              <h3>200+</h3>
-              <p>Projects Completed</p>
-            </div>
-            <div className={styles.statBox}>
-              <h3>100%</h3>
-              <p>Safety Record</p>
-            </div>
-          </div>
-          )}
-        </section>
+        <DemoHero
+          demo={demo}
+          businessName={businessName}
+          industry="construction"
+          layout="split"
+          display="condensed"
+          accent="#dc2626"
+        />
 
         {/* Services Section */}
         <section id="services" className={styles.section}>
@@ -68,24 +65,47 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
             <h2>Core Services</h2>
           </div>
           <div className={styles.servicesGrid}>
-            {(demo?.services && demo.services.length > 0 ? demo.services : [
-              { name: 'Commercial Build-Outs', description: 'Retail spaces, office buildings, and industrial facilities built to exact specifications and timelines.' },
-              { name: 'Residential Construction', description: 'Custom homes, villas, and large-scale residential developments with premium finishes.' },
-              { name: 'Heavy Civil & Infrastructure', description: 'Roads, bridges, earthmoving, and large-scale infrastructure projects.' },
-            ]).map((service, i) => (
-              <div key={i} className={styles.serviceBox}>
-                <div className={styles.serviceImage} style={{ backgroundImage: `url('https://images.unsplash.com/${['photo-1503387762-592deb58ef4e', 'photo-1600596542815-ffad4c1539a9', 'photo-1589939705384-5185137a7f0f'][i % 3]}?w=600&q=80&auto=format&fit=crop')` }}></div>
-                <div className={styles.serviceContent}>
-                  <h3>{service.name}</h3>
-                  <p>{service.description}</p>
-                  <a href="#contact" className={styles.serviceLink}>Learn More →</a>
+            {demo?.services && demo.services.length > 0 ? (
+              demo.services.map((service, i) => (
+                <div key={i} className={styles.serviceBox}>
+                  <div className={styles.serviceIconBox} aria-hidden="true">
+                    <ServiceMark industry="construction" size={36} />
+                  </div>
+                  <div className={styles.serviceContent}>
+                    <h3>{service.name}</h3>
+                    <p>{service.description}</p>
+                    <a href="#contact" className={styles.serviceLink}>Learn More →</a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : isGeneric ? (
+              [
+                { name: 'Commercial Build-Outs', description: 'Retail spaces, office buildings, and industrial facilities built to exact specifications and timelines.' },
+                { name: 'Residential Construction', description: 'Custom homes, villas, and large-scale residential developments with premium finishes.' },
+                { name: 'Heavy Civil & Infrastructure', description: 'Roads, bridges, earthmoving, and large-scale infrastructure projects.' },
+              ].map((service, i) => (
+                <div key={i} className={styles.serviceBox}>
+                  <div className={styles.serviceImage} style={{ backgroundImage: `url('https://images.unsplash.com/${['photo-1503387762-592deb58ef4e', 'photo-1600596542815-ffad4c1539a9', 'photo-1589939705384-5185137a7f0f'][i % 3]}?w=600&q=80&auto=format&fit=crop')` }}></div>
+                  <div className={styles.serviceContent}>
+                    <h3>{service.name}</h3>
+                    <p>{service.description}</p>
+                    <a href="#contact" className={styles.serviceLink}>Learn More →</a>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p style={{ textAlign: 'center' }}>
+                A personalized service menu can be added here after the business confirms its details.
+              </p>
+            )}
           </div>
         </section>
 
-        {/* Projects Gallery */}
+        <DemoGallery demo={demo} title="Gallery" />
+
+        {/* Projects Gallery — generic demos only; never invent projects,
+            values, or clients for a real business */}
+        {isGeneric && (
         <section id="projects" className={styles.projectsSection}>
           <div className={styles.sectionHeader}>
             <span className={styles.tag} style={{ background: 'white', color: 'var(--primary-color)' }}>Portfolio</span>
@@ -115,6 +135,7 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
             </div>
           </div>
         </section>
+        )}
 
         {/* Process */}
         <section id="process" className={styles.processSection}>
@@ -170,15 +191,37 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
         </section>
         )}
 
-        {/* CTA + Contact */}
+        {/* CTA + Contact — honest panel; no dead form, no invented details */}
         <section id="contact" className={styles.ctaSection}>
           <h2>Ready to Break Ground?</h2>
           <p>Contact {businessName} today for a free consultation and project estimation.</p>
           <div className={styles.ctaForm}>
-            <input type="text" placeholder="Your Name / Company" className={styles.ctaInput} />
-            <input type="tel" placeholder="Phone Number" className={styles.ctaInput} />
-            <input type="email" placeholder="Email Address" className={styles.ctaInput} />
-            <button className={styles.ctaBtn}>Submit Request</button>
+            {demo?.bookingUrl && (
+              <a
+                href={demo.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.ctaBtn}
+                style={{ textDecoration: 'none', textAlign: 'center' }}
+              >
+                Request a Quote
+              </a>
+            )}
+            {demo?.phone && tel && (
+              <a href={tel} className={styles.ctaBtn} style={{ textDecoration: 'none', textAlign: 'center' }}>
+                Call {demo.phone}
+              </a>
+            )}
+            {demo?.email && (
+              <a href={`mailto:${demo.email}`} className={styles.ctaBtn} style={{ textDecoration: 'none', textAlign: 'center' }}>
+                Email Us
+              </a>
+            )}
+            {!demo?.bookingUrl && !demo?.phone && !demo?.email && (
+              <p style={{ color: 'white' }}>
+                This concept shows a possible layout. No request is submitted from this preview.
+              </p>
+            )}
           </div>
         </section>
       </main>
@@ -186,12 +229,13 @@ const ConstructionTemplate2: React.FC<TemplateProps> = ({ businessName, demo }) 
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.logo} style={{ color: 'white' }}>{businessName}</div>
-          <p className={styles.footerAddress}>📍 {pick(demo?.address, '456 Industrial Blvd, Builders Park')}</p>
+          {demo?.address && <p className={styles.footerAddress}>📍 {demo.address}</p>}
           {demo?.phone && <p className={styles.footerAddress}>📞 {demo.phone}</p>}
+          {isGeneric && <p className={styles.footerAddress}>📍 456 Industrial Blvd, Builders Park</p>}
           <div className={styles.footerLinks}>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Careers</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
           </div>
           <p className={styles.credit}>
             Designed and Developed by <a href="https://www.cit.org.in" target="_blank" rel="noopener noreferrer">Centre for Information Technology</a>

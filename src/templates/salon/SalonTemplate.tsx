@@ -1,5 +1,8 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
+import { ServiceMark } from '@/components/DemoBits';
+import DemoHero from '@/components/DemoHero';
+import DemoGallery from '@/components/DemoGallery';
 import styles from './Salon.module.css';
 
 /** A concept preview, not an operating business website. Only supplied facts render. */
@@ -18,17 +21,14 @@ const SalonTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
         </nav>
       </header>
       <main>
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <h1>{name}</h1>
-            {demo?.city && <p>{demo.city}</p>}
-            {demo?.about && <p>{demo.about}</p>}
-            <div className={styles.heroButtons}>
-              <a href="#services" className="btn-primary">Explore Services</a>
-              <a href="#contact" className={styles.btnSecondary}>Contact Details</a>
-            </div>
-          </div>
-        </section>
+        <DemoHero
+          demo={demo}
+          businessName={businessName}
+          industry="salon"
+          layout="banner"
+          display="serif"
+          accent="#be185d"
+        />
         <section id="services" className={styles.section}>
           <div className={styles.sectionHeader}>
             <h2>Services</h2>
@@ -36,11 +36,14 @@ const SalonTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
           {demo?.services?.length ? <div className={styles.grid}>
             {demo.services.map((service, i) => <div key={i} className={styles.card}>
-              <div className={styles.cardIcon} aria-hidden="true">{service.icon || '✦'}</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="salon" size={30} />
+              </div>
               <h3>{service.name}</h3><p>{service.description}</p>
             </div>)}
           </div> : <p style={{textAlign: 'center'}}>A personalized service menu can be added here after the business confirms its details.</p>}
         </section>
+        <DemoGallery demo={demo} title="Gallery" />
         <section id="contact" className={`${styles.section} ${styles.bgLight}`}>
           <div className={styles.contactWrapper}>
             <div className={styles.contactInfo}>

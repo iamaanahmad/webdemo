@@ -1,10 +1,13 @@
 import React from 'react';
 import { TemplateProps } from '../registry';
-import { RatingBadge, pick } from '@/components/DemoBits';
+import { ServiceMark } from '@/components/DemoBits';
+import DemoHero from '@/components/DemoHero';
+import DemoGallery from '@/components/DemoGallery';
 import styles from './Clinic.module.css';
 
 const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
   const isGeneric = !demo;
+  const tel = demo?.phone ? `tel:${demo.phone.replace(/[^+0-9]/g, '')}` : null;
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -19,18 +22,14 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
       </header>
 
       <main>
-        {/* Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.heroContent}>
-            <h1>Premium Healthcare at {businessName}</h1>
-            <p>{pick(demo?.about, 'Your health is our priority. Experience world-class medical care with compassion, excellence, and the latest technology.')}</p>
-            <RatingBadge demo={demo} />
-            <div className={styles.heroButtons}>
-              <button className="btn-primary">Book Your Visit</button>
-              <button className={styles.btnSecondary}>Learn More</button>
-            </div>
-          </div>
-        </section>
+        <DemoHero
+          demo={demo}
+          businessName={businessName}
+          industry="clinic"
+          layout="banner"
+          display="sans"
+          accent="#0d9488"
+        />
 
         {/* Services Section */}
         <section id="services" className={styles.section}>
@@ -42,34 +41,50 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
             {demo?.services && demo.services.length > 0 ? (
               demo.services.map((service, i) => (
                 <div key={i} className={styles.card}>
-                  <div className={styles.cardIcon}>{service.icon || '✨'}</div>
+                  <div className={styles.cardIcon} aria-hidden="true">
+                    <ServiceMark industry="clinic" size={30} />
+                  </div>
                   <h3>{service.name}</h3>
                   <p>{service.description}</p>
                 </div>
               ))
-            ) : (
+            ) : isGeneric ? (
               <>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🩺</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>General Practice</h3>
               <p>Routine checkups, preventive care, and treatment for common illnesses.</p>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>🧠</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>Neurology</h3>
               <p>Expert diagnosis and treatment of nervous system disorders.</p>
             </div>
             <div className={styles.card}>
-              <div className={styles.cardIcon}>👶</div>
+              <div className={styles.cardIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <h3>Pediatrics</h3>
               <p>Compassionate care for infants, children, and adolescents.</p>
             </div>
               </>
+            ) : (
+              <p style={{ textAlign: 'center' }}>
+                A personalized service menu can be added here after the practice confirms its details.
+              </p>
             )}
           </div>
         </section>
 
-        {/* Why Choose Us Section */}
+        <DemoGallery demo={demo} title="Gallery" />
+
+        {/* Why Choose Us Section — showcase copy only; never claim awards or
+            wait times for a real practice without verified facts */}
+        {isGeneric && (
         <section id="why-us" className={`${styles.section} ${styles.bgLight}`}>
           <div className={styles.sectionHeader}>
             <h2>Why Choose {businessName}?</h2>
@@ -77,28 +92,36 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
           </div>
           <div className={styles.featuresGrid}>
             <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>⏱️</div>
+              <div className={styles.featureIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <div>
                 <h3>No Wait Times</h3>
                 <p>We respect your schedule with prompt, on-time appointments.</p>
               </div>
             </div>
             <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>🔬</div>
+              <div className={styles.featureIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <div>
                 <h3>Modern Technology</h3>
                 <p>State-of-the-art medical equipment for accurate diagnostics.</p>
               </div>
             </div>
             <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>🤝</div>
+              <div className={styles.featureIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <div>
                 <h3>Compassionate Care</h3>
                 <p>Our staff treats every patient like family.</p>
               </div>
             </div>
             <div className={styles.featureItem}>
-              <div className={styles.featureIcon}>🏆</div>
+              <div className={styles.featureIcon} aria-hidden="true">
+                <ServiceMark industry="clinic" size={30} />
+              </div>
               <div>
                 <h3>Award-Winning Doctors</h3>
                 <p>Top-rated medical professionals with decades of experience.</p>
@@ -106,6 +129,7 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
             </div>
           </div>
         </section>
+        )}
 
         {/* Doctors Section — generic demos only; never invent staff for a real business */}
         {isGeneric && (
@@ -161,29 +185,57 @@ const ClinicTemplate: React.FC<TemplateProps> = ({ businessName, demo }) => {
         </section>
         )}
 
-        {/* Contact/Appointment Section */}
+        {/* Contact/Appointment Section — every line renders only from
+            supplied data. No fabricated address, phone, or email. */}
         <section id="contact" className={styles.section}>
           <div className={styles.contactWrapper}>
             <div className={styles.contactInfo}>
               <h2>Book an Appointment</h2>
               <p>Take the first step towards better health. Schedule your visit today.</p>
               <ul className={styles.contactList}>
-                <li>📍 {pick(demo?.address, '123 Health Avenue, Medical District')}</li>
-                <li>📞 {pick(demo?.phone, '+1 (555) 123-4567')}</li>
-                <li>✉️ {pick(demo?.email, `contact@${businessName.replace(/\s+/g, '').toLowerCase()}.com`)}</li>
+                {demo?.address && <li>📍 {demo.address}</li>}
+                {demo?.phone && tel && (
+                  <li>
+                    📞 <a href={tel}>{demo.phone}</a>
+                  </li>
+                )}
+                {demo?.email && (
+                  <li>
+                    ✉️ <a href={`mailto:${demo.email}`}>{demo.email}</a>
+                  </li>
+                )}
                 {demo?.hours && <li>🕒 {demo.hours}</li>}
+                {isGeneric && (
+                  <>
+                    <li>📍 123 Health Avenue, Medical District</li>
+                    <li>📞 +1 (555) 123-4567</li>
+                  </>
+                )}
               </ul>
             </div>
             <div className={styles.contactForm}>
-              <input type="text" placeholder="Full Name" className={styles.input} />
-              <input type="email" placeholder="Email Address" className={styles.input} />
-              <select className={styles.input}>
-                <option>Select Department</option>
-                <option>General Practice</option>
-                <option>Neurology</option>
-                <option>Pediatrics</option>
-              </select>
-              <button className="btn-primary" style={{ width: '100%' }}>Confirm Booking</button>
+              <h3>Your website, your style</h3>
+              <p>
+                This concept shows a possible layout. A finished website can include a confirmed
+                service menu, the practice&apos;s own photos, and its existing booking route.
+              </p>
+              <p>No booking request is submitted from this preview.</p>
+              {demo?.bookingUrl && (
+                <a
+                  href={demo.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                  style={{ textAlign: 'center', textDecoration: 'none' }}
+                >
+                  Book Online
+                </a>
+              )}
+              {demo?.phone && tel && (
+                <a href={tel} className="btn-primary" style={{ textAlign: 'center', textDecoration: 'none' }}>
+                  Call {demo.phone}
+                </a>
+              )}
             </div>
           </div>
         </section>
